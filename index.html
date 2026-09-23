@@ -5,6 +5,257 @@
 <title>abanikos · Abanicos personalizados</title>
 <script>window.__resources = {"https://unpkg.com/react@18.3.1/umd/react.production.min.js": "assets/js/react.production.min.js", "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "assets/js/react-dom.production.min.js"};</script>
 <script src="assets/js/dc-runtime.js"></script>
+<script>
+/* ===== abanikos · traducción ES / EN =====
+   Traduce los textos de la página en el navegador sin tocar la plantilla.
+   Para cambiar una traducción, edita el texto de la derecha en DICT. */
+(function () {
+  var DICT = {
+    // Navegación y comunes
+    'Proyectos': 'Projects', 'PROYECTOS': 'PROJECTS', 'Contacto': 'Contact', 'Pedir presupuesto': 'Get a quote',
+    'Empresas': 'Businesses', 'Inicio': 'Home', 'Navegación': 'Navigation', 'También aquí': 'Also here',
+    'Atrás': 'Back', 'Siguiente': 'Next', 'Enviar': 'Send', 'Enviado': 'Sent', 'Enviando…': 'Sending…',
+    'Empezar otra': 'Start another', 'Nombre': 'Name', 'Tu nombre': 'Your name', 'Email': 'Email',
+    'Teléfono': 'Phone', 'Nombre y empresa': 'Name and company', 'hola@tuemail.com': 'hello@youremail.com',
+    'Abrir WhatsApp': 'Open WhatsApp', 'Hablar por WhatsApp': 'Chat on WhatsApp', 'Escríbenos por Whatsapp': 'Message us on WhatsApp',
+    'Ver Abanikos': 'See Abanikos', 'Ver proyectos B2B': 'See B2B projects', '← Todos los proyectos': '← All projects',
+    'Todos': 'All', 'Seleccionado:': 'Selected:',
+
+    // Home
+    'CADA ABANICO GUARDA UN RECUERDO': 'EVERY FAN HOLDS A MEMORY',
+    'Abanikos Personalizados': 'Custom Abanikos',
+    'Diseñamos y producimos abanicos a medida de madera o plástico, con': 'We design and produce custom wooden or plastic hand fans with',
+    'impresión digital a todo color. Trabajamos con marcas, bodas y eventos.': 'full-colour digital printing. We work with brands, weddings and events.',
+    'El abanico lleva siglos formando parte de nuestra cultura, pero casi siempre se ha asociado a una misma imagen.': 'The hand fan has been part of our culture for centuries, but it has almost always been tied to the same image.',
+    'Nuestra misión es modernizar el concepto del abanico a través de nuestros diseños para que cualquier persona pueda llevar un abanico.': 'Our mission is to modernise the hand fan through our designs, so that anyone can carry one.',
+    'De la idea al Abaniko': 'From idea to Abaniko',
+    'Nos cuentas tu historia': 'You tell us your story',
+    'Cuéntanos tu idea: Evento, Marca, fechas.': 'Tell us your idea: event, brand, dates.',
+    'Diseño': 'Design',
+    'Nos pasáis el diseño o si no tenéis diseño, lo creamos nosotros (sin coste adicional)': 'Send us your design, or if you don\u2019t have one, we create it for you (at no extra cost)',
+    'Producción': 'Production',
+    'Una vez se apruebe el diseño y presupuesto se manda a producción.': 'Once the design and quote are approved, it goes into production.',
+    'Entrega': 'Delivery', 'Entregamos tu pedido a plazo.': 'We deliver your order on time.',
+    'Historias con Abanikos': 'Stories with Abanikos',
+    'Cada abanico se ha creado a partir de la identidad de marca o del concepto del evento.': 'Each fan was created from the brand identity or the concept of the event.',
+    '¿El siguiente es el tuyo?': 'Is yours next?',
+    '¿Quieres algo así para lo tuyo?': 'Want something like this for your event?',
+    '¿Quieres algo así para tu marca?': 'Want something like this for your brand?',
+    'Arrastra un logo': 'Drop a logo',
+
+    // Manifiesto (B2B)
+    'Queremos darle una nueva vida.': 'We want to give it a new life.',
+    'A través de nuestros diseños, transformamos el abanico en un complemento actual, versátil y pensado para todo el mundo. Una pieza que puedes llevar a una reunión, a una fiesta, de viaje o simplemente en tu día a día.': 'Through our designs, we turn the hand fan into a modern, versatile accessory made for everyone. A piece you can take to a meeting, a party, on a trip or simply use every day.',
+    'Pero también creemos que un abanico puede ser mucho más que un accesorio: una forma de expresar tu estilo, transmitir una idea o dar visibilidad a una marca de una manera original, creativa y diferente.': 'But we also believe a fan can be much more than an accessory: a way to express your style, share an idea or give a brand visibility in an original, creative and different way.',
+    'Porque creemos que el estilo no tiene género y que las buenas ideas merecen salir de lo convencional.': 'Because we believe style has no gender and good ideas deserve to break with convention.',
+    'Recuperamos una tradición para convertirla en una nueva forma de expresión.': 'We revive a tradition and turn it into a new form of expression.',
+    'Pide tu presupuesto': 'Get your quote',
+
+    // Bodas
+    'Un detalle que tus invitados': 'A wedding favour your guests', 'sí': 'actually', 'se quedan.': 'keep.',
+    'Abanikos personalizados para repartir, para el photocall y para sobrevivir a las cuatro de la tarde en julio.': 'Custom abanikos to hand out, for the photo booth and to survive 4 pm in July.',
+    'Diseñar el nuestro': 'Design ours', 'Diseña el de vuestra boda': 'Design yours for your wedding',
+    'Empecemos con el de vuestra boda': 'Let\u2019s start with yours',
+    'Contadnos la fecha y lo demás lo vemos juntos.': 'Tell us the date and we\u2019ll figure out the rest together.',
+    'Por qué un abaniko': 'Why an abaniko',
+    'Se usa esa misma tarde': 'Used that very afternoon',
+    'Nada de detalle que acaba en un cajón.': 'No more favours that end up in a drawer.',
+    'Pensado para el calor': 'Made for the heat',
+    'Bodas de primavera y verano al aire libre. Se agradece.': 'Outdoor spring and summer weddings. Your guests will thank you.',
+    'Sale bien en foto': 'Looks great in photos',
+    'Un photocall con abanikos personalizados se llena solo.': 'A photo booth with custom abanikos fills up on its own.',
+    'A vuestro gusto': 'Your way',
+    'Colores de la boda, iniciales, fecha o una frase vuestra.': 'Wedding colours, initials, the date or a phrase of your own.',
+    'Inspiración': 'Inspiration', 'Distintos estilos, el mismo abaniko.': 'Different styles, the same abaniko.',
+    'Clásica / elegante': 'Classic / elegant', 'Boho / aire libre': 'Boho / outdoor', 'Noche / fiesta': 'Night / party',
+    'Boda real con abanikos': 'Real wedding with abanikos', 'Abaniko abierto en detalle': 'Open abaniko in detail',
+    '¿Organizas bodas?': 'Do you plan weddings?',
+    'Si eres wedding planner y quieres ofrecer abanikos personalizados a tus parejas, hablemos. Tenemos plazos y condiciones pensadas para vosotros.': 'If you\u2019re a wedding planner and want to offer custom abanikos to your couples, let\u2019s talk. We have timelines and terms designed for you.',
+    'Hablar como wedding planner': 'Talk to us as a wedding planner',
+    '[Testimonio real de pareja]': '[Real couple testimonial]', '[Testimonio de wedding planner]': '[Wedding planner testimonial]',
+    'Nombre & Nombre': 'Name & Name', 'Nombre, Wedding planner': 'Name, Wedding planner',
+
+    // Configuradores
+    'Tipo de evento': 'Event type', 'Estilo': 'Style', 'Material': 'Material', 'Cantidad': 'Quantity',
+    'Cantidades': 'Quantities', 'Fecha': 'Date',
+    'Así preparamos una propuesta que encaje de verdad.': 'So we can prepare a proposal that really fits.',
+    'Club / discoteca': 'Club / nightclub', 'Marca o producto': 'Brand or product', 'Feria o evento': 'Trade fair or event', 'Otro': 'Other', 'Otros': 'Others',
+    '¿Madera o plástico?': 'Wood or plastic?', 'Madera': 'Wood', 'Plástico': 'Plastic', 'Que nos recomendéis': 'You recommend',
+    'La madera es el acabado bonito; el plástico, el que aguanta cualquier cosa.': 'Wood is the beautiful finish; plastic is the one that survives anything.',
+    'La madera queda más elegante en la mano; el plástico aguanta la barra libre.': 'Wood feels more elegant in the hand; plastic survives the open bar.',
+    '¿Cómo vais de diseño?': 'How are you doing on design?',
+    'Si no tenéis nada, lo hacemos nosotros.': 'If you don\u2019t have anything, we\u2019ll make it.',
+    'Si aún no tenéis nada, lo hacemos nosotros.': 'If you don\u2019t have anything yet, we\u2019ll make it.',
+    'Subir tu diseño': 'Upload your design', 'Tengo logo y una idea': 'I have a logo and an idea', 'Empezamos de cero': 'Start from scratch',
+    'Sube tu diseño': 'Upload your design', 'Sube tu logo o una referencia': 'Upload your logo or a reference',
+    'PNG, SVG o PSD · hasta 25 MB': 'PNG, SVG or PSD · up to 25 MB',
+    '¿Cuántos abanikos?': 'How many abanikos?',
+    'A partir de 150 unidades. Cuantos más, mejor precio por unidad.': 'From 150 units. The more you order, the better the unit price.',
+    '1.000–5.000': '1,000–5,000', 'Más de 5.000': 'More than 5,000', '1.000–2.500': '1,000–2,500',
+    '2.500–5.000': '2,500–5,000', '5.000–10.000': '5,000–10,000', 'Más de 10.000': 'More than 10,000', '500–1.000': '500–1,000', '300–1.000': '300–1,000',
+    'Y por último, ¿dónde te escribimos?': 'Finally, where should we reach you?',
+    'Te mandamos la propuesta en 24–48 h.': 'We\u2019ll send you the proposal within 24–48 h.',
+    'Cuéntanos el evento, la fecha y la idea': 'Tell us about the event, the date and the idea',
+    '¿Para qué evento lo quieres ?': 'What event is it for?', 'Solo para orientarnos.': 'Just to point us in the right direction.',
+    'Discoteca/Club': 'Nightclub / Club', 'Evento Corporativo': 'Corporate event', 'Festival': 'Festival',
+    '¿Cantidades aproximadas?': 'Approximate quantities?',
+    'Mínimo 150 unidades. El plazo de entrega puede variar entre 2 semanas y 3 meses en función de la cantidad.': 'Minimum 150 units. Delivery time ranges from 2 weeks to 3 months depending on quantity.',
+    '¿Cuándo es el evento?': 'When is the event?', 'Elige la fecha en formato DD/MM/AAAA.': 'Pick the date (DD/MM/YYYY).',
+    'Fecha del evento (DD/MM/AAAA)': 'Event date (DD/MM/YYYY)',
+    '¿Dónde os escribimos?': 'Where should we reach you?', 'Os mandamos la propuesta en 24–48 h.': 'We\u2019ll send you the proposal within 24–48 h.',
+    '¡Recibido!': 'Received!', 'Te escribimos en 24–48 h con una propuesta y un precio cerrado.': 'We\u2019ll get back to you within 24–48 h with a proposal and a fixed price.',
+    'Rellena nombre, email y teléfono para continuar.': 'Fill in name, email and phone to continue.',
+    'Elige una opción para continuar.': 'Choose an option to continue.', 'Selecciona una opción para continuar.': 'Select an option to continue.',
+    'Elige una fecha para continuar.': 'Pick a date to continue.',
+
+    // Contacto
+    'Escríbenos y lo vemos.': 'Write to us and we\u2019ll sort it out.',
+    'Cuéntanos qué evento es, para cuándo y cuántos abanikos necesitas. Contestamos en 24–48 h con una propuesta concreta, no con un catálogo.': 'Tell us what the event is, when it is and how many abanikos you need. We reply within 24–48 h with a concrete proposal, not a catalogue.',
+    'Tipo de proyecto': 'Project type', 'Marca o empresa': 'Brand or company', 'Club o discoteca': 'Club or nightclub',
+    'Boda': 'Wedding', 'Wedding planner': 'Wedding planner', 'Cantidad aproximada': 'Approximate quantity',
+    'Mínimo 150 ud': 'Minimum 150 units', 'Cuéntanos': 'Tell us', 'Fecha del evento, idea de diseño, dudas…': 'Event date, design idea, questions…',
+    'Respuesta en 24–48 h laborables.': 'Reply within 24–48 business hours.',
+    '¡Enviado! Te escribimos pronto': 'Sent! We\u2019ll be in touch soon', 'Abriendo tu correo…': 'Opening your email…',
+    'Por WhatsApp es más rápido': 'WhatsApp is faster',
+    'Mándanos una foto, una referencia o un audio de dos minutos. Nos vale.': 'Send us a photo, a reference or a two-minute voice note. That works for us.',
+    'Lo esencial': 'The essentials', 'Pedido mínimo: 150 unidades': 'Minimum order: 150 units',
+    'Plazo: de 2 semanas a 2 meses según cantidad': 'Lead time: 2 weeks to 2 months depending on quantity',
+    'Materiales: madera o plástico': 'Materials: wood or plastic', 'Envíos a toda España': 'Shipping across Spain',
+    'Déjanos tu nombre y un email o teléfono para poder contestarte.': 'Please leave your name and an email or phone so we can reply.',
+
+    // Proyectos
+    'Bodas': 'Weddings', 'Discotecas / Club': 'Nightclubs / Club', 'Eventos corporativos': 'Corporate events',
+    'Evento corporativo': 'Corporate event', 'Festivales': 'Festivals',
+    'Todavía no hay proyectos de este tipo.': 'No projects of this type yet.',
+    'Todavía no hay marcas en este proyecto.': 'No brands in this project yet.',
+    'Sin imágenes': 'No images', 'Sin imágenes todavía': 'No images yet', 'Sin portada': 'No cover',
+    'Pendiente de contenido': 'Content coming soon', 'Sin marcas': 'No brands', 'Nueva marca': 'New brand',
+    'Club — abanikos de noche': 'Club — night abanikos', 'Festival — abanikos de merch': 'Festival — merch abanikos',
+    'Marca — abanikos con logo': 'Brand — abanikos with logo', 'Boda — abanikos para invitados': 'Wedding — abanikos for guests',
+
+    // Modo edición (solo lo ves tú)
+    'Nuevo proyecto': 'New project', 'Guardar': 'Save', 'Guardar proyecto': 'Save project', 'Cancelar': 'Cancel',
+    'Descartar': 'Discard', 'Eliminar': 'Delete', 'Cerrar': 'Close', 'Tipo': 'Type', 'Año': 'Year',
+    '+ Añadir proyecto': '+ Add project', '+ Añadir imágenes': '+ Add images', '+ Añadir marca': '+ Add brand',
+    '+ Imágenes': '+ Images', '+ Marca': '+ Brand', 'Añadir imágenes': 'Add images', 'Añadir una marca con sus fotos': 'Add a brand with its photos',
+    'Puedes seleccionar varias a la vez': 'You can select several at once', 'Quitar imagen': 'Remove image', 'Quitar logo': 'Remove logo',
+    'Nombre de la marca': 'Brand name', 'p. ej. Boda Marta & Iván': 'e.g. Marta & Iván\u2019s wedding',
+    'Cambios sin guardar': 'Unsaved changes', 'Ponle un nombre al proyecto.': 'Give the project a name.'
+  };
+
+  var RULES = [
+    [/^Paso (\d+) de (\d+)$/, 'Step $1 of $2'],
+    [/^1 imagen$/, '1 image'], [/^(\d+) imágenes$/, '$1 images'],
+    [/^1 diseño$/, '1 design'], [/^(\d+) diseños$/, '$1 designs'],
+    [/^1 marca$/, '1 brand'], [/^(\d+) marcas$/, '$1 brands'],
+    [/^Seleccionado: (.+)$/, 'Selected: $1']
+  ];
+
+  var ATTRS = ['placeholder', 'title', 'alt', 'aria-label'];
+  var ES_LANGS = ['es', 'ca', 'gl', 'eu'];
+
+  function detect() {
+    try {
+      var q = new URLSearchParams(location.search).get('lang');
+      if (q === 'en' || q === 'es') return q;
+      var saved = localStorage.getItem('abk-lang');
+      if (saved === 'en' || saved === 'es') return saved;
+    } catch (e) {}
+    var nav = (navigator.language || 'es').slice(0, 2).toLowerCase();
+    return ES_LANGS.indexOf(nav) >= 0 ? 'es' : 'en';
+  }
+
+  var lang = detect();
+
+  function tr(str) {
+    var key = str.replace(/\s+/g, ' ').trim();
+    if (!key) return null;
+    var out = DICT[key];
+    if (out == null) {
+      for (var i = 0; i < RULES.length; i++) {
+        if (RULES[i][0].test(key)) { out = key.replace(RULES[i][0], RULES[i][1]); break; }
+      }
+    }
+    if (out == null) return null;
+    var lead = str.match(/^\s*/)[0], trail = str.match(/\s*$/)[0];
+    return lead + out + trail;
+  }
+
+  function doText(n) {
+    var cur = n.nodeValue;
+    if (lang === 'en') {
+      if (n.__abkEn === cur) return;
+      var t = tr(cur);
+      if (t != null && t !== cur) { n.__abkEs = cur; n.__abkEn = t; n.nodeValue = t; }
+    } else if (n.__abkEn != null && cur === n.__abkEn) {
+      n.nodeValue = n.__abkEs;
+    }
+  }
+
+  function doAttrs(el) {
+    for (var i = 0; i < ATTRS.length; i++) {
+      var a = ATTRS[i];
+      if (!el.hasAttribute(a)) continue;
+      var cur = el.getAttribute(a), store = el.__abkAttr || (el.__abkAttr = {});
+      if (lang === 'en') {
+        if (store[a] && store[a].en === cur) continue;
+        var t = tr(cur);
+        if (t != null && t !== cur) { store[a] = { es: cur, en: t }; el.setAttribute(a, t); }
+      } else if (store[a] && cur === store[a].en) {
+        el.setAttribute(a, store[a].es);
+      }
+    }
+  }
+
+  function walk(root) {
+    if (!root) return;
+    if (root.nodeType === 3) { doText(root); return; }
+    if (root.nodeType !== 1) return;
+    if (root.tagName === 'SCRIPT' || root.tagName === 'STYLE') return;
+    doAttrs(root);
+    var tw = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT);
+    var n;
+    while ((n = tw.nextNode())) {
+      if (n.nodeType === 3) {
+        var p = n.parentNode;
+        if (p && (p.tagName === 'SCRIPT' || p.tagName === 'STYLE')) continue;
+        doText(n);
+      } else doAttrs(n);
+    }
+  }
+
+  function applyDoc() {
+    document.documentElement.lang = lang;
+    document.title = lang === 'en' ? 'abanikos · Custom hand fans' : 'abanikos · Abanicos personalizados';
+    walk(document.body);
+  }
+
+  var obs = new MutationObserver(function (muts) {
+    for (var i = 0; i < muts.length; i++) {
+      var m = muts[i];
+      if (m.type === 'characterData') doText(m.target);
+      else if (m.type === 'attributes') doAttrs(m.target);
+      else for (var j = 0; j < m.addedNodes.length; j++) walk(m.addedNodes[j]);
+    }
+  });
+
+  function start() {
+    applyDoc();
+    obs.observe(document.body, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTRS });
+  }
+  if (document.body) start(); else document.addEventListener('DOMContentLoaded', start);
+
+  window.abkI18n = {
+    get lang() { return lang; },
+    set: function (l) {
+      lang = l === 'en' ? 'en' : 'es';
+      try { localStorage.setItem('abk-lang', lang); } catch (e) {}
+      applyDoc();
+    },
+    t: function (s) { return lang === 'en' ? (tr(s) || s) : s; }
+  };
+})();
+</script>
 </head>
 <body>
 <x-dc>
@@ -33,6 +284,7 @@
         <div sc-camel-on-click="{{ goB2b }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubB2b }};color:#ec3013;"><b>Abanikos</b></div>
         
         <div sc-camel-on-click="{{ goContacto }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubContacto }};color:#301509;">Contacto</div>
+        <div sc-camel-on-click="{{ toggleLang }}" title="Español / English" style="cursor:pointer;border:2px solid #301509;border-radius:999px;padding:6px 12px;font-size:0.85rem;font-weight:600;color:#301509;line-height:1;">{{ langLabel }}</div>
         <div sc-camel-on-click="{{ goConf }}" style="cursor:pointer;background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:11px 22px;border-radius:999px;">Pedir presupuesto</div>
       </nav>
     </div>
@@ -99,7 +351,7 @@
       <div style="max-width:1180px;margin:0 auto;padding:clamp(64px,8vw,100px) 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(40px,6vw,72px);align-items:center;">
         <div>
           
-          <p style="font-size: 1.2rem; line-height: 1.6; margin: 20px 0 0; max-width: 46ch; color: #2d2b2b">El abanico lleva siglos formando parte de nuestra cultura, pero casi siempre se ha asociado a una misma imagen.<br><br>Nuestra misión es modernizar el concepto del abanico a través de nuestros diseños para queque cualquier persona pueda llevar un abanico.&nbsp;<br><br></p><div sc-camel-on-click="{{ goConf }}" style="display: inline-block; cursor: pointer; color: #f3f2f2; font-family: 'Fredoka',sans-serif; font-weight: 600; padding: 14px 28px; border-radius: 999px; background-color: #DA4435">Ver Abanikos</div>
+          <p style="font-size: 1.2rem; line-height: 1.6; margin: 20px 0 0; max-width: 46ch; color: #2d2b2b">El abanico lleva siglos formando parte de nuestra cultura, pero casi siempre se ha asociado a una misma imagen.<br><br>Nuestra misión es modernizar el concepto del abanico a través de nuestros diseños para que cualquier persona pueda llevar un abanico.&nbsp;<br><br></p><div sc-camel-on-click="{{ goConf }}" style="display: inline-block; cursor: pointer; color: #f3f2f2; font-family: 'Fredoka',sans-serif; font-weight: 600; padding: 14px 28px; border-radius: 999px; background-color: #DA4435">Ver Abanikos</div>
           
           
         </div>
@@ -208,7 +460,7 @@
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-bottom:24px;">
               <input placeholder="Nombre" required="{{ true }}" value="{{ wName }}" sc-camel-on-change="{{ wOnName }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
               <input type="email" placeholder="Email" required="{{ true }}" value="{{ wEmail }}" sc-camel-on-change="{{ wOnEmail }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
-              <input type="tel" placeholder="Teléfono" required="{{ true }}" value="{{ wPhone }}" sc-camel-on-change="{{ wOnPhone }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+              <div style="display:flex;gap:8px;min-width:0;"><sc-raw-select value="{{ wCc }}" sc-camel-on-change="{{ wOnCc }}" aria-label="Prefijo" style="flex:0 0 auto;width:auto;max-width:120px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 10px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;cursor:pointer;"><sc-for list="{{ countryCodes }}" as="c" hint-placeholder-count="3"><option value="{{ c.iso }}">{{ c.label }}</option></sc-for></sc-raw-select><input type="tel" placeholder="Teléfono" required="{{ true }}" value="{{ wPhone }}" sc-camel-on-change="{{ wOnPhone }}" style="flex:1;min-width:0;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;"></div>
             </div>
           </sc-if>
           <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
@@ -291,8 +543,8 @@
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-bottom:24px;">
               <input placeholder="Nombre y empresa" required="{{ true }}" value="{{ bName }}" sc-camel-on-change="{{ bOnName }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
               <input type="email" placeholder="Email" required="{{ true }}" value="{{ bEmail }}" sc-camel-on-change="{{ bOnEmail }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
-              <input type="tel" placeholder="Teléfono" required="{{ true }}" value="{{ bPhone }}" sc-camel-on-change="{{ bOnPhone }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
-              <textarea placeholder="Cuéntanos el evento, la fecha y la idea" rows="3" style="grid-column:1/-1;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;resize:vertical;"></textarea>
+              <div style="display:flex;gap:8px;min-width:0;"><sc-raw-select value="{{ bCc }}" sc-camel-on-change="{{ bOnCc }}" aria-label="Prefijo" style="flex:0 0 auto;width:auto;max-width:120px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 10px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;cursor:pointer;"><sc-for list="{{ countryCodes }}" as="c" hint-placeholder-count="3"><option value="{{ c.iso }}">{{ c.label }}</option></sc-for></sc-raw-select><input type="tel" placeholder="Teléfono" required="{{ true }}" value="{{ bPhone }}" sc-camel-on-change="{{ bOnPhone }}" style="flex:1;min-width:0;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;"></div>
+              <textarea placeholder="Cuéntanos el evento, la fecha y la idea" rows="3" value="{{ bMsg }}" sc-camel-on-change="{{ bOnMsg }}" style="grid-column:1/-1;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;resize:vertical;"></textarea>
             </div>
           </sc-if>
           <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
@@ -410,7 +662,7 @@
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-bottom:24px;">
               <input placeholder="Nombre" required="{{ true }}" value="{{ wName }}" sc-camel-on-change="{{ wOnName }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
               <input type="email" placeholder="Email" required="{{ true }}" value="{{ wEmail }}" sc-camel-on-change="{{ wOnEmail }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
-              <input type="tel" placeholder="Teléfono" required="{{ true }}" value="{{ wPhone }}" sc-camel-on-change="{{ wOnPhone }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+              <div style="display:flex;gap:8px;min-width:0;"><sc-raw-select value="{{ wCc }}" sc-camel-on-change="{{ wOnCc }}" aria-label="Prefijo" style="flex:0 0 auto;width:auto;max-width:120px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 10px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;cursor:pointer;"><sc-for list="{{ countryCodes }}" as="c" hint-placeholder-count="3"><option value="{{ c.iso }}">{{ c.label }}</option></sc-for></sc-raw-select><input type="tel" placeholder="Teléfono" required="{{ true }}" value="{{ wPhone }}" sc-camel-on-change="{{ wOnPhone }}" style="flex:1;min-width:0;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;"></div>
             </div>
           </sc-if>
           <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
@@ -459,15 +711,15 @@
             <input data-f="email" type="email" placeholder="hola@tuemail.com" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
           </label>
           <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Teléfono
-            <input data-f="telefono" type="tel" placeholder="+34 600 000 000" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+            <div style="display:flex;gap:8px;margin-top:6px;"><sc-raw-select data-f="prefijo" aria-label="Prefijo" style="flex:0 0 auto;width:auto;max-width:120px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 10px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;cursor:pointer;"><sc-for list="{{ countryCodes }}" as="c" hint-placeholder-count="3"><option value="{{ c.iso }}">{{ c.label }}</option></sc-for></sc-raw-select><input data-f="telefono" type="tel" placeholder="600 000 000" style="flex:1;min-width:0;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;"></div>
           </label>
           <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Tipo de proyecto
             <sc-raw-select data-f="tipo" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
-              <option>Marca o empresa</option>
-              <option>Club o discoteca</option>
-              <option>Boda</option>
-              <option>Wedding planner</option>
-              <option>Otro</option>
+              <option value="Marca o empresa">Marca o empresa</option>
+              <option value="Club o discoteca">Club o discoteca</option>
+              <option value="Boda">Boda</option>
+              <option value="Wedding planner">Wedding planner</option>
+              <option value="Otro">Otro</option>
             </sc-raw-select>
           </label>
           <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Cantidad aproximada
@@ -764,11 +1016,11 @@
   <svg sc-camel-view-box="0 0 24 24" style="width:28px;height:28px;fill:#FFFFFF;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.25.7-1.24 1.28-2.03 1.45-.54.11-1.24.2-3.6-.77-3.02-1.25-4.96-4.31-5.11-4.51-.15-.2-1.22-1.62-1.22-3.09 0-1.47.77-2.19 1.04-2.49.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.08.92 2.23.07.15.12.33.02.53-.1.2-.15.33-.3.5-.15.18-.31.4-.45.54-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.27.1 1.75.83 2.05.98.3.15.5.23.57.35.08.13.08.72-.17 1.42z"></path></svg>
 </a>
 </x-dc>
-<script type="text/x-dc" data-dc-script="" data-props="{&quot;startView&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;proyectos&quot;,&quot;b2b&quot;,&quot;bodas&quot;,&quot;contacto&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Mockup&quot;},&quot;editMode&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Proyectos&quot;},&quot;instagramUser&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;abanikos&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacto&quot;},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;34600000000&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacto&quot;},&quot;logoColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;options&quot;:[&quot;#F6DE8B&quot;,&quot;#FBF0CE&quot;,&quot;#DA4435&quot;,&quot;#FFFBF0&quot;],&quot;default&quot;:&quot;#F6DE8B&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marcas&quot;},&quot;logoFiles&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;disen-o-sin-ti-tulo-1--mu6lmaxb-sfsw.png, disen-o-sin-ti-tulo-4--mu6ln364-27ir.png, sofoco_logo-mu6v0sxp-mr0l.png&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marcas&quot;},&quot;logoAddSlots&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Marcas&quot;},&quot;showTestimonials&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;},&quot;whatsappLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Abrir WhatsApp&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contenido&quot;}}">
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;startView&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;proyectos&quot;,&quot;b2b&quot;,&quot;bodas&quot;,&quot;contacto&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Mockup&quot;},&quot;editMode&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Proyectos&quot;},&quot;instagramUser&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;abanikos&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacto&quot;},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;34647489338&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacto&quot;},&quot;logoColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;options&quot;:[&quot;#F6DE8B&quot;,&quot;#FBF0CE&quot;,&quot;#DA4435&quot;,&quot;#FFFBF0&quot;],&quot;default&quot;:&quot;#F6DE8B&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marcas&quot;},&quot;logoFiles&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;disen-o-sin-ti-tulo-1--mu6lmaxb-sfsw.png, disen-o-sin-ti-tulo-4--mu6ln364-27ir.png, sofoco_logo-mu6v0sxp-mr0l.png&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marcas&quot;},&quot;logoAddSlots&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Marcas&quot;},&quot;showTestimonials&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;},&quot;whatsappLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Abrir WhatsApp&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contenido&quot;}}">
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { view: props.startView || 'home', b: { i: 0, picks: {}, form: {}, done: false }, w: { i: 0, picks: {}, form: {}, done: false }, sent: false };
+    this.state = { view: props.startView || 'home', b: { i: 0, picks: {}, form: {}, done: false }, w: { i: 0, picks: {}, form: {}, done: false }, sent: false, sending: false, sendError: false, lang: (typeof window !== 'undefined' && window.abkI18n) ? window.abkI18n.lang : 'es' };
   }
 
   seedProjects() {
@@ -960,6 +1212,55 @@ class Component extends DCLogic {
     if (typeof window !== 'undefined') window.scrollTo({ top: 0 });
   }
 
+  // ====== Prefijos telefónicos (el primero es el que sale por defecto) ======
+  countryList() {
+    return [
+      ['ES', '+34', '🇪🇸'], ['PT', '+351', '🇵🇹'], ['FR', '+33', '🇫🇷'], ['IT', '+39', '🇮🇹'], ['DE', '+49', '🇩🇪'],
+      ['GB', '+44', '🇬🇧'], ['IE', '+353', '🇮🇪'], ['NL', '+31', '🇳🇱'], ['BE', '+32', '🇧🇪'], ['CH', '+41', '🇨🇭'],
+      ['AT', '+43', '🇦🇹'], ['AD', '+376', '🇦🇩'], ['LU', '+352', '🇱🇺'], ['MC', '+377', '🇲🇨'], ['PL', '+48', '🇵🇱'],
+      ['SE', '+46', '🇸🇪'], ['NO', '+47', '🇳🇴'], ['DK', '+45', '🇩🇰'], ['FI', '+358', '🇫🇮'], ['GR', '+30', '🇬🇷'],
+      ['RO', '+40', '🇷🇴'], ['CZ', '+420', '🇨🇿'], ['HR', '+385', '🇭🇷'], ['MT', '+356', '🇲🇹'], ['GI', '+350', '🇬🇮'],
+      ['US', '+1', '🇺🇸'], ['CA', '+1', '🇨🇦'], ['MX', '+52', '🇲🇽'], ['AR', '+54', '🇦🇷'], ['CO', '+57', '🇨🇴'],
+      ['CL', '+56', '🇨🇱'], ['PE', '+51', '🇵🇪'], ['VE', '+58', '🇻🇪'], ['EC', '+593', '🇪🇨'], ['UY', '+598', '🇺🇾'],
+      ['PY', '+595', '🇵🇾'], ['BO', '+591', '🇧🇴'], ['CR', '+506', '🇨🇷'], ['PA', '+507', '🇵🇦'], ['DO', '+1', '🇩🇴'],
+      ['PR', '+1', '🇵🇷'], ['CU', '+53', '🇨🇺'], ['GT', '+502', '🇬🇹'], ['BR', '+55', '🇧🇷'], ['MA', '+212', '🇲🇦'],
+      ['DZ', '+213', '🇩🇿'], ['AE', '+971', '🇦🇪'], ['SA', '+966', '🇸🇦'], ['QA', '+974', '🇶🇦'], ['IL', '+972', '🇮🇱'],
+      ['TR', '+90', '🇹🇷'], ['CN', '+86', '🇨🇳'], ['JP', '+81', '🇯🇵'], ['IN', '+91', '🇮🇳'], ['AU', '+61', '🇦🇺']
+    ];
+  }
+
+  countryCodes() {
+    return this.countryList().map(c => ({ iso: c[0], label: c[2] + ' ' + c[1] }));
+  }
+
+  dial(iso) {
+    const c = this.countryList().filter(x => x[0] === iso)[0];
+    return c ? c[1] : '+34';
+  }
+
+  // ====== Envío de solicitudes a Google Apps Script (Sheets + Gmail) ======
+  sendLead(data) {
+    const LEAD_URL = 'https://script.google.com/macros/s/AKfycbyZkkcYOxXTinYQiQ4L_-PttaeIjgVoAGi3AAu7X8o-rZ_THeCq4VEGDCe8LDuBDoc/exec';
+    const body = new URLSearchParams();
+    data = Object.assign({ idioma: this.state.lang === 'en' ? 'Inglés' : 'Español' }, data);
+    Object.keys(data).forEach(k => body.append(k, data[k] == null ? '' : String(data[k])));
+    return fetch(LEAD_URL, { method: 'POST', mode: 'no-cors', body: body });
+  }
+
+  // Convierte las respuestas de un configurador por pasos en una solicitud
+  leadFromConf(origen, steps, st) {
+    const campo = { 'Tipo de evento': 'tipo', 'Estilo': 'tipo', 'Material': 'material', 'Diseño': 'diseno',
+      'Cantidad': 'cantidad', 'Cantidades': 'cantidad', 'Fecha': 'fecha_evento' };
+    const f = st.form || {};
+    const data = { origen: origen, nombre: f.name, email: f.email, telefono: this.dial(f.cc || 'ES') + ' ' + (f.phone || ''), mensaje: f.msg };
+    steps.forEach((step, n) => {
+      const k = campo[step.label];
+      if (k && st.picks[n] != null) data[k] = st.picks[n];
+      if ((st.files || {})[n]) data.archivo = st.files[n];
+    });
+    return data;
+  }
+
   conf(key, steps, accent) {
     const st = this.state[key];
     const step = steps[st.i];
@@ -1020,15 +1321,23 @@ class Component extends DCLogic {
       requiredHint: (st.done || answered) ? '' : (step.form ? 'Rellena nombre, email y teléfono para continuar.' : (step.upload ? 'Elige una opción para continuar.' : (step.date ? 'Elige una fecha para continuar.' : 'Selecciona una opción para continuar.'))),
       name: f.name || '', email: f.email || '', phone: f.phone || '',
       onName: setField('name'), onEmail: setField('email'), onPhone: setField('phone'),
+      msg: f.msg || '', onMsg: setField('msg'),
+      cc: f.cc || 'ES', onCc: setField('cc'),
       backColor: st.i === 0 || st.done ? 'rgba(48,21,9,0.25)' : 'rgba(48,21,9,0.65)',
       progress: st.done ? 'Enviado' : 'Paso ' + (st.i + 1) + ' de ' + steps.length,
-      next: () => this.setState(s => {
+      next: () => {
+        if (!st.done && answered && last) {
+          this.sendLead(this.leadFromConf(key === 'w' ? 'Configurador Bodas/Eventos' : 'Configurador Empresas', steps, st))
+            .catch(() => {});
+        }
+        this.setState(s => {
         const c = s[key];
         if (c.done) return { [key]: { i: 0, picks: {}, form: {}, done: false } };
         if (!answered) return null;
         if (c.i === steps.length - 1) return { [key]: Object.assign({}, c, { done: true }) };
         return { [key]: Object.assign({}, c, { i: c.i + 1 }) };
-      }),
+      });
+      },
       back: () => this.setState(s => {
         const c = s[key];
         if (c.done || c.i === 0) return null;
@@ -1261,21 +1570,40 @@ class Component extends DCLogic {
         const lines = [
           'Nombre: ' + g('nombre'),
           'Email: ' + g('email'),
-          'Teléfono: ' + g('telefono'),
+          'Teléfono: ' + (g('telefono') ? this.dial(g('prefijo')) + ' ' + g('telefono') : ''),
           'Tipo de proyecto: ' + g('tipo'),
           'Cantidad aproximada: ' + g('cantidad'),
           '',
           g('mensaje')
         ].join('\n');
-        window.location.href = 'mailto:abanikos.corporate@gmail.com'
-          + '?subject=' + encodeURIComponent('Presupuesto abanikos — ' + (g('nombre') || 'nueva solicitud'))
-          + '&body=' + encodeURIComponent(lines);
-        this.setState({ sent: true });
+        if (this.state.sending) return;
+        if (!g('nombre') || (!g('email') && !g('telefono'))) {
+          alert(window.abkI18n ? window.abkI18n.t('Déjanos tu nombre y un email o teléfono para poder contestarte.') : 'Déjanos tu nombre y un email o teléfono para poder contestarte.');
+          return;
+        }
+        this.setState({ sending: true, sendError: false });
+        this.sendLead({
+          origen: 'Página de contacto',
+          nombre: g('nombre'), email: g('email'), telefono: g('telefono') ? this.dial(g('prefijo')) + ' ' + g('telefono') : '',
+          tipo: g('tipo'), cantidad: g('cantidad'), mensaje: g('mensaje')
+        }).then(() => {
+          ['nombre', 'email', 'telefono', 'cantidad', 'mensaje'].forEach(n => {
+            const el = document.querySelector('[data-f="' + n + '"]');
+            if (el) el.value = '';
+          });
+          this.setState({ sending: false, sent: true });
+        }).catch(() => {
+          // Si falla la conexión, abrimos el correo como plan B
+          this.setState({ sending: false, sendError: true });
+          window.location.href = 'mailto:abanikos.corporate@gmail.com'
+            + '?subject=' + encodeURIComponent('Presupuesto abanikos — ' + (g('nombre') || 'nueva solicitud'))
+            + '&body=' + encodeURIComponent(lines);
+        });
       },
-      contactBtn: this.state.sent ? 'Abriendo tu correo…' : 'Enviar',
+      contactBtn: this.state.sending ? 'Enviando…' : (this.state.sent ? '¡Enviado! Te escribimos pronto' : (this.state.sendError ? 'Abriendo tu correo…' : 'Enviar')),
       igUrl: 'https://instagram.com/' + (this.props.instagramUser || 'abanikos'),
       igLabel: '@' + (this.props.instagramUser || 'abanikos'),
-      waUrl: 'https://wa.me/' + String(this.props.whatsappNumber || '34600000000').replace(/[^0-9]/g, ''),
+      waUrl: 'https://wa.me/' + String(this.props.whatsappNumber || '34647489338').replace(/[^0-9]/g, ''),
       bSteps: b.steps, bTitle: b.title, bSub: b.sub, bIsOptions: b.isOptions, bIsForm: b.isForm,
       bIsUpload: b.isUpload, bFileName: b.fileName, bHasFile: b.hasFile, bOnFile: b.onFile, bUploadLabel: b.uploadLabel,
       bOptions: b.options,
@@ -1288,6 +1616,15 @@ class Component extends DCLogic {
       wName: w.name, wEmail: w.email, wPhone: w.phone, wOnName: w.onName, wOnEmail: w.onEmail, wOnPhone: w.onPhone,
       bNextOpacity: b.nextOpacity, bNextCursor: b.nextCursor, bRequiredHint: b.requiredHint,
       bName: b.name, bEmail: b.email, bPhone: b.phone, bOnName: b.onName, bOnEmail: b.onEmail, bOnPhone: b.onPhone,
+      bMsg: b.msg, bOnMsg: b.onMsg,
+      bCc: b.cc, bOnCc: b.onCc, wCc: w.cc, wOnCc: w.onCc,
+      countryCodes: this.countryCodes(),
+      langLabel: this.state.lang === 'en' ? 'ES' : 'EN',
+      toggleLang: () => {
+        const l = this.state.lang === 'en' ? 'es' : 'en';
+        if (window.abkI18n) window.abkI18n.set(l);
+        this.setState({ lang: l });
+      },
       wNext: w.next, wBack: w.back, wNextLabel: w.nextLabel, wBackColor: w.backColor, wProgress: w.progress
     };
   }
