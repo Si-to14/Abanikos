@@ -121,6 +121,13 @@
     'Lo esencial': 'The essentials', 'Pedido mínimo: 150 unidades': 'Minimum order: 150 units',
     'Plazo: de 2 semanas a 2 meses según cantidad': 'Lead time: 2 weeks to 2 months depending on quantity',
     'Materiales: madera o plástico': 'Materials: wood or plastic', 'Envíos a toda España': 'Shipping across Spain',
+    '📐 ¿Aún no tienes el diseño?': '📐 Don\u2019t have a design yet?',
+    'Descarga nuestra plantilla, diseña encima y súbela aquí.': 'Download our template, design on top of it and upload it here.',
+    'Plantilla Photoshop (PSD)': 'Photoshop template (PSD)', 'Plantilla PNG (Canva)': 'PNG template (Canva)',
+    '46 × 24,5 cm · 300 ppp · textos y logos dentro de la línea roja. Cuando termines, expórtalo en PNG, JPG o PDF y súbelo aquí.': '46 × 24.5 cm · 300 dpi · keep text and logos inside the red line. When you\u2019re done, export it as PNG, JPG or PDF and upload it here.',
+    'PNG, JPG, PDF, SVG o PSD · hasta 25 MB': 'PNG, JPG, PDF, SVG or PSD · up to 25 MB',
+    '↓ Descargar plantilla': '↓ Download template', '¿Quieres diseñarlo tú?': 'Want to design it yourself?',
+    '↓ Plantilla PSD': '↓ PSD template', '↓ Plantilla PNG': '↓ PNG template',
     'Déjanos tu nombre y un email o teléfono para poder contestarte.': 'Please leave your name and an email or phone so we can reply.',
     'El archivo pesa más de 25 MB. Prueba con uno más ligero o mándanoslo por WhatsApp.': 'The file is larger than 25 MB. Try a lighter one or send it to us on WhatsApp.',
 
@@ -369,7 +376,7 @@
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px;">
         <div style="background:#FBF0CE;border-radius:20px;padding:26px 22px;"><div style="font-family: 'Bagel Fat One',cursive; font-size: 1.6rem; color: #DA4435; margin-bottom: 10px; text-align: left">1</div><h4 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;margin:0 0 8px;">Nos cuentas tu historia</h4><p style="font-size:0.88rem;line-height:1.5;color:rgba(48,21,9,0.72);margin:0;">Cuéntanos tu idea: Evento, Marca, fechas.<br></p></div>
-        <div style="background:#FBF0CE;border-radius:20px;padding:26px 22px;"><div style="font-family:'Bagel Fat One',cursive;font-size:1.6rem;color:#DA4435;margin-bottom:10px;">2</div><h4 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;margin:0 0 8px;">Diseño</h4><p style="font-size:0.88rem;line-height:1.5;color:rgba(48,21,9,0.72);margin:0;">Nos pasáis el diseño o si no tenéis diseño, lo creamos nosotros (sin coste adicional)</p></div>
+        <div style="background:#FBF0CE;border-radius:20px;padding:26px 22px;"><div style="font-family:'Bagel Fat One',cursive;font-size:1.6rem;color:#DA4435;margin-bottom:10px;">2</div><h4 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;margin:0 0 8px;">Diseño</h4><p style="font-size:0.88rem;line-height:1.5;color:rgba(48,21,9,0.72);margin:0;">Nos pasáis el diseño o si no tenéis diseño, lo creamos nosotros (sin coste adicional)</p><a href="plantilla-abanico-abanikos-psd.zip" download="plantilla-abanico-abanikos-psd.zip" style="display:inline-block;margin-top:10px;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.85rem;color:#DA4435;">↓ Descargar plantilla</a></div>
         <div style="background:#FBF0CE;border-radius:20px;padding:26px 22px;"><div style="font-family:'Bagel Fat One',cursive;font-size:1.6rem;color:#DA4435;margin-bottom:10px;">3</div><h4 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;margin:0 0 8px;">Producción</h4><p style="font-size:0.88rem;line-height:1.5;color:rgba(48,21,9,0.72);margin:0;">Una vez se apruebe el diseño y presupuesto se manda a producción.</p></div>
         <div style="background:#FBF0CE;border-radius:20px;padding:26px 22px;"><div style="font-family:'Bagel Fat One',cursive;font-size:1.6rem;color:#DA4435;margin-bottom:10px;">4</div><h4 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;margin:0 0 8px;">Entrega</h4><p style="font-size:0.88rem;line-height:1.5;color:rgba(48,21,9,0.72);margin:0;">Entregamos tu pedido a plazo.</p></div>
       </div>
@@ -441,10 +448,19 @@
           </sc-if>
           <sc-if value="{{ wIsUpload }}" hint-placeholder-val="{{ false }}">
             <div style="margin-bottom:24px;">
+              <div style="display:flex;flex-direction:column;gap:8px;background:#FBF0CE;border-radius:16px;padding:16px 18px;max-width:420px;margin-bottom:14px;">
+                <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.95rem;color:#301509;">📐 ¿Aún no tienes el diseño?</div>
+                <div style="font-size:0.86rem;line-height:1.5;color:rgba(48,21,9,0.72);">Descarga nuestra plantilla, diseña encima y súbela aquí.</div>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:4px;">
+                  <a href="plantilla-abanico-abanikos-psd.zip" download="plantilla-abanico-abanikos-psd.zip" style="display:inline-block;background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.85rem;padding:9px 16px;border-radius:999px;">Plantilla Photoshop (PSD)</a>
+                  <a href="plantilla-abanico-abanikos.png" download="plantilla-abanico-abanikos.png" style="display:inline-block;border:2px solid #301509;color:#301509;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.85rem;padding:7px 14px;border-radius:999px;">Plantilla PNG (Canva)</a>
+                </div>
+                <div style="font-size:0.78rem;line-height:1.5;color:rgba(48,21,9,0.6);">46 × 24,5 cm · 300 ppp · textos y logos dentro de la línea roja. Cuando termines, expórtalo en PNG, JPG o PDF y súbelo aquí.</div>
+              </div>
               <label style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;border:2px dashed rgba(48,21,9,0.3);border-radius:16px;padding:24px;cursor:pointer;max-width:420px;">
                 <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.98rem;color:#DA4435;">{{ wUploadLabel }}</div>
-                <div style="font-size:0.88rem;color:rgba(48,21,9,0.65);">PNG, SVG o PSD · hasta 25 MB</div>
-                <input type="file" accept=".png,.svg,.psd,image/png,image/svg+xml" sc-camel-on-change="{{ wOnFile }}" style="display:none;">
+                <div style="font-size:0.88rem;color:rgba(48,21,9,0.65);">PNG, JPG, PDF, SVG o PSD · hasta 25 MB</div>
+                <input type="file" accept=".png,.jpg,.jpeg,.pdf,.svg,.psd,image/png,image/jpeg,application/pdf,image/svg+xml" sc-camel-on-change="{{ wOnFile }}" style="display:none;">
               </label>
               <sc-if value="{{ wHasFile }}" hint-placeholder-val="{{ false }}">
                 <div style="margin-top:12px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.9rem;color:#301509;">Seleccionado: {{ wFileName }}</div>
@@ -530,10 +546,19 @@
           </sc-if>
           <sc-if value="{{ bIsUpload }}" hint-placeholder-val="{{ false }}">
             <div style="margin-bottom:24px;">
+              <div style="display:flex;flex-direction:column;gap:8px;background:#FBF0CE;border-radius:16px;padding:16px 18px;max-width:420px;margin-bottom:14px;">
+                <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.95rem;color:#301509;">📐 ¿Aún no tienes el diseño?</div>
+                <div style="font-size:0.86rem;line-height:1.5;color:rgba(48,21,9,0.72);">Descarga nuestra plantilla, diseña encima y súbela aquí.</div>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:4px;">
+                  <a href="plantilla-abanico-abanikos-psd.zip" download="plantilla-abanico-abanikos-psd.zip" style="display:inline-block;background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.85rem;padding:9px 16px;border-radius:999px;">Plantilla Photoshop (PSD)</a>
+                  <a href="plantilla-abanico-abanikos.png" download="plantilla-abanico-abanikos.png" style="display:inline-block;border:2px solid #301509;color:#301509;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.85rem;padding:7px 14px;border-radius:999px;">Plantilla PNG (Canva)</a>
+                </div>
+                <div style="font-size:0.78rem;line-height:1.5;color:rgba(48,21,9,0.6);">46 × 24,5 cm · 300 ppp · textos y logos dentro de la línea roja. Cuando termines, expórtalo en PNG, JPG o PDF y súbelo aquí.</div>
+              </div>
               <label style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;border:2px dashed rgba(48,21,9,0.3);border-radius:16px;padding:24px;cursor:pointer;max-width:420px;">
                 <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.98rem;color:#DA4435;">{{ bUploadLabel }}</div>
-                <div style="font-size:0.88rem;color:rgba(48,21,9,0.65);">PNG, SVG o PSD · hasta 25 MB</div>
-                <input type="file" accept=".png,.svg,.psd,image/png,image/svg+xml" sc-camel-on-change="{{ bOnFile }}" style="display:none;">
+                <div style="font-size:0.88rem;color:rgba(48,21,9,0.65);">PNG, JPG, PDF, SVG o PSD · hasta 25 MB</div>
+                <input type="file" accept=".png,.jpg,.jpeg,.pdf,.svg,.psd,image/png,image/jpeg,application/pdf,image/svg+xml" sc-camel-on-change="{{ bOnFile }}" style="display:none;">
               </label>
               <sc-if value="{{ bHasFile }}" hint-placeholder-val="{{ false }}">
                 <div style="margin-top:12px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.9rem;color:#301509;">Seleccionado: {{ bFileName }}</div>
@@ -643,10 +668,19 @@
           </sc-if>
           <sc-if value="{{ wIsUpload }}" hint-placeholder-val="{{ false }}">
             <div style="margin-bottom:24px;">
+              <div style="display:flex;flex-direction:column;gap:8px;background:#FBF0CE;border-radius:16px;padding:16px 18px;max-width:420px;margin-bottom:14px;">
+                <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.95rem;color:#301509;">📐 ¿Aún no tienes el diseño?</div>
+                <div style="font-size:0.86rem;line-height:1.5;color:rgba(48,21,9,0.72);">Descarga nuestra plantilla, diseña encima y súbela aquí.</div>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:4px;">
+                  <a href="plantilla-abanico-abanikos-psd.zip" download="plantilla-abanico-abanikos-psd.zip" style="display:inline-block;background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.85rem;padding:9px 16px;border-radius:999px;">Plantilla Photoshop (PSD)</a>
+                  <a href="plantilla-abanico-abanikos.png" download="plantilla-abanico-abanikos.png" style="display:inline-block;border:2px solid #301509;color:#301509;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.85rem;padding:7px 14px;border-radius:999px;">Plantilla PNG (Canva)</a>
+                </div>
+                <div style="font-size:0.78rem;line-height:1.5;color:rgba(48,21,9,0.6);">46 × 24,5 cm · 300 ppp · textos y logos dentro de la línea roja. Cuando termines, expórtalo en PNG, JPG o PDF y súbelo aquí.</div>
+              </div>
               <label style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;border:2px dashed rgba(48,21,9,0.3);border-radius:16px;padding:24px;cursor:pointer;max-width:420px;">
                 <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.98rem;color:#DA4435;">{{ wUploadLabel }}</div>
-                <div style="font-size:0.88rem;color:rgba(48,21,9,0.65);">PNG, SVG o PSD · hasta 25 MB</div>
-                <input type="file" accept=".png,.svg,.psd,image/png,image/svg+xml" sc-camel-on-change="{{ wOnFile }}" style="display:none;">
+                <div style="font-size:0.88rem;color:rgba(48,21,9,0.65);">PNG, JPG, PDF, SVG o PSD · hasta 25 MB</div>
+                <input type="file" accept=".png,.jpg,.jpeg,.pdf,.svg,.psd,image/png,image/jpeg,application/pdf,image/svg+xml" sc-camel-on-change="{{ wOnFile }}" style="display:none;">
               </label>
               <sc-if value="{{ wHasFile }}" hint-placeholder-val="{{ false }}">
                 <div style="margin-top:12px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.9rem;color:#301509;">Seleccionado: {{ wFileName }}</div>
@@ -749,6 +783,13 @@
             <div>Plazo: de 2 semanas a 2 meses según cantidad</div>
             <div>Materiales: madera o plástico</div>
             <div>Envíos a toda España</div>
+          </div>
+          <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(251,240,206,0.2);font-size:0.9rem;">
+            <div style="opacity:0.85;margin-bottom:8px;">¿Quieres diseñarlo tú?</div>
+            <div style="display:flex;gap:14px;flex-wrap:wrap;">
+              <a href="plantilla-abanico-abanikos-psd.zip" download="plantilla-abanico-abanikos-psd.zip" style="color:#F6DE8B;font-family:'Fredoka',sans-serif;font-weight:600;">↓ Plantilla PSD</a>
+              <a href="plantilla-abanico-abanikos.png" download="plantilla-abanico-abanikos.png" style="color:#F6DE8B;font-family:'Fredoka',sans-serif;font-weight:600;">↓ Plantilla PNG</a>
+            </div>
           </div>
         </div>
         <div style="border:2px solid rgba(48,21,9,0.15);border-radius:20px;padding:24px;">
