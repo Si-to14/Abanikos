@@ -1,1 +1,1298 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>abanikos · Abanicos personalizados</title>
+<script>window.__resources = {"https://unpkg.com/react@18.3.1/umd/react.production.min.js": "assets/js/react.production.min.js", "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "assets/js/react-dom.production.min.js"};</script>
+<script src="assets/js/dc-runtime.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Fredoka:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap">
+<script src="assets/js/image-slot.js"></script>
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;background:#FFFBF0;color:#301509;font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;}
+  a{color:#DA4435;text-decoration:none;}
+  a:hover{color:#301509;}
+  input,textarea,select,button{font-family:'Outfit',sans-serif;}
+  ::selection{background:#F6DE8B;color:#301509;}
+  @keyframes abk-marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+</style>
+</helmet>
 
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(255,251,240,0.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(48,21,9,0.12);">
+    <div style="max-width:1180px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
+      <div sc-camel-on-click="{{ goHome }}" style="font-family:'Bagel Fat One',cursive;font-size:1.55rem;color:#DA4435;cursor:pointer;line-height:1;">abanikos</div>
+      <nav style="display:flex;flex-wrap:wrap;justify-content:flex-end;gap:16px 26px;align-items:center;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.95rem;">
+        <div sc-camel-on-click="{{ goProyectos }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubProyectos }};color:#301509;">Proyectos</div>
+        <div sc-camel-on-click="{{ goB2b }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubB2b }};color:#ec3013;"><b>Abanikos</b></div>
+        
+        <div sc-camel-on-click="{{ goContacto }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubContacto }};color:#301509;">Contacto</div>
+        <div sc-camel-on-click="{{ goConf }}" style="cursor:pointer;background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:11px 22px;border-radius:999px;">Pedir presupuesto</div>
+      </nav>
+    </div>
+  </header><div style="min-height: 100vh; background: #FFFBF0; position: relative">
+
+  
+
+  <!-- ============ HOME ============ -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <div>
+    
+
+    
+
+    <section style="max-width: 1180px; margin: 0 auto; padding: 56px 32px 72px; display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 56px; align-items: center; position: relative">
+      <div>
+        <div style="font-family: 'Fredoka',sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; color: #2d2b2b; margin-bottom: 18px; position: relative">CADA ABANICO GUARDA UN RECUERDO</div>
+        <h1 style="font-family: 'Bagel Fat One',cursive; font-weight: 400; font-size: clamp(2.2rem,5vw,3.3rem); line-height: 1.05; letter-spacing: 0.4px; margin: 0; color: #DA4435">Abanikos Personalizados</h1>
+        <div style="font-size:1.12rem;line-height:1.6;margin:22px 0 34px;max-width:46ch;color:rgba(48,21,9,0.82);"><div><span style="font-size: 17.92px;">Diseñamos y producimos abanicos a medida de madera o plástico, con&nbsp;</span>impresión digital a todo color. Trabajamos con marcas, bodas y eventos.</div></div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;">
+          <div sc-camel-on-click="{{ goProyectos }}" style="cursor: pointer; background: #DA4435; color: #FFFBF0; font-family: 'Fredoka',sans-serif; font-weight: 600; padding: 14px 28px; border-radius: 999px; font-size: 0.95rem; white-space: nowrap; overflow: visible; box-shadow: 0px 4px 12px 0px #000000C1">Ver proyectos B2B</div>
+        </div>
+      </div>
+      <div style="position: relative; aspect-ratio: 1/1; border-radius: 10%; background: url(&quot;assets/img/hero.webp&quot;) center / cover no-repeat; display: flex; align-items: center; justify-content: center; overflow: visible; width: 100%; max-width: 477px; min-width: 0">
+        
+      </div>
+    </section><section style="color: #FBF0CE; padding: 40px 0; overflow: hidden; background-color: #301509">
+      
+      <div style="max-width: 1180px; margin: 0 auto 26px; padding: 0 32px; font-family: Bagel Fat One; font-weight: 500; font-size: 1.5rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.6; text-align: center; color: #F6DE8B; overflow: visible; padding-left: 0px; padding-right: 0px; margin-bottom: 30px; display: block">PROYECTOS</div><div style="width:100%;overflow:hidden;mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);">
+        <div style="display:flex;width:max-content;animation:abk-marquee 34s linear infinite;">
+          <div style="display:flex;align-items:center;gap:72px;padding-right:72px;">
+            <sc-for list="{{ logos }}" as="logo" hint-placeholder-count="3">
+              <div style="position:relative;flex:none;">
+                <div title="{{ logo.name }}" style="width:150px;height:56px;background:{{ logoColor }};-webkit-mask:{{ logo.mask }};mask:{{ logo.mask }};"></div>
+                <div sc-camel-on-click="{{ logo.remove }}" title="Quitar logo" style="position:absolute;top:-10px;right:-10px;width:22px;height:22px;border-radius:50%;background:#DA4435;color:#FFFBF0;font-size:0.8rem;line-height:22px;text-align:center;cursor:pointer;opacity:{{ editOpacity }};pointer-events:{{ editEvents }};">×</div>
+              </div>
+            </sc-for>
+            <sc-if value="{{ showAddSlots }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:72px;">
+                <div style="width:150px;height:56px;flex:none;"><image-slot id="logo-add-1" shape="rect" placeholder="Arrastra un logo" src="assets/img/logo-add-1.webp"></image-slot></div>
+                <div style="width:150px;height:56px;flex:none;"><image-slot id="logo-add-2" shape="rect" placeholder="Arrastra un logo"></image-slot></div>
+                <div style="width:150px;height:56px;flex:none;"><image-slot id="logo-add-3" shape="rect" placeholder="Arrastra un logo"></image-slot></div>
+              </div>
+            </sc-if>
+          </div>
+          <div aria-hidden="true" style="display:flex;align-items:center;gap:72px;padding-right:72px;">
+            <sc-for list="{{ logos }}" as="logo" hint-placeholder-count="3">
+              <div style="position:relative;flex:none;">
+                <div title="{{ logo.name }}" style="width:150px;height:56px;background:{{ logoColor }};-webkit-mask:{{ logo.mask }};mask:{{ logo.mask }};"></div>
+                <div sc-camel-on-click="{{ logo.remove }}" title="Quitar logo" style="position:absolute;top:-10px;right:-10px;width:22px;height:22px;border-radius:50%;background:#DA4435;color:#FFFBF0;font-size:0.8rem;line-height:22px;text-align:center;cursor:pointer;opacity:{{ editOpacity }};pointer-events:{{ editEvents }};">×</div>
+              </div>
+            </sc-for>
+            <sc-if value="{{ showAddSlots }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:72px;">
+                <div style="width:150px;height:56px;flex:none;"><image-slot id="logo-add-1" shape="rect" placeholder="Arrastra un logo" src="assets/img/logo-add-1.webp"></image-slot></div>
+                <div style="width:150px;height:56px;flex:none;"><image-slot id="logo-add-2" shape="rect" placeholder="Arrastra un logo"></image-slot></div>
+                <div style="width:150px;height:56px;flex:none;"><image-slot id="logo-add-3" shape="rect" placeholder="Arrastra un logo"></image-slot></div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </div>
+    </section><section style="color: #FFFBF0">
+      <div style="max-width:1180px;margin:0 auto;padding:clamp(64px,8vw,100px) 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(40px,6vw,72px);align-items:center;">
+        <div>
+          
+          <p style="font-size: 1.2rem; line-height: 1.6; margin: 20px 0 0; max-width: 46ch; color: #2d2b2b">El abanico lleva siglos formando parte de nuestra cultura, pero casi siempre se ha asociado a una misma imagen.<br><br>Nuestra misión es modernizar el concepto del abanico a través de nuestros diseños para queque cualquier persona pueda llevar un abanico.&nbsp;<br><br></p><div sc-camel-on-click="{{ goConf }}" style="display: inline-block; cursor: pointer; color: #f3f2f2; font-family: 'Fredoka',sans-serif; font-weight: 600; padding: 14px 28px; border-radius: 999px; background-color: #DA4435">Ver Abanikos</div>
+          
+          
+        </div>
+        <div style="aspect-ratio:4/3;border-radius:24px;overflow:hidden;box-shadow:0 18px 40px rgba(48,21,9,0.22);">
+          <image-slot id="split-abanikos" shape="rounded" radius="24" placeholder="Abaniko abierto en detalle" src="assets/img/split-abanikos.webp"></image-slot>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1180px;margin:0 auto;padding:0 32px 88px;">
+      <div style="max-width:100%;margin-bottom:40px;text-align:center;">
+        <h2 style="font-family: 'Bagel Fat One',cursive; font-weight: 400; font-size: clamp(1.7rem,3.6vw,2.1rem); margin: 0; position: static; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px">De la idea al Abaniko</h2>
+        
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px;">
+        <div style="background:#FBF0CE;border-radius:20px;padding:26px 22px;"><div style="font-family: 'Bagel Fat One',cursive; font-size: 1.6rem; color: #DA4435; margin-bottom: 10px; text-align: left">1</div><h4 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;margin:0 0 8px;">Nos cuentas tu historia</h4><p style="font-size:0.88rem;line-height:1.5;color:rgba(48,21,9,0.72);margin:0;">Cuéntanos tu idea: Evento, Marca, fechas.<br></p></div>
+        <div style="background:#FBF0CE;border-radius:20px;padding:26px 22px;"><div style="font-family:'Bagel Fat One',cursive;font-size:1.6rem;color:#DA4435;margin-bottom:10px;">2</div><h4 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;margin:0 0 8px;">Diseño</h4><p style="font-size:0.88rem;line-height:1.5;color:rgba(48,21,9,0.72);margin:0;">Nos pasáis el diseño o si no tenéis diseño, lo creamos nosotros (sin coste adicional)</p></div>
+        <div style="background:#FBF0CE;border-radius:20px;padding:26px 22px;"><div style="font-family:'Bagel Fat One',cursive;font-size:1.6rem;color:#DA4435;margin-bottom:10px;">3</div><h4 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;margin:0 0 8px;">Producción</h4><p style="font-size:0.88rem;line-height:1.5;color:rgba(48,21,9,0.72);margin:0;">Una vez se apruebe el diseño y presupuesto se manda a producción.</p></div>
+        <div style="background:#FBF0CE;border-radius:20px;padding:26px 22px;"><div style="font-family:'Bagel Fat One',cursive;font-size:1.6rem;color:#DA4435;margin-bottom:10px;">4</div><h4 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;margin:0 0 8px;">Entrega</h4><p style="font-size:0.88rem;line-height:1.5;color:rgba(48,21,9,0.72);margin:0;">Entregamos tu pedido a plazo.</p></div>
+      </div>
+    </section><section style="max-width: 1180px; margin: 0 auto; padding: 88px 32px; padding-top: 48px; padding-bottom: 48px; background-color: #301509; border-radius: 10px">
+      <div style="max-width:100%;margin-bottom:40px;text-align:center;">
+        <h2 style="font-family: 'Bagel Fat One',cursive; font-weight: 400; font-size: clamp(1.7rem,3.6vw,2.1rem); margin: 0; padding-top: 0px; padding-bottom: 0px; color: #F6DE8B">Proyectos</h2>
+        <p style="margin: 10px auto 0; font-size: 1.02rem; line-height: 1.6; color: #F6DE8BB8; max-width: 70ch">Cada abanico se ha creado a partir de la identidad de marca o del concepto del evento.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;">
+        <div sc-camel-on-click="{{ goCatBoda }}" style="cursor:pointer;">
+          <div style="aspect-ratio:4/5;"><image-slot id="gal-1" src="assets/img/gal-1.webp" shape="rounded" radius="20" placeholder="Boda — abanikos para invitados" style="border-radius: 10px"></image-slot></div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:12px;">
+            <div style="font-family: 'Fredoka',sans-serif; font-weight: 600; font-size: 0.95rem; text-align: center; width: 251px; height: 17px; color: #F6DE8B">Boda</div>
+            
+          </div>
+        </div>
+        <div sc-camel-on-click="{{ goCatClub }}" style="cursor:pointer;">
+          <div style="aspect-ratio:4/5;"><image-slot id="gal-2" src="assets/img/gal-2.webp" shape="rounded" radius="20" placeholder="Club — abanikos de noche" style="border-radius: 10px"></image-slot></div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:12px;">
+            <div style="font-family: 'Fredoka',sans-serif; font-weight: 600; font-size: 0.95rem; text-align: center; width: 260px; height: 18px; color: #F6DE8B">Discoteca/Club</div>
+            
+          </div>
+        </div>
+        <div sc-camel-on-click="{{ goCatCorp }}" style="cursor:pointer;">
+          <div style="aspect-ratio:4/5;"><image-slot id="gal-3" src="assets/img/gal-3.webp" shape="rounded" radius="20" placeholder="Marca — abanikos con logo" style="border-radius: 10px"></image-slot></div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:12px;">
+            <div style="font-family: 'Fredoka',sans-serif; font-weight: 600; font-size: 0.95rem; width: 261px; height: 16px; text-align: center; color: #F6DE8B">Evento corporativo</div>
+            
+          </div>
+        </div>
+        <div sc-camel-on-click="{{ goCatClub }}" style="cursor:pointer;">
+          <div style="aspect-ratio:4/5;"><image-slot id="gal-4" src="assets/img/gal-4.webp" shape="rounded" radius="20" placeholder="Festival — abanikos de merch" style="border-radius: 10px"></image-slot></div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:12px;">
+            <div style="font-family: 'Fredoka',sans-serif; font-weight: 600; font-size: 0.95rem; width: 256px; height: 18px; text-align: center; color: #F6DE8B">Beach Club</div>
+            
+          </div>
+        </div>
+        <div sc-camel-on-click="{{ goCatFestival }}" style="cursor:pointer;">
+          <div style="aspect-ratio:4/5;"><image-slot id="gal-5" src="assets/img/gal-5.webp" shape="rounded" radius="20" placeholder="Festival — abanikos de merch" style="border-radius: 10px"></image-slot></div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:12px;">
+            <div style="font-family: 'Fredoka',sans-serif; font-weight: 600; font-size: 0.95rem; text-align: center; width: 100%; color: #F6DE8B; height: 40px">Festival</div>
+          </div>
+        </div>
+        
+      </div>
+    </section><section style="max-width: 1180px; margin: 0 auto; padding: 0 32px 72px; padding-top: 50px">
+      <div style="max-width:100%;margin-bottom:32px;text-align:center;">
+        <h2 style="font-family: 'Bagel Fat One',cursive; font-weight: 400; font-size: clamp(1.6rem,3.4vw,2rem); margin: 0; text-align: center">Pide tu presupuesto</h2>
+        
+      </div>
+      <div style="border-radius: 28px; padding: clamp(24px,4vw,40px); background-color: #F6DE8BE8">
+        <div style="display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap;">
+          <sc-for list="{{ wSteps }}" as="s" hint-placeholder-count="5">
+            <div style="flex:1;min-width:96px;font-family:'Fredoka',sans-serif;font-size:0.78rem;color:{{ s.color }};font-weight:{{ s.weight }};">
+              <div style="height:6px;border-radius:999px;background:{{ s.bar }};margin-bottom:8px;"></div>
+              {{ s.label }}
+            </div>
+          </sc-for>
+        </div>
+        <div style="background:#FFFBF0;border-radius:20px;padding:clamp(22px,3vw,32px);">
+          <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;margin:0 0 6px;">{{ wTitle }}</h4>
+          <p style="font-size:0.92rem;line-height:1.55;color:rgba(48,21,9,0.7);margin:0 0 22px;">{{ wSub }}</p>
+          <sc-if value="{{ wIsOptions }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;">
+              <sc-for list="{{ wOptions }}" as="o" hint-placeholder-count="4">
+                <div sc-camel-on-click="{{ o.pick }}" style="cursor:pointer;border:2px solid {{ o.border }};background:{{ o.bg }};color:{{ o.fg }};border-radius:16px;padding:14px 20px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.92rem;">{{ o.label }}</div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ wIsUpload }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-bottom:24px;">
+              <label style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;border:2px dashed rgba(48,21,9,0.3);border-radius:16px;padding:24px;cursor:pointer;max-width:420px;">
+                <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.98rem;color:#DA4435;">{{ wUploadLabel }}</div>
+                <div style="font-size:0.88rem;color:rgba(48,21,9,0.65);">PNG, SVG o PSD · hasta 25 MB</div>
+                <input type="file" accept=".png,.svg,.psd,image/png,image/svg+xml" sc-camel-on-change="{{ wOnFile }}" style="display:none;">
+              </label>
+              <sc-if value="{{ wHasFile }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:12px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.9rem;color:#301509;">Seleccionado: {{ wFileName }}</div>
+              </sc-if>
+            </div>
+          </sc-if>
+          <sc-if value="{{ wIsDate }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:8px;max-width:280px;margin-bottom:24px;">
+              <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Fecha del evento (DD/MM/AAAA)</label>
+              <input type="date" value="{{ wDateValue }}" sc-camel-on-change="{{ wOnDate }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+            </div>
+          </sc-if>
+          <sc-if value="{{ wIsForm }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-bottom:24px;">
+              <input placeholder="Nombre" required="{{ true }}" value="{{ wName }}" sc-camel-on-change="{{ wOnName }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+              <input type="email" placeholder="Email" required="{{ true }}" value="{{ wEmail }}" sc-camel-on-change="{{ wOnEmail }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+              <input type="tel" placeholder="Teléfono" required="{{ true }}" value="{{ wPhone }}" sc-camel-on-change="{{ wOnPhone }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+            </div>
+          </sc-if>
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+            <div sc-camel-on-click="{{ wNext }}" style="cursor:{{ wNextCursor }};opacity:{{ wNextOpacity }};background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:13px 26px;border-radius:999px;">{{ wNextLabel }}</div>
+            <div sc-camel-on-click="{{ wBack }}" style="cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.9rem;color:{{ wBackColor }};">Atrás</div>
+            <div style="margin-left:auto;font-size:0.82rem;color:rgba(48,21,9,0.55);">{{ wProgress }}</div>
+            <div style="flex-basis:100%;font-size:0.82rem;color:#DA4435;">{{ wRequiredHint }}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <sc-if value="{{ showTestimonials }}" hint-placeholder-val="{{ true }}">
+    
+    </sc-if>
+
+    
+  </div>
+  </sc-if>
+
+  <!-- ============ B2B ============ -->
+  <sc-if value="{{ isB2b }}" hint-placeholder-val="{{ false }}">
+  <div>
+    
+
+    
+
+    
+
+    <section style="background: #301509; color: #FBF0CE; border-radius: 5px; display: block">
+      <div style="max-width:820px;margin:0 auto;padding:72px 32px;display:flex;flex-direction:column;gap:22px;font-size:1.08rem;line-height:1.65;">
+        <p style="margin:0;">El abanico lleva siglos formando parte de nuestra cultura, pero casi siempre se ha asociado a una misma imagen.</p>
+        <p style="margin:0;font-family:'Bagel Fat One',cursive;font-size:clamp(1.5rem,3.4vw,2rem);line-height:1.15;color:#F6DE8B;">Queremos darle una nueva vida.</p>
+        <p style="margin:0;">A través de nuestros diseños, transformamos el abanico en un complemento actual, versátil y pensado para todo el mundo. Una pieza que puedes llevar a una reunión, a una fiesta, de viaje o simplemente en tu día a día.</p>
+        <p style="margin:0;">Pero también creemos que un abanico puede ser mucho más que un accesorio: una forma de expresar tu estilo, transmitir una idea o dar visibilidad a una marca de una manera original, creativa y diferente.</p>
+        <p style="margin:0;">Porque creemos que el estilo no tiene género y que las buenas ideas merecen salir de lo convencional.</p>
+        <p style="margin:0;font-weight:600;color:#F6DE8B;">Recuperamos una tradición para convertirla en una nueva forma de expresión.</p>
+      </div>
+    </section>
+
+    <section style="max-width:1180px;margin:0 auto;padding:72px 32px;">
+      <div style="max-width:580px;margin-bottom:32px;">
+        <h2 style="font-family: 'Bagel Fat One',cursive; font-weight: 400; font-size: clamp(1.6rem,3.4vw,2rem); margin: 0; text-align: center; width: 1172px; height: 45px">Pide tu presupuesto</h2>
+        
+      </div>
+      <div style="background:#FBF0CE;border-radius:28px;padding:clamp(24px,4vw,40px);">
+        <div style="display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap;">
+          <sc-for list="{{ bSteps }}" as="s" hint-placeholder-count="5">
+            <div style="flex:1;min-width:96px;font-family:'Fredoka',sans-serif;font-size:0.78rem;color:{{ s.color }};font-weight:{{ s.weight }};">
+              <div style="height:6px;border-radius:999px;background:{{ s.bar }};margin-bottom:8px;"></div>
+              {{ s.label }}
+            </div>
+          </sc-for>
+        </div>
+        <div style="background:#FFFBF0;border-radius:20px;padding:clamp(22px,3vw,32px);">
+          <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;margin:0 0 6px;">{{ bTitle }}</h4>
+          <p style="font-size:0.92rem;line-height:1.55;color:rgba(48,21,9,0.7);margin:0 0 22px;">{{ bSub }}</p>
+          <sc-if value="{{ bIsOptions }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;">
+              <sc-for list="{{ bOptions }}" as="o" hint-placeholder-count="4">
+                <div sc-camel-on-click="{{ o.pick }}" style="cursor:pointer;border:2px solid {{ o.border }};background:{{ o.bg }};color:{{ o.fg }};border-radius:16px;padding:14px 20px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.92rem;">{{ o.label }}</div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ bIsUpload }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-bottom:24px;">
+              <label style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;border:2px dashed rgba(48,21,9,0.3);border-radius:16px;padding:24px;cursor:pointer;max-width:420px;">
+                <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.98rem;color:#DA4435;">{{ bUploadLabel }}</div>
+                <div style="font-size:0.88rem;color:rgba(48,21,9,0.65);">PNG, SVG o PSD · hasta 25 MB</div>
+                <input type="file" accept=".png,.svg,.psd,image/png,image/svg+xml" sc-camel-on-change="{{ bOnFile }}" style="display:none;">
+              </label>
+              <sc-if value="{{ bHasFile }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:12px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.9rem;color:#301509;">Seleccionado: {{ bFileName }}</div>
+              </sc-if>
+            </div>
+          </sc-if>
+          <sc-if value="{{ bIsForm }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-bottom:24px;">
+              <input placeholder="Nombre y empresa" required="{{ true }}" value="{{ bName }}" sc-camel-on-change="{{ bOnName }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+              <input type="email" placeholder="Email" required="{{ true }}" value="{{ bEmail }}" sc-camel-on-change="{{ bOnEmail }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+              <input type="tel" placeholder="Teléfono" required="{{ true }}" value="{{ bPhone }}" sc-camel-on-change="{{ bOnPhone }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+              <textarea placeholder="Cuéntanos el evento, la fecha y la idea" rows="3" style="grid-column:1/-1;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;resize:vertical;"></textarea>
+            </div>
+          </sc-if>
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+            <div sc-camel-on-click="{{ bNext }}" style="cursor:{{ bNextCursor }};opacity:{{ bNextOpacity }};background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:13px 26px;border-radius:999px;">{{ bNextLabel }}</div>
+            <div sc-camel-on-click="{{ bBack }}" style="cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.9rem;color:{{ bBackColor }};">Atrás</div>
+            <div style="margin-left:auto;font-size:0.82rem;color:rgba(48,21,9,0.55);">{{ bProgress }}</div>
+            <div style="flex-basis:100%;font-size:0.82rem;color:#DA4435;">{{ bRequiredHint }}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#DA4435;color:#FFFBF0;">
+      
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ============ BODAS ============ -->
+  <sc-if value="{{ isBodas }}" hint-placeholder-val="{{ false }}">
+  <div>
+    <section style="background: linear-gradient(180deg, #FFFBF0 0%, #A775E8BA)">
+      <div style="max-width:1180px;margin:0 auto;padding:64px 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;align-items:center;">
+        <div>
+          <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;color:#DA4435;margin-bottom:18px;">Bodas</div>
+          <h1 style="font-family:'Bagel Fat One',cursive;font-weight:400;font-size:clamp(2rem,4.6vw,3rem);line-height:1.05;margin:0;">Un detalle que tus invitados <span style="color:#DA4435;">sí</span> se quedan.</h1>
+          <p style="font-size:1.1rem;line-height:1.6;margin:20px 0 26px;max-width:46ch;color:rgba(48,21,9,0.82);">Abanikos personalizados para repartir, para el photocall y para sobrevivir a las cuatro de la tarde en julio.</p>
+          <div style="display:flex;gap:14px;flex-wrap:wrap;">
+            <div sc-camel-on-click="{{ goConf }}" style="cursor:pointer;background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:13px 26px;border-radius:999px;">Diseña el de vuestra boda</div>
+            <div sc-camel-on-click="{{ goContacto }}" style="cursor:pointer;border:2px solid #301509;color:#301509;font-family:'Fredoka',sans-serif;font-weight:600;padding:11px 24px;border-radius:999px;">Hablar por WhatsApp</div>
+          </div>
+        </div>
+        <div style="aspect-ratio:4/3;"><image-slot id="bodas-hero" shape="rounded" radius="24" placeholder="Boda real con abanikos"></image-slot></div>
+      </div>
+    </section>
+
+    <section style="max-width:1180px;margin:0 auto;padding:64px 32px;">
+      <div style="max-width:580px;margin-bottom:32px;">
+        <h2 style="font-family:'Bagel Fat One',cursive;font-weight:400;font-size:clamp(1.6rem,3.4vw,2rem);margin:0;">Por qué un abaniko</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;">
+        <div style="border:2px solid #301509;border-radius:20px 4px 20px 4px;padding:22px;"><h4 style="font-family:'Fredoka',sans-serif;font-weight:600;margin:0 0 8px;font-size:1.05rem;">Se usa esa misma tarde</h4><p style="font-size:0.92rem;line-height:1.55;color:rgba(48,21,9,0.72);margin:0;">Nada de detalle que acaba en un cajón.</p></div>
+        <div style="border:2px solid #301509;border-radius:20px 4px 20px 4px;padding:22px;"><h4 style="font-family:'Fredoka',sans-serif;font-weight:600;margin:0 0 8px;font-size:1.05rem;">Sale bien en foto</h4><p style="font-size:0.92rem;line-height:1.55;color:rgba(48,21,9,0.72);margin:0;">Un photocall con abanikos personalizados se llena solo.</p></div>
+        <div style="border:2px solid #301509;border-radius:20px 4px 20px 4px;padding:22px;"><h4 style="font-family:'Fredoka',sans-serif;font-weight:600;margin:0 0 8px;font-size:1.05rem;">Pensado para el calor</h4><p style="font-size:0.92rem;line-height:1.55;color:rgba(48,21,9,0.72);margin:0;">Bodas de primavera y verano al aire libre. Se agradece.</p></div>
+        <div style="border:2px solid #301509;border-radius:20px 4px 20px 4px;padding:22px;"><h4 style="font-family:'Fredoka',sans-serif;font-weight:600;margin:0 0 8px;font-size:1.05rem;">A vuestro gusto</h4><p style="font-size:0.92rem;line-height:1.55;color:rgba(48,21,9,0.72);margin:0;">Colores de la boda, iniciales, fecha o una frase vuestra.</p></div>
+      </div>
+    </section>
+
+    <section style="max-width:1180px;margin:0 auto;padding:0 32px 64px;">
+      <div style="max-width:580px;margin-bottom:32px;">
+        <h2 style="font-family:'Bagel Fat One',cursive;font-weight:400;font-size:clamp(1.6rem,3.4vw,2rem);margin:0;">Inspiración</h2>
+        <p style="margin:10px 0 0;font-size:1.02rem;line-height:1.6;color:rgba(48,21,9,0.72);">Distintos estilos, el mismo abaniko.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;">
+        <div style="aspect-ratio:4/5;"><image-slot id="bod-1" shape="rounded" radius="20" placeholder="Boho / aire libre"></image-slot></div>
+        <div style="aspect-ratio:4/5;"><image-slot id="bod-2" shape="rounded" radius="20" placeholder="Clásica / elegante"></image-slot></div>
+        <div style="aspect-ratio:4/5;"><image-slot id="bod-3" shape="rounded" radius="20" placeholder="Noche / fiesta"></image-slot></div>
+      </div>
+    </section>
+
+    <section style="max-width:1180px;margin:0 auto;padding:0 32px 64px;">
+      <div style="background:#301509;color:#FBF0CE;border-radius:28px;padding:clamp(28px,4vw,44px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;align-items:center;">
+        <div>
+          <h3 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.4rem;margin:0 0 12px;">¿Organizas bodas?</h3>
+          <p style="font-size:0.98rem;line-height:1.6;opacity:0.85;margin:0 0 20px;">Si eres wedding planner y quieres ofrecer abanikos personalizados a tus parejas, hablemos. Tenemos plazos y condiciones pensadas para vosotros.</p>
+          <div sc-camel-on-click="{{ goContacto }}" style="display:inline-block;cursor:pointer;background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:13px 26px;border-radius:999px;">Hablar como wedding planner</div>
+        </div>
+        <div style="aspect-ratio:4/3;"><image-slot id="wp-1" shape="rounded" radius="20" placeholder="Wedding planner"></image-slot></div>
+      </div>
+    </section>
+
+    <section style="max-width:1180px;margin:0 auto;padding:0 32px 72px;">
+      <div style="max-width:580px;margin-bottom:32px;">
+        <h2 style="font-family:'Bagel Fat One',cursive;font-weight:400;font-size:clamp(1.6rem,3.4vw,2rem);margin:0;">Diseña el de vuestra boda</h2>
+        <p style="margin:10px 0 0;font-size:1.02rem;line-height:1.6;color:rgba(48,21,9,0.72);">Contadnos la fecha y lo demás lo vemos juntos.</p>
+      </div>
+      <div style="background:#FBF0CE;border-radius:28px;padding:clamp(24px,4vw,40px);">
+        <div style="display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap;">
+          <sc-for list="{{ wSteps }}" as="s" hint-placeholder-count="5">
+            <div style="flex:1;min-width:96px;font-family:'Fredoka',sans-serif;font-size:0.78rem;color:{{ s.color }};font-weight:{{ s.weight }};">
+              <div style="height:6px;border-radius:999px;background:{{ s.bar }};margin-bottom:8px;"></div>
+              {{ s.label }}
+            </div>
+          </sc-for>
+        </div>
+        <div style="background:#FFFBF0;border-radius:20px;padding:clamp(22px,3vw,32px);">
+          <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;margin:0 0 6px;">{{ wTitle }}</h4>
+          <p style="font-size:0.92rem;line-height:1.55;color:rgba(48,21,9,0.7);margin:0 0 22px;">{{ wSub }}</p>
+          <sc-if value="{{ wIsOptions }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;">
+              <sc-for list="{{ wOptions }}" as="o" hint-placeholder-count="4">
+                <div sc-camel-on-click="{{ o.pick }}" style="cursor:pointer;border:2px solid {{ o.border }};background:{{ o.bg }};color:{{ o.fg }};border-radius:16px;padding:14px 20px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.92rem;">{{ o.label }}</div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ wIsUpload }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-bottom:24px;">
+              <label style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;border:2px dashed rgba(48,21,9,0.3);border-radius:16px;padding:24px;cursor:pointer;max-width:420px;">
+                <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.98rem;color:#DA4435;">{{ wUploadLabel }}</div>
+                <div style="font-size:0.88rem;color:rgba(48,21,9,0.65);">PNG, SVG o PSD · hasta 25 MB</div>
+                <input type="file" accept=".png,.svg,.psd,image/png,image/svg+xml" sc-camel-on-change="{{ wOnFile }}" style="display:none;">
+              </label>
+              <sc-if value="{{ wHasFile }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:12px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.9rem;color:#301509;">Seleccionado: {{ wFileName }}</div>
+              </sc-if>
+            </div>
+          </sc-if>
+          <sc-if value="{{ wIsDate }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:8px;max-width:280px;margin-bottom:24px;">
+              <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Fecha del evento (DD/MM/AAAA)</label>
+              <input type="date" value="{{ wDateValue }}" sc-camel-on-change="{{ wOnDate }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+            </div>
+          </sc-if>
+          <sc-if value="{{ wIsForm }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-bottom:24px;">
+              <input placeholder="Nombre" required="{{ true }}" value="{{ wName }}" sc-camel-on-change="{{ wOnName }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+              <input type="email" placeholder="Email" required="{{ true }}" value="{{ wEmail }}" sc-camel-on-change="{{ wOnEmail }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+              <input type="tel" placeholder="Teléfono" required="{{ true }}" value="{{ wPhone }}" sc-camel-on-change="{{ wOnPhone }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+            </div>
+          </sc-if>
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+            <div sc-camel-on-click="{{ wNext }}" style="cursor:{{ wNextCursor }};opacity:{{ wNextOpacity }};background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:13px 26px;border-radius:999px;">{{ wNextLabel }}</div>
+            <div sc-camel-on-click="{{ wBack }}" style="cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.9rem;color:{{ wBackColor }};">Atrás</div>
+            <div style="margin-left:auto;font-size:0.82rem;color:rgba(48,21,9,0.55);">{{ wProgress }}</div>
+            <div style="flex-basis:100%;font-size:0.82rem;color:#DA4435;">{{ wRequiredHint }}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <sc-if value="{{ showTestimonials }}" hint-placeholder-val="{{ true }}">
+    <section style="max-width:1180px;margin:0 auto;padding:0 32px 72px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;">
+      <div style="border:2px solid rgba(48,21,9,0.15);border-radius:20px;padding:24px;"><p style="font-style:italic;font-size:0.95rem;line-height:1.6;color:rgba(48,21,9,0.82);margin:0 0 14px;">[Testimonio real de pareja]</p><div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.9rem;">Nombre &amp; Nombre</div><div style="font-size:0.72rem;color:#DA4435;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;">Pendiente de contenido</div></div>
+      <div style="border:2px solid rgba(48,21,9,0.15);border-radius:20px;padding:24px;"><p style="font-style:italic;font-size:0.95rem;line-height:1.6;color:rgba(48,21,9,0.82);margin:0 0 14px;">[Testimonio real de pareja]</p><div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.9rem;">Nombre &amp; Nombre</div><div style="font-size:0.72rem;color:#DA4435;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;">Pendiente de contenido</div></div>
+      <div style="border:2px solid rgba(48,21,9,0.15);border-radius:20px;padding:24px;"><p style="font-style:italic;font-size:0.95rem;line-height:1.6;color:rgba(48,21,9,0.82);margin:0 0 14px;">[Testimonio de wedding planner]</p><div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.9rem;">Nombre, Wedding planner</div><div style="font-size:0.72rem;color:#DA4435;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;">Pendiente de contenido</div></div>
+    </section>
+    </sc-if>
+
+    <section style="background:#DA4435;color:#FFFBF0;">
+      <div style="max-width:780px;margin:0 auto;padding:80px 32px;">
+        <h2 style="font-family:'Bagel Fat One',cursive;font-weight:400;font-size:clamp(1.8rem,4vw,2.3rem);margin:0 0 22px;">Empecemos con el de vuestra boda</h2>
+        <div sc-camel-on-click="{{ goConf }}" style="display:inline-block;cursor:pointer;background:#FFFBF0;color:#DA4435;font-family:'Fredoka',sans-serif;font-weight:600;padding:14px 28px;border-radius:999px;">Diseñar el nuestro</div>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ============ CONTACTO ============ -->
+  <sc-if value="{{ isContacto }}" hint-placeholder-val="{{ false }}">
+  <div>
+    <section style="max-width:1180px;margin:0 auto;padding:64px 32px 40px;">
+      <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;color:#DA4435;margin-bottom:18px;">Contacto</div>
+      <h1 style="font-family:'Bagel Fat One',cursive;font-weight:400;font-size:clamp(2rem,4.6vw,2.9rem);line-height:1.05;margin:0;max-width:16ch;">Escríbenos y lo vemos.</h1>
+      <p style="font-size:1.1rem;line-height:1.6;margin:18px 0 0;max-width:50ch;color:rgba(48,21,9,0.82);">Cuéntanos qué evento es, para cuándo y cuántos abanikos necesitas. Contestamos en 24–48 h con una propuesta concreta, no con un catálogo.</p>
+    </section>
+
+    <section style="max-width:1180px;margin:0 auto;padding:0 32px 88px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:start;">
+      <div style="border:2.5px solid #301509;border-radius:28px 28px 28px 6px;padding:clamp(24px,3.5vw,34px);">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;">
+          <label style="grid-column:1/-1;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Nombre
+            <input data-f="nombre" placeholder="Tu nombre" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+          </label>
+          <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Email
+            <input data-f="email" type="email" placeholder="hola@tuemail.com" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+          </label>
+          <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Teléfono
+            <input data-f="telefono" type="tel" placeholder="+34 600 000 000" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+          </label>
+          <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Tipo de proyecto
+            <sc-raw-select data-f="tipo" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+              <option>Marca o empresa</option>
+              <option>Club o discoteca</option>
+              <option>Boda</option>
+              <option>Wedding planner</option>
+              <option>Otro</option>
+            </sc-raw-select>
+          </label>
+          <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Cantidad aproximada
+            <input data-f="cantidad" placeholder="Mínimo 150 ud" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+          </label>
+          <label style="grid-column:1/-1;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Cuéntanos
+            <textarea data-f="mensaje" rows="4" placeholder="Fecha del evento, idea de diseño, dudas…" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;resize:vertical;"></textarea>
+          </label>
+        </div>
+        <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:22px;">
+          <div sc-camel-on-click="{{ sendContact }}" style="cursor:pointer;background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:14px 28px;border-radius:999px;">{{ contactBtn }}</div>
+          <div style="font-size:0.82rem;color:rgba(48,21,9,0.55);">Respuesta en 24–48 h laborables.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="background:#FBF0CE;border-radius:20px;padding:24px;">
+          <h4 style="font-family:'Fredoka',sans-serif;font-weight:600;margin:0 0 10px;font-size:1.05rem;">Por WhatsApp es más rápido</h4>
+          <p style="font-size:0.92rem;line-height:1.55;color:rgba(48,21,9,0.72);margin:0 0 16px;">Mándanos una foto, una referencia o un audio de dos minutos. Nos vale.</p>
+          <a href="{{ waUrl }}" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#3FA746;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:12px 24px;border-radius:999px;font-size:0.92rem;">{{ whatsapp }}</a>
+        </div>
+        <div style="background:#301509;color:#FBF0CE;border-radius:20px;padding:24px;">
+          <h4 style="font-family:'Fredoka',sans-serif;font-weight:600;margin:0 0 12px;font-size:1.05rem;">Lo esencial</h4>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:0.9rem;opacity:0.85;">
+            <div>Pedido mínimo: 150 unidades</div>
+            <div>Plazo: de 2 semanas a 2 meses según cantidad</div>
+            <div>Materiales: madera o plástico</div>
+            <div>Envíos a toda España</div>
+          </div>
+        </div>
+        <div style="border:2px solid rgba(48,21,9,0.15);border-radius:20px;padding:24px;">
+          <h4 style="font-family:'Fredoka',sans-serif;font-weight:600;margin:0 0 12px;font-size:1.05rem;">También aquí</h4>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:0.92rem;">
+            <a href="mailto:abanikos.corporate@gmail.com">abanikos.corporate@gmail.com</a>
+            <a href="{{ igUrl }}" target="_blank" rel="noopener noreferrer">{{ igLabel }}</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isProyectos }}" hint-placeholder-val="{{ false }}">
+  <div>
+    <section style="max-width:1180px;margin:0 auto;padding:44px 32px 22px;">
+      <h1 style="font-family: 'Bagel Fat One',cursive; font-weight: 400; font-size: clamp(1.9rem,4vw,2.6rem); line-height: 1.05; margin: 0; color: #DA4435; text-align: center">Historias con Abanikos</h1>
+      
+    </section>
+
+    <section style="max-width:1180px;margin:0 auto;padding:0 32px 20px;">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;border-bottom:2px solid rgba(48,21,9,0.15);padding-bottom:18px;">
+        <sc-for list="{{ projFilters }}" as="f" hint-placeholder-count="5">
+          <div sc-camel-on-click="{{ f.pick }}" style="cursor:pointer;border:2px solid {{ f.border }};background:{{ f.bg }};color:{{ f.fg }};border-radius:999px;padding:9px 20px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.88rem;">{{ f.label }}</div>
+        </sc-for>
+        <div sc-camel-on-click="{{ toggleAddProject }}" style="margin-left:auto;display:{{ editDisplay }};cursor:pointer;background:#301509;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:11px 22px;border-radius:999px;font-size:0.9rem;">{{ addProjectLabel }}</div>
+      </div>
+    </section>
+
+    <sc-if value="{{ addingProjectOpen }}" hint-placeholder-val="{{ false }}">
+      <section style="max-width:1180px;margin:0 auto;padding:0 32px 32px;">
+        <div style="border:2.5px solid #301509;border-radius:20px;padding:clamp(22px,3vw,30px);">
+          <h3 style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.1rem;margin:0 0 16px;">Nuevo proyecto</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
+            <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Nombre
+              <input value="{{ newTitle }}" sc-camel-on-change="{{ onNewTitle }}" placeholder="p. ej. Boda Marta &amp; Iván" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:12px;padding:12px 15px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+            </label>
+            <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Tipo
+              <sc-raw-select value="{{ newType }}" sc-camel-on-change="{{ onNewType }}" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:12px;padding:12px 15px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+                <option>Bodas</option>
+                <option>Discotecas / Club</option>
+                <option>Eventos corporativos</option>
+                <option>Festivales</option>
+              </sc-raw-select>
+            </label>
+            <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Año
+              <input value="{{ newYear }}" sc-camel-on-change="{{ onNewYear }}" placeholder="2026" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:12px;padding:12px 15px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+            </label>
+          </div>
+          <label style="display:flex;flex-direction:column;align-items:flex-start;gap:5px;border:2px dashed rgba(48,21,9,0.3);border-radius:14px;padding:20px;cursor:pointer;margin-top:14px;">
+            <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.95rem;color:#DA4435;">Añadir imágenes</div>
+            <div style="font-size:0.85rem;color:rgba(48,21,9,0.65);">Puedes seleccionar varias a la vez</div>
+            <input type="file" accept="image/*" multiple="{{ true }}" sc-camel-on-change="{{ onNewImages }}" style="display:none;">
+          </label>
+          <sc-if value="{{ hasNewImages }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+              <sc-for list="{{ newImages }}" as="im" hint-placeholder-count="3">
+                {{ im.el }}
+              </sc-for>
+            </div>
+          </sc-if>
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:18px;">
+            <div sc-camel-on-click="{{ saveProject }}" style="cursor:{{ saveCursor }};opacity:{{ saveOpacity }};background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:12px 24px;border-radius:999px;">Guardar proyecto</div>
+            <div sc-camel-on-click="{{ toggleAddProject }}" style="cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.9rem;color:rgba(48,21,9,0.65);">Cancelar</div>
+            <div style="font-size:0.82rem;color:#DA4435;">{{ saveHint }}</div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <section style="max-width:1180px;margin:0 auto;padding:12px 32px 72px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;">
+        <sc-for list="{{ projects }}" as="p" hint-placeholder-count="0">
+          <div sc-camel-on-click="{{ p.open }}" style="cursor:pointer;display:flex;flex-direction:column;gap:12px;">
+            <div style="position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#FBF0CE;">
+              {{ p.coverEl }}
+              <sc-if value="{{ p.noCover }}" hint-placeholder-val="{{ false }}">
+                <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:18px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;color:rgba(48,21,9,0.45);">Sin portada</div>
+              </sc-if>
+              <label title="Añadir imágenes" sc-camel-on-click="{{ stop }}" style="position:absolute;top:10px;right:10px;display:{{ editDisplay }};cursor:pointer;background:rgba(48,21,9,0.78);color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.78rem;padding:6px 13px;border-radius:999px;">+ Imágenes
+                <input type="file" accept="image/*" multiple="{{ true }}" sc-camel-on-change="{{ p.onImages }}" style="display:none;">
+              </label>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; justify-content: center">
+              <h3 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.02rem;margin:0;display:{{ viewDisplay }};">{{ p.title }}</h3>
+              <input value="{{ p.title }}" sc-camel-on-change="{{ p.onTitle }}" sc-camel-on-click="{{ stop }}" style="display:{{ editDisplay }};flex:1;min-width:0;font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.02rem;color:#301509;border:2px solid rgba(48,21,9,0.2);border-radius:10px;padding:7px 11px;background:#FFFBF0;outline:none;">
+              
+              <label title="Añadir una marca con sus fotos" sc-camel-on-click="{{ stop }}" style="display:{{ editDisplay }};cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.84rem;color:#DA4435;">+ Marca
+                <input type="file" accept="image/*" multiple="{{ true }}" sc-camel-on-change="{{ p.onBrandImages }}" style="display:none;">
+              </label>
+              <div sc-camel-on-click="{{ p.remove }}" style="margin-left:auto;display:{{ editDisplay }};cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.84rem;color:rgba(48,21,9,0.5);">Eliminar</div>
+            </div>
+          </div>
+        </sc-for>
+        <sc-if value="{{ noProjects }}" hint-placeholder-val="{{ false }}">
+          <div style="grid-column:1/-1;border:2px dashed rgba(48,21,9,0.25);border-radius:12px;padding:44px 24px;text-align:center;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.95rem;color:rgba(48,21,9,0.6);">{{ emptyText }}</div>
+        </sc-if>
+      </div>
+    </section>
+
+    <section style="background:#DA4435;color:#FFFBF0;">
+      <div style="max-width:780px;margin:0 auto;padding:64px 32px;">
+        <h2 style="font-family:'Bagel Fat One',cursive;font-weight:400;font-size:clamp(1.6rem,3.6vw,2.1rem);margin:0 0 20px;">¿El siguiente es el tuyo?</h2>
+        <div sc-camel-on-click="{{ goConf }}" style="display:inline-block;cursor:pointer;background:#FFFBF0;color:#DA4435;font-family:'Fredoka',sans-serif;font-weight:600;padding:14px 28px;border-radius:999px;">Pedir presupuesto</div>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isProyecto }}" hint-placeholder-val="{{ false }}">
+  <div>
+    <section style="max-width:1180px;margin:0 auto;padding:36px 32px 24px;">
+      <div sc-camel-on-click="{{ goProyectos }}" style="display:inline-block;cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.88rem;color:#DA4435;margin-bottom:18px;">← Todos los proyectos</div>
+      <h1 style="font-family:'Bagel Fat One',cursive;font-weight:400;font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.05;margin:0;color:#DA4435;display:{{ viewDisplay }};">{{ dTitle }}</h1>
+      <input value="{{ dTitle }}" sc-camel-on-change="{{ dOnTitle }}" style="display:{{ editDisplay }};width:100%;max-width:520px;font-family:'Bagel Fat One',cursive;font-size:clamp(1.5rem,3.2vw,2rem);color:#DA4435;border:2px solid rgba(48,21,9,0.2);border-radius:12px;padding:10px 14px;background:#FFFBF0;outline:none;">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:14px;border-bottom:2px solid rgba(48,21,9,0.15);padding-bottom:16px;">
+        
+        
+        
+        <span style="font-size:0.88rem;color:rgba(48,21,9,0.6);">{{ dWorksCount }}</span>
+      </div>
+    </section>
+
+    <sc-if value="{{ dHasImages }}" hint-placeholder-val="{{ false }}">
+      <section style="max-width:1180px;margin:0 auto;padding:0 32px 44px;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;">
+          <sc-for list="{{ dImages }}" as="im" hint-placeholder-count="3">
+            <div style="position:relative;aspect-ratio:4/5;border-radius:12px;overflow:hidden;background:#FBF0CE;">
+              {{ im.el }}
+              <div sc-camel-on-click="{{ im.remove }}" title="Quitar imagen" style="position:absolute;display:{{ editDisplay }};top:8px;right:8px;width:24px;height:24px;border-radius:50%;background:rgba(48,21,9,0.78);color:#FFFBF0;font-size:0.85rem;line-height:24px;text-align:center;cursor:pointer;">×</div>
+            </div>
+          </sc-for>
+          <label style="display:{{ editDisplay }};aspect-ratio:4/5;border:2px dashed rgba(48,21,9,0.3);border-radius:12px;align-items:center;justify-content:center;text-align:center;padding:16px;cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.88rem;color:#DA4435;">+ Añadir imágenes
+            <input type="file" accept="image/*" multiple="{{ true }}" sc-camel-on-change="{{ dOnImages }}" style="display:none;">
+          </label>
+        </div>
+      </section>
+    </sc-if>
+
+    <section style="max-width:1180px;margin:0 auto;padding:0 32px 72px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;">
+        <sc-for list="{{ dWorks }}" as="w" hint-placeholder-count="0">
+          <div sc-camel-on-click="{{ w.open }}" style="cursor:pointer;display:flex;flex-direction:column;gap:12px;">
+            <div style="position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#FBF0CE;">
+              {{ w.coverEl }}
+              <sc-if value="{{ w.isEmpty }}" hint-placeholder-val="{{ false }}">
+                <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;color:rgba(48,21,9,0.45);">Sin imágenes</div>
+              </sc-if>
+              <label title="Añadir imágenes" sc-camel-on-click="{{ stop }}" style="position:absolute;top:10px;right:10px;display:{{ editDisplay }};cursor:pointer;background:rgba(48,21,9,0.78);color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.78rem;padding:6px 13px;border-radius:999px;">+ Imágenes
+                <input type="file" accept="image/*" multiple="{{ true }}" sc-camel-on-change="{{ w.onImages }}" style="display:none;">
+              </label>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;">
+              <h3 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.02rem;margin:0;display:{{ viewDisplay }};">{{ w.brand }}</h3>
+              <input value="{{ w.brand }}" sc-camel-on-change="{{ w.onBrand }}" sc-camel-on-click="{{ stop }}" placeholder="Nombre de la marca" style="display:{{ editDisplay }};flex:1;min-width:0;font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;color:#301509;border:2px solid rgba(48,21,9,0.2);border-radius:10px;padding:7px 11px;background:#FFFBF0;outline:none;">
+              <span style="font-size:0.84rem;color:rgba(48,21,9,0.55);">{{ w.count }}</span>
+              <div sc-camel-on-click="{{ w.remove }}" style="margin-left:auto;display:{{ editDisplay }};cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.84rem;color:rgba(48,21,9,0.5);">Eliminar</div>
+            </div>
+          </div>
+        </sc-for>
+        <sc-if value="{{ dTrulyEmpty }}" hint-placeholder-val="{{ false }}">
+          <div style="grid-column:1/-1;border:2px dashed rgba(48,21,9,0.25);border-radius:12px;padding:44px 24px;text-align:center;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.95rem;color:rgba(48,21,9,0.6);">Todavía no hay marcas en este proyecto.</div>
+        </sc-if>
+      </div>
+      <div sc-camel-on-click="{{ dAddWork }}" style="display:{{ editDisplay }};margin-top:28px;cursor:pointer;background:#301509;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:12px 24px;border-radius:999px;font-size:0.9rem;width:max-content;">+ Añadir marca</div>
+    </section>
+
+    <section style="background:#DA4435;color:#FFFBF0;">
+      <div style="max-width:780px;margin:0 auto;padding:64px 32px;">
+        <h2 style="font-family:'Bagel Fat One',cursive;font-weight:400;font-size:clamp(1.6rem,3.6vw,2.1rem);margin:0 0 20px;">¿Quieres algo así para lo tuyo?</h2>
+        <div sc-camel-on-click="{{ goConf }}" style="display: inline-block; cursor: pointer; background: #FFFBF0; color: #DA4435; font-family: 'Fredoka',sans-serif; font-weight: 600; padding: 14px 28px; border-radius: 999px; text-align: center">Pedir presupuesto</div>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isMarca }}" hint-placeholder-val="{{ false }}">
+  <div>
+    <section style="max-width:1180px;margin:0 auto;padding:36px 32px 22px;">
+      <div sc-camel-on-click="{{ backToProject }}" style="display:inline-block;cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.88rem;color:#DA4435;margin-bottom:18px;">← {{ mProjectTitle }}</div>
+      <h1 style="font-family:'Bagel Fat One',cursive;font-weight:400;font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.05;margin:0;color:#DA4435;display:{{ viewDisplay }};">{{ mBrand }}</h1>
+      <input value="{{ mBrand }}" sc-camel-on-change="{{ mOnBrand }}" placeholder="Nombre de la marca" style="display:{{ editDisplay }};width:100%;max-width:520px;font-family:'Bagel Fat One',cursive;font-size:clamp(1.5rem,3.2vw,2rem);color:#DA4435;border:2px solid rgba(48,21,9,0.2);border-radius:12px;padding:10px 14px;background:#FFFBF0;outline:none;">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:14px;border-bottom:2px solid rgba(48,21,9,0.15);padding-bottom:16px;">
+        <span style="font-family:'Fredoka',sans-serif;font-size:0.8rem;color:#FFFBF0;background:#DA4435;border-radius:999px;padding:4px 14px;">{{ mType }}</span>
+        <span style="font-size:0.88rem;color:rgba(48,21,9,0.6);">{{ mCount }}</span>
+        <label style="margin-left:auto;display:{{ editDisplay }};cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.85rem;color:#DA4435;">+ Añadir imágenes
+          <input type="file" accept="image/*" multiple="{{ true }}" sc-camel-on-change="{{ mOnImages }}" style="display:none;">
+        </label>
+      </div>
+    </section>
+
+    <section style="max-width:1180px;margin:0 auto;padding:0 32px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:start;">
+      <sc-if value="{{ mShowText }}" hint-placeholder-val="{{ false }}">
+        <div>
+          
+          <p style="font-size:1.02rem;line-height:1.65;color:rgba(48,21,9,0.82);margin:0;white-space:pre-wrap;display:{{ mTextDisplay }};">{{ mText }}</p>
+          <textarea value="{{ mText }}" sc-camel-on-change="{{ mOnText }}" rows="9" style="display:{{ editDisplay }};width:100%;font-family:'Outfit',sans-serif;font-size:1rem;line-height:1.6;color:#301509;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:14px 16px;background:#FFFBF0;outline:none;resize:vertical;"></textarea>
+        </div>
+      </sc-if>
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:{{ mCarouselMax }};width:100%;">
+        <div style="position:relative;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:#FBF0CE;">
+          {{ mSlideEl }}
+          <sc-if value="{{ mNoImages }}" hint-placeholder-val="{{ false }}">
+            <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.88rem;color:rgba(48,21,9,0.45);">Sin imágenes todavía</div>
+          </sc-if>
+          <div sc-camel-on-click="{{ mPrev }}" style="position:absolute;top:50%;left:12px;transform:translateY(-50%);display:{{ mNavDisplay }};width:38px;height:38px;border-radius:50%;background:rgba(48,21,9,0.72);color:#FFFBF0;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;">‹</div>
+          <div sc-camel-on-click="{{ mNext }}" style="position:absolute;top:50%;right:12px;transform:translateY(-50%);display:{{ mNavDisplay }};width:38px;height:38px;border-radius:50%;background:rgba(48,21,9,0.72);color:#FFFBF0;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;">›</div>
+          <div style="position:absolute;bottom:12px;right:12px;display:{{ mNavDisplay }};background:rgba(48,21,9,0.72);color:#FFFBF0;font-family:'Fredoka',sans-serif;font-size:0.78rem;padding:5px 12px;border-radius:999px;">{{ mPosition }}</div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <sc-for list="{{ mThumbs }}" as="t" hint-placeholder-count="0">
+            <div sc-camel-on-click="{{ t.pick }}" style="position:relative;width:64px;height:64px;border-radius:10px;overflow:hidden;cursor:pointer;outline:3px solid {{ t.ring }};outline-offset:-3px;">
+              {{ t.el }}
+              <div sc-camel-on-click="{{ t.remove }}" title="Quitar imagen" style="position:absolute;display:{{ editDisplay }};top:3px;right:3px;width:18px;height:18px;border-radius:50%;background:rgba(48,21,9,0.8);color:#FFFBF0;font-size:0.7rem;line-height:18px;text-align:center;cursor:pointer;">×</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#DA4435;color:#FFFBF0;">
+      <div style="max-width:780px;margin:0 auto;padding:64px 32px;">
+        <h2 style="font-family:'Bagel Fat One',cursive;font-weight:400;font-size:clamp(1.6rem,3.6vw,2.1rem);margin:0 0 20px;">¿Quieres algo así para tu marca?</h2>
+        <div sc-camel-on-click="{{ goConf }}" style="display:inline-block;cursor:pointer;background:#FFFBF0;color:#DA4435;font-family:'Fredoka',sans-serif;font-weight:600;padding:14px 28px;border-radius:999px;">Escríbenos por Whatsapp</div>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <div style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:70;display:{{ barDisplay }};align-items:center;gap:16px;background:#301509;color:#FBF0CE;border-radius:999px;padding:12px 16px 12px 24px;box-shadow:0 10px 30px rgba(48,21,9,0.3);">
+    <div style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.9rem;color:{{ barColor }};max-width:420px;">{{ barLabel }}</div>
+    <div sc-camel-on-click="{{ discardChanges }}" style="cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.88rem;opacity:0.7;">Descartar</div>
+    <div sc-camel-on-click="{{ saveChanges }}" style="cursor:pointer;background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.88rem;padding:10px 22px;border-radius:999px;">Guardar</div>
+  </div>
+
+  <footer style="background:#301509;color:#FBF0CE;">
+    <div style="max-width:1180px;margin:0 auto;padding:48px 32px 28px;">
+      <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:28px;">
+        <div style="font-family:'Bagel Fat One',cursive;font-size:1.6rem;color:#F6DE8B;">abanikos</div>
+        <div>
+          <h5 style="font-family:'Fredoka',sans-serif;margin:0 0 10px;font-size:0.95rem;">Navegación</h5>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:0.88rem;opacity:0.75;">
+            <div sc-camel-on-click="{{ goHome }}" style="cursor:pointer;">Inicio</div>
+            <div sc-camel-on-click="{{ goB2b }}" style="cursor:pointer;">Empresas</div>
+            <div sc-camel-on-click="{{ goBodas }}" style="cursor:pointer;">Bodas</div>
+            <div sc-camel-on-click="{{ goProyectos }}" style="cursor:pointer;">Proyectos</div>
+            <div sc-camel-on-click="{{ goContacto }}" style="cursor:pointer;">Contacto</div>
+          </div>
+        </div>
+        <div>
+          <h5 style="font-family:'Fredoka',sans-serif;margin:0 0 10px;font-size:0.95rem;">Contacto</h5>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:0.88rem;">
+            <a href="{{ waUrl }}" target="_blank" rel="noopener noreferrer" style="color:#FBF0CE;opacity:0.75;">WhatsApp</a>
+            <a href="{{ igUrl }}" target="_blank" rel="noopener noreferrer" style="color:#FBF0CE;opacity:0.75;">{{ igLabel }}</a>
+            <a href="mailto:abanikos.corporate@gmail.com" style="color:#FBF0CE;opacity:0.75;">abanikos.corporate@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </footer>
+</div>
+
+<a href="{{ waUrl }}" target="_blank" rel="noopener noreferrer" title="WhatsApp" style="position:fixed;bottom:24px;right:24px;z-index:60;background:#3FA746;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,0.25);">
+  <svg sc-camel-view-box="0 0 24 24" style="width:28px;height:28px;fill:#FFFFFF;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.25.7-1.24 1.28-2.03 1.45-.54.11-1.24.2-3.6-.77-3.02-1.25-4.96-4.31-5.11-4.51-.15-.2-1.22-1.62-1.22-3.09 0-1.47.77-2.19 1.04-2.49.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.08.92 2.23.07.15.12.33.02.53-.1.2-.15.33-.3.5-.15.18-.31.4-.45.54-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.27.1 1.75.83 2.05.98.3.15.5.23.57.35.08.13.08.72-.17 1.42z"></path></svg>
+</a>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;startView&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;proyectos&quot;,&quot;b2b&quot;,&quot;bodas&quot;,&quot;contacto&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Mockup&quot;},&quot;editMode&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Proyectos&quot;},&quot;instagramUser&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;abanikos&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacto&quot;},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;34600000000&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacto&quot;},&quot;logoColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;options&quot;:[&quot;#F6DE8B&quot;,&quot;#FBF0CE&quot;,&quot;#DA4435&quot;,&quot;#FFFBF0&quot;],&quot;default&quot;:&quot;#F6DE8B&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marcas&quot;},&quot;logoFiles&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;disen-o-sin-ti-tulo-1--mu6lmaxb-sfsw.png, disen-o-sin-ti-tulo-4--mu6ln364-27ir.png, sofoco_logo-mu6v0sxp-mr0l.png&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marcas&quot;},&quot;logoAddSlots&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Marcas&quot;},&quot;showTestimonials&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;},&quot;whatsappLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Abrir WhatsApp&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contenido&quot;}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { view: props.startView || 'home', b: { i: 0, picks: {}, form: {}, done: false }, w: { i: 0, picks: {}, form: {}, done: false }, sent: false };
+  }
+
+  seedProjects() {
+    return [
+      { id: 'p1', title: 'Boda', type: 'Bodas', year: '2025', images: ['./boda-image.jpeg', './home-img-abk-mtwxt4bd-grv0.jpg'] },
+      { id: 'p2', title: 'Spook', type: 'Discotecas / Club', year: '2025', images: ['./club.jpg'], works: [{ id: 'w1', brand: 'Spook', text: '', images: ['./club.jpg'] }] },
+      { id: 'p3', title: 'Eventos corporativos', type: 'Eventos corporativos', year: '2024', images: ['./evento-corporativo.jpg'] },
+      { id: 'p4', title: 'Festivales', type: 'Festivales', year: '2025', images: ['./festivales.jpg'] },
+      { id: 'p5', title: 'Beach Club', type: 'Discotecas / Club', year: '2025', images: ['./beach-club.jpg'] }
+    ];
+  }
+
+  projectState() {
+    return this.state.projects || (this.state.projects = this.seedProjects());
+  }
+
+  updateProjects(fn) {
+    const base = this.state.projects || this.seedProjects();
+    this.setState({ projects: fn(base), dirty: true });
+  }
+
+  canonType(t) {
+    const map = {
+      'Boda': 'Bodas', 'Bodas': 'Bodas',
+      'Club': 'Discotecas / Club', 'Discotecas': 'Discotecas / Club', 'Discotecas / Club': 'Discotecas / Club',
+      'Marca': 'Eventos corporativos', 'Evento corporativo': 'Eventos corporativos', 'Eventos corporativos': 'Eventos corporativos',
+      'Festival': 'Festivales', 'Festivales': 'Festivales'
+    };
+    return map[t] || t;
+  }
+
+  componentDidMount() {
+    try {
+      const raw = window.localStorage.getItem('abanikos.projects');
+      if (raw) {
+        const seeds = this.seedProjects();
+        const list = JSON.parse(raw).map(p => {
+          const seed = seeds.filter(x => x.id === p.id)[0];
+          const images = (p.images && p.images.length) ? p.images : (seed ? seed.images : []);
+          return Object.assign({}, p, { type: this.canonType(p.type), images });
+        });
+        this.setState({ projects: list, dirty: false });
+      }
+    } catch (e) {}
+    this.setupLightbox();
+  }
+
+  componentWillUnmount() {
+    if (this._lbClick) document.removeEventListener('click', this._lbClick, true);
+    if (this._lbKey) document.removeEventListener('keydown', this._lbKey);
+    if (this._lbEl && this._lbEl.parentNode) this._lbEl.parentNode.removeChild(this._lbEl);
+  }
+
+  setupLightbox() {
+    if (this._lbEl) return;
+    const box = document.createElement('div');
+    box.style.cssText = 'position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;background:rgba(20,8,3,0.92);padding:24px;cursor:zoom-out;';
+    const img = document.createElement('img');
+    img.style.cssText = 'max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;image-rendering:auto;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,0.5);';
+    const close = document.createElement('div');
+    close.textContent = '×';
+    close.style.cssText = "position:absolute;top:18px;right:24px;font-size:2.4rem;line-height:1;color:#FBF0CE;font-family:'Fredoka',sans-serif;cursor:pointer;";
+    box.appendChild(img); box.appendChild(close);
+    document.body.appendChild(box);
+    this._lbEl = box; this._lbImg = img;
+
+    const hide = () => { box.style.display = 'none'; img.removeAttribute('src'); };
+    box.addEventListener('click', hide);
+
+    const urlFrom = el => {
+      if (!el || el.nodeType !== 1) return '';
+      if (el.tagName === 'IMG' && el.src) return el.src;
+      const bg = getComputedStyle(el).backgroundImage || '';
+      const m = bg.match(/url\((['"]?)(.*?)\1\)/);
+      if (m && m[2] && !/^(none|data:image\/svg)/.test(m[2])) return m[2];
+      return '';
+    };
+
+    this._lbClick = e => {
+      if (box.style.display === 'flex') return;
+      if (this.props.editMode) return;
+      const path = (e.composedPath && e.composedPath()) || [e.target];
+      for (let i = 0; i < path.length; i++) {
+        const el = path[i];
+        if (el && el.nodeType === 1 && el.getAttribute && /cursor\s*:\s*pointer/.test(el.getAttribute('style') || '')) return;
+      }
+      let url = '';
+      for (let i = 0; i < path.length && !url; i++) url = urlFrom(path[i]);
+      if (!url) return;
+      e.preventDefault(); e.stopPropagation();
+      img.src = url;
+      box.style.display = 'flex';
+    };
+    document.addEventListener('click', this._lbClick, true);
+
+    this._lbKey = e => { if (e.key === 'Escape') hide(); };
+    document.addEventListener('keydown', this._lbKey);
+  }
+
+  saveProjects() {
+    try {
+      window.localStorage.setItem('abanikos.projects', JSON.stringify(this.state.projects || this.seedProjects()));
+      this.setState({ dirty: false, savedAt: Date.now(), saveError: '' });
+    } catch (e) {
+      this.setState({ saveError: 'No se pudo guardar: demasiadas imágenes para el almacenamiento del navegador.' });
+    }
+  }
+
+  discardProjects() {
+    try {
+      const raw = window.localStorage.getItem('abanikos.projects');
+      this.setState({ projects: raw ? JSON.parse(raw) : this.seedProjects(), dirty: false });
+    } catch (e) {
+      this.setState({ projects: this.seedProjects(), dirty: false });
+    }
+  }
+
+  filesToUrls(e) {
+    const list = Array.from(e.target.files || []);
+    return list.map(f => URL.createObjectURL(f));
+  }
+
+  // Downscaled data URLs: self-contained, so they survive a reload and stay small.
+  readFiles(e, done) {
+    const list = Array.from(e.target.files || []);
+    if (!list.length) return;
+    Promise.all(list.map(f => new Promise(res => {
+      const fr = new FileReader();
+      fr.onload = () => {
+        const img = new Image();
+        img.onload = () => {
+          const max = 1200;
+          const scale = Math.min(1, max / Math.max(img.width, img.height));
+          const c = document.createElement('canvas');
+          c.width = Math.round(img.width * scale);
+          c.height = Math.round(img.height * scale);
+          c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+          try { res(c.toDataURL('image/jpeg', 0.82)); } catch (err) { res(fr.result); }
+        };
+        img.onerror = () => res(fr.result);
+        img.src = fr.result;
+      };
+      fr.onerror = () => res(null);
+      fr.readAsDataURL(f);
+    }))).then(urls => done(urls.filter(Boolean)));
+  }
+
+  imgEl(url, style) {
+    if (!url) return null;
+    return React.createElement('img', { src: url, alt: '', style: style || { width: '100%', height: '100%', objectFit: 'cover', display: 'block' } });
+  }
+
+  logoList() {
+    const raw = this.props.logoFiles || 'disen-o-sin-ti-tulo-1--mu6lmaxb-sfsw.png, disen-o-sin-ti-tulo-4--mu6ln364-27ir.png, sofoco_logo-mu6v0sxp-mr0l.png';
+    const removed = this.state.removedLogos || [];
+    return raw.split(',').map(x => x.trim()).filter(Boolean)
+      .filter(f => removed.indexOf(f) === -1)
+      .map(f => ({
+        file: f,
+        name: f.replace(/[-_].*$/, '').replace(/\.(png|jpe?g|svg|webp)$/i, ''),
+        mask: 'url("./' + f + '") center / contain no-repeat',
+        remove: () => this.setState(s => ({ removedLogos: (s.removedLogos || []).concat([f]) }))
+      }));
+  }
+
+  b2bSteps() {
+    return [
+      { label: 'Tipo de evento', title: 'Pide tu presupuesto', sub: 'Así preparamos una propuesta que encaje de verdad.', options: ['Club / discoteca', 'Marca o producto', 'Feria o evento', 'Otro'] },
+      { label: 'Material', title: '¿Madera o plástico?', sub: 'La madera es el acabado bonito; el plástico, el que aguanta cualquier cosa.', options: ['Madera', 'Plástico', 'Que nos recomendéis'] },
+      { label: 'Diseño', title: '¿Cómo vais de diseño?', sub: 'Si no tenéis nada, lo hacemos nosotros.', upload: true, options: ['Subir tu diseño', 'Tengo logo y una idea', 'Empezamos de cero'] },
+      { label: 'Cantidad', title: '¿Cuántos abanikos?', sub: 'A partir de 150 unidades. Cuantos más, mejor precio por unidad.', options: ['150–300', '300–1.000', '1.000–5.000', 'Más de 5.000'] },
+      { label: 'Contacto', title: 'Y por último, ¿dónde te escribimos?', sub: 'Te mandamos la propuesta en 24–48 h.', form: true }
+    ];
+  }
+
+  bodasSteps() {
+    return [
+      { label: 'Estilo', title: '¿Para qué evento lo quieres ?', sub: 'Solo para orientarnos.', options: ['Discoteca/Club', 'Evento Corporativo', 'Festival', 'Otros'] },
+      { label: 'Material', title: '¿Madera o plástico?', sub: 'La madera queda más elegante en la mano; el plástico aguanta la barra libre.', options: ['Madera', 'Plástico', 'Que nos recomendéis'] },
+      { label: 'Diseño', title: '¿Cómo vais de diseño?', sub: 'Si aún no tenéis nada, lo hacemos nosotros.', upload: true, options: ['Subir tu diseño', 'Tengo logo y una idea', 'Empezamos de cero'] },
+      { label: 'Cantidades', title: '¿Cantidades aproximadas?', sub: 'Mínimo 150 unidades. El plazo de entrega puede variar entre 2 semanas y 3 meses en función de la cantidad.', options: ['150–300', '300–500', '500–1.000', '1.000–2.500', '2.500–5.000', '5.000–10.000', 'Más de 10.000'] },
+      { label: 'Fecha', title: '¿Cuándo es el evento?', sub: 'Elige la fecha en formato DD/MM/AAAA. ', date: true },
+      { label: 'Contacto', title: '¿Dónde os escribimos?', sub: 'Os mandamos la propuesta en 24–48 h.', form: true }
+    ];
+  }
+
+  go(view) {
+    this.setState({ view });
+    if (typeof window !== 'undefined') window.scrollTo({ top: 0 });
+  }
+
+  conf(key, steps, accent) {
+    const st = this.state[key];
+    const step = steps[st.i];
+    const last = st.i === steps.length - 1;
+    const f = st.form || {};
+    const filled = v => !!(v && String(v).trim());
+    const answered = step.form
+      ? (filled(f.name) && filled(f.email) && filled(f.phone))
+      : filled(st.picks[st.i]);
+    const setPick = val => this.setState(s => ({ [key]: Object.assign({}, s[key], { picks: Object.assign({}, s[key].picks, { [s[key].i]: val }) }) }));
+    const setField = name => e => {
+      const val = e.target.value;
+      this.setState(s => ({ [key]: Object.assign({}, s[key], { form: Object.assign({}, s[key].form || {}, { [name]: val }) }) }));
+    };
+    const bars = steps.map((s, n) => ({
+      label: s.label,
+      bar: n <= st.i ? accent : 'rgba(48,21,9,0.15)',
+      color: n === st.i ? accent : 'rgba(48,21,9,0.5)',
+      weight: n === st.i ? 600 : 400
+    }));
+    const options = (step.options || []).map(label => {
+      const sel = st.picks[st.i] === label;
+      return {
+        label,
+        sel,
+        border: sel ? accent : '#301509',
+        bg: sel ? accent : 'transparent',
+        fg: sel ? '#FFFBF0' : '#301509',
+        pick: () => this.setState(s => ({ [key]: Object.assign({}, s[key], { picks: Object.assign({}, s[key].picks, { [s[key].i]: label }) }) }))
+      };
+    });
+    return {
+      steps: bars,
+      options: options,
+      title: st.done ? '¡Recibido!' : step.title,
+      sub: st.done ? 'Te escribimos en 24–48 h con una propuesta y un precio cerrado.' : step.sub,
+      isOptions: !st.done && !step.form && !step.date,
+      isUpload: !st.done && !!step.upload && (st.picks[st.i] === 'Subir tu diseño' || st.picks[st.i] === 'Tengo logo y una idea'),
+      uploadLabel: st.picks[st.i] === 'Tengo logo y una idea' ? 'Sube tu logo o una referencia' : 'Sube tu diseño',
+      fileName: (st.files || {})[st.i] || '',
+      hasFile: !!(st.files || {})[st.i],
+      onFile: e => {
+        const fl = e.target.files && e.target.files[0];
+        if (!fl) return;
+        this.setState(s => ({ [key]: Object.assign({}, s[key], { files: Object.assign({}, s[key].files || {}, { [s[key].i]: fl.name }) }) }));
+      },
+      isForm: !st.done && !!step.form,
+      isDate: !st.done && !!step.date,
+      dateValue: st.picks[st.i] || '',
+      onDate: e => {
+        const val = e.target.value;
+        this.setState(s => ({ [key]: Object.assign({}, s[key], { picks: Object.assign({}, s[key].picks, { [s[key].i]: val }) }) }));
+      },
+      nextLabel: st.done ? 'Empezar otra' : (last ? 'Enviar' : 'Siguiente'),
+      canNext: st.done || answered,
+      nextOpacity: (st.done || answered) ? 1 : 0.4,
+      nextCursor: (st.done || answered) ? 'pointer' : 'not-allowed',
+      requiredHint: (st.done || answered) ? '' : (step.form ? 'Rellena nombre, email y teléfono para continuar.' : (step.upload ? 'Elige una opción para continuar.' : (step.date ? 'Elige una fecha para continuar.' : 'Selecciona una opción para continuar.'))),
+      name: f.name || '', email: f.email || '', phone: f.phone || '',
+      onName: setField('name'), onEmail: setField('email'), onPhone: setField('phone'),
+      backColor: st.i === 0 || st.done ? 'rgba(48,21,9,0.25)' : 'rgba(48,21,9,0.65)',
+      progress: st.done ? 'Enviado' : 'Paso ' + (st.i + 1) + ' de ' + steps.length,
+      next: () => this.setState(s => {
+        const c = s[key];
+        if (c.done) return { [key]: { i: 0, picks: {}, form: {}, done: false } };
+        if (!answered) return null;
+        if (c.i === steps.length - 1) return { [key]: Object.assign({}, c, { done: true }) };
+        return { [key]: Object.assign({}, c, { i: c.i + 1 }) };
+      }),
+      back: () => this.setState(s => {
+        const c = s[key];
+        if (c.done || c.i === 0) return null;
+        return { [key]: Object.assign({}, c, { i: c.i - 1 }) };
+      })
+    };
+  }
+
+  projectsVals() {
+    const all = this.state.projects || this.seedProjects();
+    const filter = this.state.projFilter || 'Todos';
+    const draft = this.state.draft || { title: '', type: 'Bodas', year: '', images: [] };
+    const types = ['Todos', 'Bodas', 'Discotecas / Club', 'Eventos corporativos', 'Festivales'];
+    const canSave = !!(draft.title && draft.title.trim());
+    const shown = all.filter(p => filter === 'Todos' || this.canonType(p.type) === this.canonType(filter));
+    return {
+      noProjects: shown.length === 0,
+      emptyText: 'Todavía no hay proyectos de este tipo.',
+      projFilters: types.map(t => ({
+        label: t,
+        pick: () => this.setState({ projFilter: t }),
+        border: t === filter ? '#DA4435' : '#301509',
+        bg: t === filter ? '#DA4435' : 'transparent',
+        fg: t === filter ? '#FFFBF0' : '#301509'
+      })),
+      projects: shown.map((p, n) => ({
+        title: p.title, type: this.canonType(p.type), year: p.year,
+        basis: (n % 4 === 0 || n % 4 === 3) ? '58%' : '34%',
+        cover: p.images[0] || '',
+        coverEl: this.imgEl(p.images[0]),
+        hasCover: !!p.images[0],
+        noCover: !p.images[0],
+        count: p.images.length === 1 ? '1 imagen' : p.images.length + ' imágenes',
+        hasThumbs: p.images.length > 1,
+        thumbs: p.images.slice(1).map((url, i) => ({
+          url,
+          bg: 'url("' + url + '")',
+          remove: () => this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, { images: x.images.filter((_, k) => k !== i + 1) }) : x))
+        })),
+        open: () => { this.setState({ openProject: p.id }); this.go('proyecto'); },
+        brandCount: (p.works || []).length > 0
+          ? ((p.works || []).length === 1 ? '1 marca' : (p.works || []).length + ' marcas')
+          : (this.props.editMode === true ? 'Sin marcas' : (p.images.length === 1 ? '1 imagen' : p.images.length + ' imágenes')),
+        onBrandImages: e => {
+          this.readFiles(e, urls => {
+            this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, {
+              works: (x.works || []).concat([{ id: 'w' + Date.now(), brand: 'Nueva marca', images: urls }])
+            }) : x));
+            this.setState({ openProject: p.id });
+            this.go('proyecto');
+          });
+        },
+        onTitle: e => {
+          const v = e.target.value;
+          this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, { title: v }) : x));
+        },
+        isEmpty: p.images.length === 0,
+        images: p.images.map((url, idx) => ({
+          url,
+          remove: () => this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, { images: x.images.filter((_, i) => i !== idx) }) : x))
+        })),
+        onImages: e => {
+          this.readFiles(e, urls => this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, { images: x.images.concat(urls) }) : x)));
+        },
+        remove: () => this.updateProjects(list => list.filter(x => x.id !== p.id))
+      })),
+      editMode: this.props.editMode === true,
+      barDisplay: (this.props.editMode === true && (this.state.dirty || this.state.saveError)) ? 'flex' : 'none',
+      saveChanges: () => this.saveProjects(),
+      discardChanges: () => this.discardProjects(),
+      savedNote: this.state.savedAt ? 'Guardado' : '',
+      barLabel: this.state.saveError || 'Cambios sin guardar',
+      barColor: this.state.saveError ? '#FFC9C2' : '#FBF0CE',
+      barDisplayError: (this.props.editMode === true && this.state.saveError) ? 'flex' : 'none',
+      editDisplay: this.props.editMode === true ? 'flex' : 'none',
+      viewDisplay: this.props.editMode === true ? 'none' : 'block',
+      stop: e => e.stopPropagation(),
+      addingProjectOpen: this.props.editMode === true && !!this.state.addingProject,
+      addingProject: !!this.state.addingProject,
+      addProjectLabel: this.state.addingProject ? 'Cerrar' : '+ Añadir proyecto',
+      toggleAddProject: () => this.setState(s => ({ addingProject: !s.addingProject })),
+      newTitle: draft.title, newType: draft.type, newYear: draft.year,
+      newImages: draft.images.map(url => ({ url, hasUrl: !!url, el: this.imgEl(url, { width: '72px', height: '72px', borderRadius: '10px', objectFit: 'cover', display: 'block' }) })),
+      hasNewImages: draft.images.length > 0,
+      onNewTitle: e => { const v = e.target.value; this.setState(s => ({ draft: Object.assign({}, draft, s.draft, { title: v }) })); },
+      onNewType: e => { const v = e.target.value; this.setState(s => ({ draft: Object.assign({}, draft, s.draft, { type: v }) })); },
+      onNewYear: e => { const v = e.target.value; this.setState(s => ({ draft: Object.assign({}, draft, s.draft, { year: v }) })); },
+      onNewImages: e => {
+        this.readFiles(e, urls => this.setState(st => ({ draft: Object.assign({}, draft, st.draft, { images: (st.draft ? st.draft.images : draft.images).concat(urls) }) })));
+      },
+      saveCursor: canSave ? 'pointer' : 'not-allowed',
+      saveOpacity: canSave ? 1 : 0.4,
+      saveHint: canSave ? '' : 'Ponle un nombre al proyecto.',
+      saveProject: () => {
+        if (!canSave) return;
+        this.updateProjects(list => list.concat([{ id: 'p' + Date.now(), title: draft.title.trim(), type: draft.type, year: draft.year || '', images: draft.images }]));
+        this.setState({ draft: { title: '', type: 'Bodas', year: '', images: [] }, addingProject: false });
+      }
+    };
+  }
+
+  detailVals() {
+    const all = this.state.projects || this.seedProjects();
+    const p = all.filter(x => x.id === this.state.openProject)[0];
+    if (!p) return { dTitle: '', dType: '', dYear: '', dCount: '', dIsEmpty: true, dImages: [], dHasImages: false, dTrulyEmpty: true, dWorks: [], dNoWorks: true, dWorksCount: '', dAddWork: () => {}, dOnImages: () => {}, dOnTitle: () => {} };
+    return {
+      dTitle: p.title, dType: this.canonType(p.type), dYear: p.year,
+      dOnTitle: e => {
+        const v = e.target.value;
+        this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, { title: v }) : x));
+      },
+      dCount: p.images.length === 1 ? '1 diseño' : p.images.length + ' diseños',
+      dIsEmpty: p.images.length === 0,
+      dImages: p.images.map((url, idx) => ({
+        url, hasUrl: !!url, el: this.imgEl(url),
+        remove: () => this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, { images: x.images.filter((_, i) => i !== idx) }) : x))
+      })),
+      dWorksCount: (p.works || []).length > 0
+        ? ((p.works || []).length === 1 ? '1 marca' : (p.works || []).length + ' marcas')
+        : (this.props.editMode === true ? 'Sin marcas' : ''),
+      dNoWorks: (p.works || []).length === 0,
+      dHasImages: this.props.editMode === true,
+      dTrulyEmpty: p.images.length === 0 && (p.works || []).length === 0,
+      dAddWork: () => this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, { works: (x.works || []).concat([{ id: 'w' + Date.now(), brand: 'Nueva marca', images: [] }]) }) : x)),
+      dWorks: (p.works || []).map(w => ({
+        brand: w.brand,
+        coverEl: this.imgEl((w.images || [])[0]),
+        open: () => { this.setState({ openWork: w.id, slide: 0 }); this.go('marca'); },
+        count: w.images.length === 1 ? '1 imagen' : w.images.length + ' imágenes',
+        isEmpty: w.images.length === 0,
+        images: w.images.map((url, i) => ({
+          url, hasUrl: !!url, el: this.imgEl(url),
+          useAsCover: () => this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, { images: [url].concat(x.images.filter(u => u !== url)) }) : x)),
+          remove: () => this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, { works: x.works.map(y => y.id === w.id ? Object.assign({}, y, { images: y.images.filter((_, k) => k !== i) }) : y) }) : x))
+        })),
+        onBrand: e => {
+          const v = e.target.value;
+          this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, { works: x.works.map(y => y.id === w.id ? Object.assign({}, y, { brand: v }) : y) }) : x));
+        },
+        onImages: e => {
+          this.readFiles(e, urls => this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, { works: x.works.map(y => y.id === w.id ? Object.assign({}, y, { images: y.images.concat(urls) }) : y) }) : x)));
+        },
+        remove: () => this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, { works: x.works.filter(y => y.id !== w.id) }) : x))
+      })),
+      dOnImages: e => {
+        this.readFiles(e, urls => this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, { images: x.images.concat(urls) }) : x)));
+      }
+    };
+  }
+
+  brandVals() {
+    const all = this.state.projects || this.seedProjects();
+    const p = all.filter(x => x.id === this.state.openProject)[0];
+    const w = p ? (p.works || []).filter(y => y.id === this.state.openWork)[0] : null;
+    if (!p || !w) {
+      return { mBrand: '', mType: '', mCount: '', mText: '', mShowText: false, mTextDisplay: 'none', mCarouselMax: 'none', mProjectTitle: 'Proyectos', mThumbs: [], mSlideEl: null,
+        mNoImages: true, mNavDisplay: 'none', mPosition: '', mPrev: () => {}, mNext: () => {},
+        mOnBrand: () => {}, mOnText: () => {}, mOnImages: () => {}, backToProject: () => this.go('proyectos') };
+    }
+    const imgs = w.images || [];
+    const i = Math.min(this.state.slide || 0, Math.max(0, imgs.length - 1));
+    const patchWork = obj => this.updateProjects(list => list.map(x => x.id === p.id
+      ? Object.assign({}, x, { works: x.works.map(y => y.id === w.id ? Object.assign({}, y, obj) : y) })
+      : x));
+    return {
+      mBrand: w.brand,
+      mType: this.canonType(p.type),
+      mProjectTitle: p.title,
+      mCount: imgs.length === 1 ? '1 imagen' : imgs.length + ' imágenes',
+      mText: w.text || '',
+      mShowText: this.props.editMode === true || !!(w.text && w.text.trim()),
+      mTextDisplay: (w.text && w.text.trim() && this.props.editMode !== true) ? 'block' : 'none',
+      mCarouselMax: (this.props.editMode === true || (w.text && w.text.trim())) ? 'none' : '720px',
+      mNoImages: imgs.length === 0,
+      mNavDisplay: imgs.length > 1 ? 'flex' : 'none',
+      mPosition: imgs.length ? (i + 1) + ' / ' + imgs.length : '',
+      mSlideEl: this.imgEl(imgs[i]),
+      mThumbs: imgs.map((url, k) => ({
+        el: this.imgEl(url, { width: '100%', height: '100%', objectFit: 'cover', display: 'block' }),
+        ring: k === i ? '#DA4435' : 'transparent',
+        pick: () => this.setState({ slide: k }),
+        remove: e => { if (e && e.stopPropagation) e.stopPropagation(); patchWork({ images: imgs.filter((_, n) => n !== k) }); this.setState({ slide: 0 }); }
+      })),
+      mPrev: () => this.setState({ slide: (i - 1 + imgs.length) % Math.max(1, imgs.length) }),
+      mNext: () => this.setState({ slide: (i + 1) % Math.max(1, imgs.length) }),
+      mOnBrand: e => patchWork({ brand: e.target.value }),
+      mOnText: e => patchWork({ text: e.target.value }),
+      mOnImages: e => this.readFiles(e, urls => patchWork({ images: imgs.concat(urls) })),
+      backToProject: () => this.go('proyecto')
+    };
+  }
+
+  renderVals() {
+    const v = this.state.view;
+    const b = this.conf('b', this.b2bSteps(), '#DA4435');
+    const w = this.conf('w', this.bodasSteps(), '#DA4435');
+    const u = k => (v === k ? '#DA4435' : 'transparent');
+    return {
+      isHome: v === 'home', isB2b: v === 'b2b', isBodas: v === 'bodas', isContacto: v === 'contacto', isProyectos: v === 'proyectos',
+      ubProyectos: v === 'proyectos' ? '#DA4435' : 'transparent',
+      ...this.projectsVals(),
+      ...this.detailVals(),
+      ...this.brandVals(),
+      isProyecto: v === 'proyecto',
+      isMarca: v === 'marca',
+      ubB2b: u('b2b'), ubBodas: u('bodas'), ubContacto: u('contacto'),
+      showTestimonials: this.props.showTestimonials !== false,
+      logoColor: this.props.logoColor || '#F6DE8B',
+      logos: this.logoList(),
+      showAddSlots: this.props.logoAddSlots === true,
+      editOpacity: this.props.logoAddSlots === true ? 1 : 0,
+      editEvents: this.props.logoAddSlots === true ? 'auto' : 'none',
+      whatsapp: this.props.whatsappLabel || 'Abrir WhatsApp',
+      goHome: () => this.go('home'),
+      goB2b: () => this.go('b2b'),
+      goBodas: () => this.go('bodas'),
+      goContacto: () => this.go('contacto'),
+      goProyectos: () => { this.setState({ projFilter: 'Todos' }); this.go('proyectos'); },
+      goCatBoda: () => { this.setState({ projFilter: 'Bodas' }); this.go('proyectos'); },
+      goCatClub: () => { this.setState({ projFilter: 'Discotecas / Club' }); this.go('proyectos'); },
+      goCatMarca: () => { this.setState({ projFilter: 'Eventos corporativos' }); this.go('proyectos'); },
+      goCatFestival: () => { this.setState({ projFilter: 'Festivales' }); this.go('proyectos'); },
+      goCatCorp: () => { this.setState({ projFilter: 'Eventos corporativos' }); this.go('proyectos'); },
+      goConf: () => this.go(v === 'bodas' ? 'bodas' : 'b2b'),
+      sendContact: () => {
+        const g = n => {
+          const el = document.querySelector('[data-f="' + n + '"]');
+          return el ? (el.value || '').trim() : '';
+        };
+        const lines = [
+          'Nombre: ' + g('nombre'),
+          'Email: ' + g('email'),
+          'Teléfono: ' + g('telefono'),
+          'Tipo de proyecto: ' + g('tipo'),
+          'Cantidad aproximada: ' + g('cantidad'),
+          '',
+          g('mensaje')
+        ].join('\n');
+        window.location.href = 'mailto:abanikos.corporate@gmail.com'
+          + '?subject=' + encodeURIComponent('Presupuesto abanikos — ' + (g('nombre') || 'nueva solicitud'))
+          + '&body=' + encodeURIComponent(lines);
+        this.setState({ sent: true });
+      },
+      contactBtn: this.state.sent ? 'Abriendo tu correo…' : 'Enviar',
+      igUrl: 'https://instagram.com/' + (this.props.instagramUser || 'abanikos'),
+      igLabel: '@' + (this.props.instagramUser || 'abanikos'),
+      waUrl: 'https://wa.me/' + String(this.props.whatsappNumber || '34600000000').replace(/[^0-9]/g, ''),
+      bSteps: b.steps, bTitle: b.title, bSub: b.sub, bIsOptions: b.isOptions, bIsForm: b.isForm,
+      bIsUpload: b.isUpload, bFileName: b.fileName, bHasFile: b.hasFile, bOnFile: b.onFile, bUploadLabel: b.uploadLabel,
+      bOptions: b.options,
+      wOptions: w.options,
+      bNext: b.next, bBack: b.back, bNextLabel: b.nextLabel, bBackColor: b.backColor, bProgress: b.progress,
+      wSteps: w.steps, wTitle: w.title, wSub: w.sub, wIsOptions: w.isOptions, wIsForm: w.isForm,
+      wIsDate: w.isDate, wDateValue: w.dateValue, wOnDate: w.onDate,
+      wIsUpload: w.isUpload, wFileName: w.fileName, wHasFile: w.hasFile, wOnFile: w.onFile, wUploadLabel: w.uploadLabel,
+      wNextOpacity: w.nextOpacity, wNextCursor: w.nextCursor, wRequiredHint: w.requiredHint,
+      wName: w.name, wEmail: w.email, wPhone: w.phone, wOnName: w.onName, wOnEmail: w.onEmail, wOnPhone: w.onPhone,
+      bNextOpacity: b.nextOpacity, bNextCursor: b.nextCursor, bRequiredHint: b.requiredHint,
+      bName: b.name, bEmail: b.email, bPhone: b.phone, bOnName: b.onName, bOnEmail: b.onEmail, bOnPhone: b.onPhone,
+      wNext: w.next, wBack: w.back, wNextLabel: w.nextLabel, wBackColor: w.backColor, wProgress: w.progress
+    };
+  }
+}
+</script>
+
+
+</body></html>
