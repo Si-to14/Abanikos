@@ -122,6 +122,7 @@
     'Plazo: de 2 semanas a 2 meses según cantidad': 'Lead time: 2 weeks to 2 months depending on quantity',
     'Materiales: madera o plástico': 'Materials: wood or plastic', 'Envíos a toda España': 'Shipping across Spain',
     'Déjanos tu nombre y un email o teléfono para poder contestarte.': 'Please leave your name and an email or phone so we can reply.',
+    'El archivo pesa más de 25 MB. Prueba con uno más ligero o mándanoslo por WhatsApp.': 'The file is larger than 25 MB. Try a lighter one or send it to us on WhatsApp.',
 
     // Proyectos
     'Bodas': 'Weddings', 'Discotecas / Club': 'Nightclubs / Club', 'Eventos corporativos': 'Corporate events',
@@ -1247,6 +1248,24 @@ class Component extends DCLogic {
     return fetch(LEAD_URL, { method: 'POST', mode: 'no-cors', body: body });
   }
 
+  // Envía la solicitud de un configurador, con el archivo de diseño si lo han subido
+  submitConf(key, origen, steps, st) {
+    const data = this.leadFromConf(origen, steps, st);
+    delete data.archivo;
+    const store = (this._fileData || {})[key] || {};
+    const conArchivo = ['Subir tu diseño', 'Tengo logo y una idea'];
+    const idx = steps.map((s, n) => n).filter(n => steps[n].upload && store[n] && conArchivo.indexOf(st.picks[n]) >= 0);
+    const pending = idx.length ? store[idx[0]] : Promise.resolve(null);
+    return pending.then(file => {
+      if (file && file.data) {
+        data.archivo = file.name;
+        data.archivo_tipo = file.type;
+        data.archivo_base64 = file.data;
+      }
+      return this.sendLead(data);
+    }).catch(() => {});
+  }
+
   // Convierte las respuestas de un configurador por pasos en una solicitud
   leadFromConf(origen, steps, st) {
     const campo = { 'Tipo de evento': 'tipo', 'Estilo': 'tipo', 'Material': 'material', 'Diseño': 'diseno',
@@ -1305,6 +1324,21 @@ class Component extends DCLogic {
       onFile: e => {
         const fl = e.target.files && e.target.files[0];
         if (!fl) return;
+        if (fl.size > 25 * 1024 * 1024) {
+          const msg = 'El archivo pesa más de 25 MB. Prueba con uno más ligero o mándanoslo por WhatsApp.';
+          alert(window.abkI18n ? window.abkI18n.t(msg) : msg);
+          e.target.value = '';
+          return;
+        }
+        // Guardamos el contenido del archivo para enviarlo junto con la solicitud
+        this._fileData = this._fileData || {};
+        this._fileData[key] = this._fileData[key] || {};
+        this._fileData[key][st.i] = new Promise(resolve => {
+          const r = new FileReader();
+          r.onload = () => resolve({ name: fl.name, type: fl.type || 'application/octet-stream', data: String(r.result).split(',')[1] || '' });
+          r.onerror = () => resolve(null);
+          r.readAsDataURL(fl);
+        });
         this.setState(s => ({ [key]: Object.assign({}, s[key], { files: Object.assign({}, s[key].files || {}, { [s[key].i]: fl.name }) }) }));
       },
       isForm: !st.done && !!step.form,
@@ -1327,12 +1361,11 @@ class Component extends DCLogic {
       progress: st.done ? 'Enviado' : 'Paso ' + (st.i + 1) + ' de ' + steps.length,
       next: () => {
         if (!st.done && answered && last) {
-          this.sendLead(this.leadFromConf(key === 'w' ? 'Configurador Bodas/Eventos' : 'Configurador Empresas', steps, st))
-            .catch(() => {});
+          this.submitConf(key, key === 'w' ? 'Configurador Bodas/Eventos' : 'Configurador Empresas', steps, st);
         }
         this.setState(s => {
         const c = s[key];
-        if (c.done) return { [key]: { i: 0, picks: {}, form: {}, done: false } };
+        if (c.done) { if (this._fileData) this._fileData[key] = {}; return { [key]: { i: 0, picks: {}, form: {}, done: false } }; }
         if (!answered) return null;
         if (c.i === steps.length - 1) return { [key]: Object.assign({}, c, { done: true }) };
         return { [key]: Object.assign({}, c, { i: c.i + 1 }) };
