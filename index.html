@@ -136,6 +136,7 @@
     'Evento corporativo': 'Corporate event', 'Festivales': 'Festivals',
     'Todavía no hay proyectos de este tipo.': 'No projects of this type yet.',
     'Todavía no hay marcas en este proyecto.': 'No brands in this project yet.',
+    'Muy pronto verás aquí los proyectos de esta categoría.': 'Projects in this category are coming soon.',
     'Sin imágenes': 'No images', 'Sin imágenes todavía': 'No images yet', 'Sin portada': 'No cover',
     'Pendiente de contenido': 'Content coming soon', 'Sin marcas': 'No brands', 'Nueva marca': 'New brand',
     'Club — abanikos de noche': 'Club — night abanikos', 'Festival — abanikos de merch': 'Festival — merch abanikos',
@@ -156,6 +157,7 @@
     [/^1 imagen$/, '1 image'], [/^(\d+) imágenes$/, '$1 images'],
     [/^1 diseño$/, '1 design'], [/^(\d+) diseños$/, '$1 designs'],
     [/^1 marca$/, '1 brand'], [/^(\d+) marcas$/, '$1 brands'],
+    [/^1 proyecto$/, '1 project'], [/^(\d+) proyectos$/, '$1 projects'],
     [/^Seleccionado: (.+)$/, 'Selected: $1']
   ];
 
@@ -407,7 +409,7 @@
             
           </div>
         </div>
-        <div sc-camel-on-click="{{ goCatClub }}" style="cursor:pointer;">
+        <div sc-camel-on-click="{{ goCatBeach }}" style="cursor:pointer;">
           <div style="aspect-ratio:4/5;"><image-slot id="gal-4" src="assets/img/gal-4.webp" shape="rounded" radius="20" placeholder="Festival — abanikos de merch" style="border-radius: 10px"></image-slot></div>
           <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:12px;">
             <div style="font-family: 'Fredoka',sans-serif; font-weight: 600; font-size: 0.95rem; width: 256px; height: 18px; text-align: center; color: #F6DE8B">Beach Club</div>
@@ -813,9 +815,6 @@
 
     <section style="max-width:1180px;margin:0 auto;padding:0 32px 20px;">
       <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;border-bottom:2px solid rgba(48,21,9,0.15);padding-bottom:18px;">
-        <sc-for list="{{ projFilters }}" as="f" hint-placeholder-count="5">
-          <div sc-camel-on-click="{{ f.pick }}" style="cursor:pointer;border:2px solid {{ f.border }};background:{{ f.bg }};color:{{ f.fg }};border-radius:999px;padding:9px 20px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.88rem;">{{ f.label }}</div>
-        </sc-for>
         <div sc-camel-on-click="{{ toggleAddProject }}" style="margin-left:auto;display:{{ editDisplay }};cursor:pointer;background:#301509;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:11px 22px;border-radius:999px;font-size:0.9rem;">{{ addProjectLabel }}</div>
       </div>
     </section>
@@ -876,6 +875,7 @@
             </div>
             <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; justify-content: center">
               <h3 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.02rem;margin:0;display:{{ viewDisplay }};">{{ p.title }}</h3>
+              <span style="font-size:0.84rem;color:rgba(48,21,9,0.55);">{{ p.brandCount }}</span>
               <input value="{{ p.title }}" sc-camel-on-change="{{ p.onTitle }}" sc-camel-on-click="{{ stop }}" style="display:{{ editDisplay }};flex:1;min-width:0;font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.02rem;color:#301509;border:2px solid rgba(48,21,9,0.2);border-radius:10px;padding:7px 11px;background:#FFFBF0;outline:none;">
               
               <label title="Añadir una marca con sus fotos" sc-camel-on-click="{{ stop }}" style="display:{{ editDisplay }};cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.84rem;color:#DA4435;">+ Marca
@@ -952,7 +952,7 @@
           </div>
         </sc-for>
         <sc-if value="{{ dTrulyEmpty }}" hint-placeholder-val="{{ false }}">
-          <div style="grid-column:1/-1;border:2px dashed rgba(48,21,9,0.25);border-radius:12px;padding:44px 24px;text-align:center;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.95rem;color:rgba(48,21,9,0.6);">Todavía no hay marcas en este proyecto.</div>
+          <div style="grid-column:1/-1;border:2px dashed rgba(48,21,9,0.25);border-radius:12px;padding:44px 24px;text-align:center;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.95rem;color:rgba(48,21,9,0.6);">Muy pronto verás aquí los proyectos de esta categoría.</div>
         </sc-if>
       </div>
       <div sc-camel-on-click="{{ dAddWork }}" style="display:{{ editDisplay }};margin-top:28px;cursor:pointer;background:#301509;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:12px 24px;border-radius:999px;font-size:0.9rem;width:max-content;">+ Añadir marca</div>
@@ -1073,6 +1073,12 @@ class Component extends DCLogic {
       { id: 'p4', title: 'Festivales', type: 'Festivales', year: '2025', images: ['assets/img/proyectos/festival.jpg'] },
       { id: 'p5', title: 'Beach Club', type: 'Discotecas / Club', year: '2025', images: ['assets/img/proyectos/beach-club.jpg'] }
     ];
+  }
+
+  openCategory(id) {
+    const all = this.state.projects || this.seedProjects();
+    if (all.some(x => x.id === id)) { this.setState({ openProject: id }); this.go('proyecto'); }
+    else this.go('proyectos');
   }
 
   projectState() {
@@ -1431,7 +1437,7 @@ class Component extends DCLogic {
     const draft = this.state.draft || { title: '', type: 'Bodas', year: '', images: [] };
     const types = ['Todos', 'Bodas', 'Discotecas / Club', 'Eventos corporativos', 'Festivales'];
     const canSave = !!(draft.title && draft.title.trim());
-    const shown = all.filter(p => filter === 'Todos' || this.canonType(p.type) === this.canonType(filter));
+    const shown = all;
     return {
       noProjects: shown.length === 0,
       emptyText: 'Todavía no hay proyectos de este tipo.',
@@ -1458,8 +1464,8 @@ class Component extends DCLogic {
         })),
         open: () => { this.setState({ openProject: p.id }); this.go('proyecto'); },
         brandCount: (p.works || []).length > 0
-          ? ((p.works || []).length === 1 ? '1 marca' : (p.works || []).length + ' marcas')
-          : (this.props.editMode === true ? 'Sin marcas' : (p.images.length === 1 ? '1 imagen' : p.images.length + ' imágenes')),
+          ? ((p.works || []).length === 1 ? '1 proyecto' : (p.works || []).length + ' proyectos')
+          : (this.props.editMode === true ? 'Sin marcas' : ''),
         onBrandImages: e => {
           this.readFiles(e, urls => {
             this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, {
@@ -1535,11 +1541,11 @@ class Component extends DCLogic {
         remove: () => this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, { images: x.images.filter((_, i) => i !== idx) }) : x))
       })),
       dWorksCount: (p.works || []).length > 0
-        ? ((p.works || []).length === 1 ? '1 marca' : (p.works || []).length + ' marcas')
+        ? ((p.works || []).length === 1 ? '1 proyecto' : (p.works || []).length + ' proyectos')
         : (this.props.editMode === true ? 'Sin marcas' : ''),
       dNoWorks: (p.works || []).length === 0,
       dHasImages: this.props.editMode === true,
-      dTrulyEmpty: p.images.length === 0 && (p.works || []).length === 0,
+      dTrulyEmpty: (p.works || []).length === 0,
       dAddWork: () => this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, { works: (x.works || []).concat([{ id: 'w' + Date.now(), brand: 'Nueva marca', images: [] }]) }) : x)),
       dWorks: (p.works || []).map(w => ({
         brand: w.brand,
@@ -1635,11 +1641,12 @@ class Component extends DCLogic {
       goBodas: () => this.go('bodas'),
       goContacto: () => this.go('contacto'),
       goProyectos: () => { this.setState({ projFilter: 'Todos' }); this.go('proyectos'); },
-      goCatBoda: () => { this.setState({ projFilter: 'Bodas' }); this.go('proyectos'); },
-      goCatClub: () => { this.setState({ projFilter: 'Discotecas / Club' }); this.go('proyectos'); },
-      goCatMarca: () => { this.setState({ projFilter: 'Eventos corporativos' }); this.go('proyectos'); },
-      goCatFestival: () => { this.setState({ projFilter: 'Festivales' }); this.go('proyectos'); },
-      goCatCorp: () => { this.setState({ projFilter: 'Eventos corporativos' }); this.go('proyectos'); },
+      goCatBoda: () => this.openCategory('p1'),
+      goCatClub: () => this.openCategory('p2'),
+      goCatMarca: () => this.openCategory('p3'),
+      goCatFestival: () => this.openCategory('p4'),
+      goCatCorp: () => this.openCategory('p3'),
+      goCatBeach: () => this.openCategory('p5'),
       goConf: () => this.go(v === 'bodas' ? 'bodas' : 'b2b'),
       sendContact: () => {
         const g = n => {
