@@ -1067,11 +1067,11 @@ class Component extends DCLogic {
 
   seedProjects() {
     return [
-      { id: 'p1', title: 'Boda', type: 'Bodas', year: '2025', images: ['./boda-image.jpeg', './home-img-abk-mtwxt4bd-grv0.jpg'] },
-      { id: 'p2', title: 'Spook', type: 'Discotecas / Club', year: '2025', images: ['./club.jpg'], works: [{ id: 'w1', brand: 'Spook', text: '', images: ['./club.jpg'] }] },
-      { id: 'p3', title: 'Eventos corporativos', type: 'Eventos corporativos', year: '2024', images: ['./evento-corporativo.jpg'] },
-      { id: 'p4', title: 'Festivales', type: 'Festivales', year: '2025', images: ['./festivales.jpg'] },
-      { id: 'p5', title: 'Beach Club', type: 'Discotecas / Club', year: '2025', images: ['./beach-club.jpg'] }
+      { id: 'p1', title: 'Boda', type: 'Bodas', year: '2025', images: ['assets/img/proyectos/boda.jpg'] },
+      { id: 'p2', title: 'Spook', type: 'Discotecas / Club', year: '2025', images: ['assets/img/proyectos/spook-club.jpg'], works: [{ id: 'w1', brand: 'Spook', text: '', images: ['assets/img/proyectos/spook-club.jpg'] }] },
+      { id: 'p3', title: 'Eventos corporativos', type: 'Eventos corporativos', year: '2024', images: ['assets/img/proyectos/evento-corporativo.jpg'] },
+      { id: 'p4', title: 'Festivales', type: 'Festivales', year: '2025', images: ['assets/img/proyectos/festival.jpg'] },
+      { id: 'p5', title: 'Beach Club', type: 'Discotecas / Club', year: '2025', images: ['assets/img/proyectos/beach-club.jpg'] }
     ];
   }
 
@@ -1101,8 +1101,13 @@ class Component extends DCLogic {
         const seeds = this.seedProjects();
         const list = JSON.parse(raw).map(p => {
           const seed = seeds.filter(x => x.id === p.id)[0];
-          const images = (p.images && p.images.length) ? p.images : (seed ? seed.images : []);
-          return Object.assign({}, p, { type: this.canonType(p.type), images });
+          // Antiguas rutas de ejemplo que no existen: se sustituyen por las imágenes reales
+          const legacy = { './boda-image.jpeg': 'assets/img/proyectos/boda.jpg', './home-img-abk-mtwxt4bd-grv0.jpg': null, './club.jpg': 'assets/img/proyectos/spook-club.jpg', './evento-corporativo.jpg': 'assets/img/proyectos/evento-corporativo.jpg', './festivales.jpg': 'assets/img/proyectos/festival.jpg', './beach-club.jpg': 'assets/img/proyectos/beach-club.jpg' };
+          const fix = arr => (arr || []).map(u => (u in legacy) ? legacy[u] : u).filter(Boolean);
+          const stored = fix(p.images);
+          const images = stored.length ? stored : (seed ? seed.images : []);
+          const works = p.works ? p.works.map(w => Object.assign({}, w, { images: fix(w.images) })) : p.works;
+          return Object.assign({}, p, { type: this.canonType(p.type), images, works });
         });
         this.setState({ projects: list, dirty: false });
       }
