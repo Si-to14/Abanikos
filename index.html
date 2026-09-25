@@ -136,6 +136,12 @@
     'Evento corporativo': 'Corporate event', 'Festivales': 'Festivals',
     'Todavía no hay proyectos de este tipo.': 'No projects of this type yet.',
     'Todavía no hay marcas en este proyecto.': 'No brands in this project yet.',
+    'Muy pronto verás aquí los proyectos de esta categoría.': 'Projects in this category are coming soon.',
+    'Conceptos': 'Concepts', 'Concepto': 'Concept', '← Todos los conceptos': '← All concepts',
+    'Deporte': 'Sports', 'Moda': 'Fashion', 'Supermercado alemán': 'German supermarket',
+    '¿Quieres el de tu marca?': 'Want one for your brand?',
+    'Así imaginamos el abanico de algunas marcas que nos inspiran. Diseños de inspiración creados por Abanikos: no son colaboraciones oficiales ni están respaldados por las marcas.': 'This is how we imagine the hand fan for some brands that inspire us. Inspiration designs created by Abanikos: they are not official collaborations and are not endorsed by the brands.',
+    'Diseño de inspiración creado por Abanikos. No es una colaboración oficial ni está respaldado por la marca.': 'Inspiration design created by Abanikos. Not an official collaboration and not endorsed by the brand.',
     'Sin imágenes': 'No images', 'Sin imágenes todavía': 'No images yet', 'Sin portada': 'No cover',
     'Pendiente de contenido': 'Content coming soon', 'Sin marcas': 'No brands', 'Nueva marca': 'New brand',
     'Club — abanikos de noche': 'Club — night abanikos', 'Festival — abanikos de merch': 'Festival — merch abanikos',
@@ -156,6 +162,8 @@
     [/^1 imagen$/, '1 image'], [/^(\d+) imágenes$/, '$1 images'],
     [/^1 diseño$/, '1 design'], [/^(\d+) diseños$/, '$1 designs'],
     [/^1 marca$/, '1 brand'], [/^(\d+) marcas$/, '$1 brands'],
+    [/^1 proyecto$/, '1 project'], [/^(\d+) proyectos$/, '$1 projects'],
+    [/^Boda (\d+)$/, 'Wedding $1'],
     [/^Seleccionado: (.+)$/, 'Selected: $1']
   ];
 
@@ -289,6 +297,7 @@
       <div sc-camel-on-click="{{ goHome }}" style="font-family:'Bagel Fat One',cursive;font-size:1.55rem;color:#DA4435;cursor:pointer;line-height:1;">abanikos</div>
       <nav style="display:flex;flex-wrap:wrap;justify-content:flex-end;gap:16px 26px;align-items:center;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.95rem;">
         <div sc-camel-on-click="{{ goProyectos }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubProyectos }};color:#301509;">Proyectos</div>
+        <div sc-camel-on-click="{{ goConceptos }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubConceptos }};color:#301509;">Conceptos</div>
         <div sc-camel-on-click="{{ goB2b }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubB2b }};color:#ec3013;"><b>Abanikos</b></div>
         
         <div sc-camel-on-click="{{ goContacto }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubContacto }};color:#301509;">Contacto</div>
@@ -407,7 +416,7 @@
             
           </div>
         </div>
-        <div sc-camel-on-click="{{ goCatClub }}" style="cursor:pointer;">
+        <div sc-camel-on-click="{{ goCatBeach }}" style="cursor:pointer;">
           <div style="aspect-ratio:4/5;"><image-slot id="gal-4" src="assets/img/gal-4.webp" shape="rounded" radius="20" placeholder="Festival — abanikos de merch" style="border-radius: 10px"></image-slot></div>
           <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:12px;">
             <div style="font-family: 'Fredoka',sans-serif; font-weight: 600; font-size: 0.95rem; width: 256px; height: 18px; text-align: center; color: #F6DE8B">Beach Club</div>
@@ -807,15 +816,15 @@
   <sc-if value="{{ isProyectos }}" hint-placeholder-val="{{ false }}">
   <div>
     <section style="max-width:1180px;margin:0 auto;padding:44px 32px 22px;">
-      <h1 style="font-family: 'Bagel Fat One',cursive; font-weight: 400; font-size: clamp(1.9rem,4vw,2.6rem); line-height: 1.05; margin: 0; color: #DA4435; text-align: center">Historias con Abanikos</h1>
-      
+      <h1 style="font-family: 'Bagel Fat One',cursive; font-weight: 400; font-size: clamp(1.9rem,4vw,2.6rem); line-height: 1.05; margin: 0; color: #DA4435; text-align: center">{{ listTitle }}</h1>
+      <sc-if value="{{ isConceptList }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:14px auto 0;max-width:62ch;text-align:center;font-size:1.02rem;line-height:1.6;color:rgba(48,21,9,0.75);">Así imaginamos el abanico de algunas marcas que nos inspiran. Diseños de inspiración creados por Abanikos: no son colaboraciones oficiales ni están respaldados por las marcas.</p>
+      </sc-if>
+
     </section>
 
     <section style="max-width:1180px;margin:0 auto;padding:0 32px 20px;">
       <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;border-bottom:2px solid rgba(48,21,9,0.15);padding-bottom:18px;">
-        <sc-for list="{{ projFilters }}" as="f" hint-placeholder-count="5">
-          <div sc-camel-on-click="{{ f.pick }}" style="cursor:pointer;border:2px solid {{ f.border }};background:{{ f.bg }};color:{{ f.fg }};border-radius:999px;padding:9px 20px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.88rem;">{{ f.label }}</div>
-        </sc-for>
         <div sc-camel-on-click="{{ toggleAddProject }}" style="margin-left:auto;display:{{ editDisplay }};cursor:pointer;background:#301509;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:11px 22px;border-radius:999px;font-size:0.9rem;">{{ addProjectLabel }}</div>
       </div>
     </section>
@@ -833,7 +842,11 @@
                 <option>Bodas</option>
                 <option>Discotecas / Club</option>
                 <option>Eventos corporativos</option>
+                <option>Beach Club</option>
                 <option>Festivales</option>
+                <option>Deporte</option>
+                <option>Retail</option>
+                <option>Moda</option>
               </sc-raw-select>
             </label>
             <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Año
@@ -868,7 +881,7 @@
             <div style="position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#FBF0CE;">
               {{ p.coverEl }}
               <sc-if value="{{ p.noCover }}" hint-placeholder-val="{{ false }}">
-                <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:18px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;color:rgba(48,21,9,0.45);">Sin portada</div>
+                <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:18px;text-align:center;font-family:'Bagel Fat One',cursive;font-size:1.6rem;color:rgba(218,68,53,0.55);">{{ p.title }}</div>
               </sc-if>
               <label title="Añadir imágenes" sc-camel-on-click="{{ stop }}" style="position:absolute;top:10px;right:10px;display:{{ editDisplay }};cursor:pointer;background:rgba(48,21,9,0.78);color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.78rem;padding:6px 13px;border-radius:999px;">+ Imágenes
                 <input type="file" accept="image/*" multiple="{{ true }}" sc-camel-on-change="{{ p.onImages }}" style="display:none;">
@@ -876,6 +889,7 @@
             </div>
             <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; justify-content: center">
               <h3 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.02rem;margin:0;display:{{ viewDisplay }};">{{ p.title }}</h3>
+              <span style="font-size:0.84rem;color:rgba(48,21,9,0.55);">{{ p.brandCount }}</span>
               <input value="{{ p.title }}" sc-camel-on-change="{{ p.onTitle }}" sc-camel-on-click="{{ stop }}" style="display:{{ editDisplay }};flex:1;min-width:0;font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.02rem;color:#301509;border:2px solid rgba(48,21,9,0.2);border-radius:10px;padding:7px 11px;background:#FFFBF0;outline:none;">
               
               <label title="Añadir una marca con sus fotos" sc-camel-on-click="{{ stop }}" style="display:{{ editDisplay }};cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.84rem;color:#DA4435;">+ Marca
@@ -903,7 +917,7 @@
   <sc-if value="{{ isProyecto }}" hint-placeholder-val="{{ false }}">
   <div>
     <section style="max-width:1180px;margin:0 auto;padding:36px 32px 24px;">
-      <div sc-camel-on-click="{{ goProyectos }}" style="display:inline-block;cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.88rem;color:#DA4435;margin-bottom:18px;">← Todos los proyectos</div>
+      <div sc-camel-on-click="{{ dBack }}" style="display:inline-block;cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.88rem;color:#DA4435;margin-bottom:18px;">{{ dBackLabel }}</div>
       <h1 style="font-family:'Bagel Fat One',cursive;font-weight:400;font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.05;margin:0;color:#DA4435;display:{{ viewDisplay }};">{{ dTitle }}</h1>
       <input value="{{ dTitle }}" sc-camel-on-change="{{ dOnTitle }}" style="display:{{ editDisplay }};width:100%;max-width:520px;font-family:'Bagel Fat One',cursive;font-size:clamp(1.5rem,3.2vw,2rem);color:#DA4435;border:2px solid rgba(48,21,9,0.2);border-radius:12px;padding:10px 14px;background:#FFFBF0;outline:none;">
       <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:14px;border-bottom:2px solid rgba(48,21,9,0.15);padding-bottom:16px;">
@@ -937,7 +951,10 @@
             <div style="position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#FBF0CE;">
               {{ w.coverEl }}
               <sc-if value="{{ w.isEmpty }}" hint-placeholder-val="{{ false }}">
-                <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;color:rgba(48,21,9,0.45);">Sin imágenes</div>
+                <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:18px;text-align:center;font-family:'Bagel Fat One',cursive;font-size:1.6rem;color:rgba(218,68,53,0.55);">{{ w.brand }}</div>
+              </sc-if>
+              <sc-if value="{{ w.isConcept }}" hint-placeholder-val="{{ false }}">
+                <span style="position:absolute;top:10px;left:10px;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.74rem;letter-spacing:0.04em;color:#FFFBF0;background:rgba(48,21,9,0.78);border-radius:999px;padding:5px 12px;">Concepto</span>
               </sc-if>
               <label title="Añadir imágenes" sc-camel-on-click="{{ stop }}" style="position:absolute;top:10px;right:10px;display:{{ editDisplay }};cursor:pointer;background:rgba(48,21,9,0.78);color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.78rem;padding:6px 13px;border-radius:999px;">+ Imágenes
                 <input type="file" accept="image/*" multiple="{{ true }}" sc-camel-on-change="{{ w.onImages }}" style="display:none;">
@@ -952,7 +969,7 @@
           </div>
         </sc-for>
         <sc-if value="{{ dTrulyEmpty }}" hint-placeholder-val="{{ false }}">
-          <div style="grid-column:1/-1;border:2px dashed rgba(48,21,9,0.25);border-radius:12px;padding:44px 24px;text-align:center;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.95rem;color:rgba(48,21,9,0.6);">Todavía no hay marcas en este proyecto.</div>
+          <div style="grid-column:1/-1;border:2px dashed rgba(48,21,9,0.25);border-radius:12px;padding:44px 24px;text-align:center;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.95rem;color:rgba(48,21,9,0.6);">Muy pronto verás aquí los proyectos de esta categoría.</div>
         </sc-if>
       </div>
       <div sc-camel-on-click="{{ dAddWork }}" style="display:{{ editDisplay }};margin-top:28px;cursor:pointer;background:#301509;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:12px 24px;border-radius:999px;font-size:0.9rem;width:max-content;">+ Añadir marca</div>
@@ -975,6 +992,9 @@
       <input value="{{ mBrand }}" sc-camel-on-change="{{ mOnBrand }}" placeholder="Nombre de la marca" style="display:{{ editDisplay }};width:100%;max-width:520px;font-family:'Bagel Fat One',cursive;font-size:clamp(1.5rem,3.2vw,2rem);color:#DA4435;border:2px solid rgba(48,21,9,0.2);border-radius:12px;padding:10px 14px;background:#FFFBF0;outline:none;">
       <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:14px;border-bottom:2px solid rgba(48,21,9,0.15);padding-bottom:16px;">
         <span style="font-family:'Fredoka',sans-serif;font-size:0.8rem;color:#FFFBF0;background:#DA4435;border-radius:999px;padding:4px 14px;">{{ mType }}</span>
+        <sc-if value="{{ mIsConcept }}" hint-placeholder-val="{{ false }}">
+          <span style="font-family:'Fredoka',sans-serif;font-size:0.8rem;color:#FFFBF0;background:#301509;border-radius:999px;padding:4px 14px;">Concepto</span>
+        </sc-if>
         <span style="font-size:0.88rem;color:rgba(48,21,9,0.6);">{{ mCount }}</span>
         <label style="margin-left:auto;display:{{ editDisplay }};cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.85rem;color:#DA4435;">+ Añadir imágenes
           <input type="file" accept="image/*" multiple="{{ true }}" sc-camel-on-change="{{ mOnImages }}" style="display:none;">
@@ -1011,9 +1031,15 @@
       </div>
     </section>
 
+    <sc-if value="{{ mIsConcept }}" hint-placeholder-val="{{ false }}">
+      <section style="max-width:1180px;margin:0 auto;padding:0 32px 40px;">
+        <p style="margin:0;font-size:0.86rem;line-height:1.55;color:rgba(48,21,9,0.6);max-width:70ch;">Diseño de inspiración creado por Abanikos. No es una colaboración oficial ni está respaldado por la marca.</p>
+      </section>
+    </sc-if>
+
     <section style="background:#DA4435;color:#FFFBF0;">
       <div style="max-width:780px;margin:0 auto;padding:64px 32px;">
-        <h2 style="font-family:'Bagel Fat One',cursive;font-weight:400;font-size:clamp(1.6rem,3.6vw,2.1rem);margin:0 0 20px;">¿Quieres algo así para tu marca?</h2>
+        <h2 style="font-family:'Bagel Fat One',cursive;font-weight:400;font-size:clamp(1.6rem,3.6vw,2.1rem);margin:0 0 20px;">{{ mCtaTitle }}</h2>
         <div sc-camel-on-click="{{ goConf }}" style="display:inline-block;cursor:pointer;background:#FFFBF0;color:#DA4435;font-family:'Fredoka',sans-serif;font-weight:600;padding:14px 28px;border-radius:999px;">Escríbenos por Whatsapp</div>
       </div>
     </section>
@@ -1037,6 +1063,7 @@
             <div sc-camel-on-click="{{ goB2b }}" style="cursor:pointer;">Empresas</div>
             <div sc-camel-on-click="{{ goBodas }}" style="cursor:pointer;">Bodas</div>
             <div sc-camel-on-click="{{ goProyectos }}" style="cursor:pointer;">Proyectos</div>
+            <div sc-camel-on-click="{{ goConceptos }}" style="cursor:pointer;">Conceptos</div>
             <div sc-camel-on-click="{{ goContacto }}" style="cursor:pointer;">Contacto</div>
           </div>
         </div>
@@ -1066,13 +1093,26 @@ class Component extends DCLogic {
   }
 
   seedProjects() {
+    const img = f => 'assets/img/proyectos/' + f;
+    const w = (id, brand, images) => ({ id, brand, text: '', images: images || [] });
     return [
-      { id: 'p1', title: 'Bodas', type: 'Bodas', year: '2025', images: ['assets/img/proyectos/boda.jpg'] },
-      { id: 'p2', title: 'Discotecas / Club', type: 'Discotecas / Club', year: '2025', images: ['assets/img/proyectos/spook-club.jpg'], works: [{ id: 'w1', brand: 'Spook', text: '', images: ['assets/img/proyectos/spook-club.jpg'] }] },
-      { id: 'p3', title: 'Eventos corporativos', type: 'Eventos corporativos', year: '2024', images: ['assets/img/proyectos/evento-corporativo.jpg'] },
-      { id: 'p4', title: 'Festivales', type: 'Festivales', year: '2025', images: ['assets/img/proyectos/festival.jpg'] },
-      { id: 'p5', title: 'Beach Club', type: 'Discotecas / Club', year: '2025', images: ['assets/img/proyectos/beach-club.jpg'] }
+      // Proyectos reales
+      { id: 'p1', title: 'Bodas', type: 'Bodas', year: '', images: [img('boda.jpg')], works: [w('w-boda-1', 'Boda 1'), w('w-boda-2', 'Boda 2')] },
+      { id: 'p2', title: 'Discotecas / Club', type: 'Discotecas / Club', year: '', images: [img('spook-club.jpg')], works: [w('w1', 'Spook', [img('spook-club.jpg')])] },
+      { id: 'p5', title: 'Beach Club', type: 'Beach Club', year: '', images: [img('beach-club.jpg')], works: [w('w-cala-duo', 'Cala Duo')] },
+      { id: 'p3', title: 'Eventos corporativos', type: 'Eventos corporativos', year: '', images: [img('evento-corporativo.jpg')], works: [w('w-unode50', 'UNOde50')] },
+      // Conceptos: diseños de inspiración, no colaboraciones reales
+      { id: 'c1', section: 'conceptos', title: 'Deporte', type: 'Deporte', year: '', images: [], works: [w('c-villarreal', 'Villarreal CF'), w('c-wimbledon', 'Wimbledon')] },
+      { id: 'c2', section: 'conceptos', title: 'Retail', type: 'Retail', year: '', images: [], works: [w('c-supermercado', 'Supermercado alemán')] }
     ];
+  }
+
+  isConcept(p) { return !!p && p.section === 'conceptos'; }
+
+  openCategory(id) {
+    const all = this.state.projects || this.seedProjects();
+    if (all.some(x => x.id === id)) { this.setState({ openProject: id }); this.go('proyecto'); }
+    else this.go('proyectos');
   }
 
   projectState() {
@@ -1096,7 +1136,7 @@ class Component extends DCLogic {
 
   componentDidMount() {
     try {
-      const raw = window.localStorage.getItem('abanikos.projects');
+      const raw = window.localStorage.getItem('abanikos.projects.v2');
       if (raw) {
         const seeds = this.seedProjects();
         const list = JSON.parse(raw).map(p => {
@@ -1169,7 +1209,7 @@ class Component extends DCLogic {
 
   saveProjects() {
     try {
-      window.localStorage.setItem('abanikos.projects', JSON.stringify(this.state.projects || this.seedProjects()));
+      window.localStorage.setItem('abanikos.projects.v2', JSON.stringify(this.state.projects || this.seedProjects()));
       this.setState({ dirty: false, savedAt: Date.now(), saveError: '' });
     } catch (e) {
       this.setState({ saveError: 'No se pudo guardar: demasiadas imágenes para el almacenamiento del navegador.' });
@@ -1178,7 +1218,7 @@ class Component extends DCLogic {
 
   discardProjects() {
     try {
-      const raw = window.localStorage.getItem('abanikos.projects');
+      const raw = window.localStorage.getItem('abanikos.projects.v2');
       this.setState({ projects: raw ? JSON.parse(raw) : this.seedProjects(), dirty: false });
     } catch (e) {
       this.setState({ projects: this.seedProjects(), dirty: false });
@@ -1431,9 +1471,12 @@ class Component extends DCLogic {
     const draft = this.state.draft || { title: '', type: 'Bodas', year: '', images: [] };
     const types = ['Todos', 'Bodas', 'Discotecas / Club', 'Eventos corporativos', 'Festivales'];
     const canSave = !!(draft.title && draft.title.trim());
-    const shown = all.filter(p => filter === 'Todos' || this.canonType(p.type) === this.canonType(filter));
+    const section = this.state.view === 'conceptos' ? 'conceptos' : 'proyectos';
+    const shown = all.filter(p => (p.section || 'proyectos') === section);
     return {
       noProjects: shown.length === 0,
+      listTitle: section === 'conceptos' ? 'Conceptos' : 'Historias con Abanikos',
+      isConceptList: section === 'conceptos',
       emptyText: 'Todavía no hay proyectos de este tipo.',
       projFilters: types.map(t => ({
         label: t,
@@ -1458,8 +1501,8 @@ class Component extends DCLogic {
         })),
         open: () => { this.setState({ openProject: p.id }); this.go('proyecto'); },
         brandCount: (p.works || []).length > 0
-          ? ((p.works || []).length === 1 ? '1 marca' : (p.works || []).length + ' marcas')
-          : (this.props.editMode === true ? 'Sin marcas' : (p.images.length === 1 ? '1 imagen' : p.images.length + ' imágenes')),
+          ? ((p.works || []).length === 1 ? (this.isConcept(p) ? '1 diseño' : '1 proyecto') : (p.works || []).length + (this.isConcept(p) ? ' diseños' : ' proyectos'))
+          : (this.props.editMode === true ? 'Sin marcas' : ''),
         onBrandImages: e => {
           this.readFiles(e, urls => {
             this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, {
@@ -1512,7 +1555,7 @@ class Component extends DCLogic {
       saveHint: canSave ? '' : 'Ponle un nombre al proyecto.',
       saveProject: () => {
         if (!canSave) return;
-        this.updateProjects(list => list.concat([{ id: 'p' + Date.now(), title: draft.title.trim(), type: draft.type, year: draft.year || '', images: draft.images }]));
+        this.updateProjects(list => list.concat([{ id: 'p' + Date.now(), section, title: draft.title.trim(), type: draft.type, year: draft.year || '', images: draft.images, works: [] }]));
         this.setState({ draft: { title: '', type: 'Bodas', year: '', images: [] }, addingProject: false });
       }
     };
@@ -1521,9 +1564,11 @@ class Component extends DCLogic {
   detailVals() {
     const all = this.state.projects || this.seedProjects();
     const p = all.filter(x => x.id === this.state.openProject)[0];
-    if (!p) return { dTitle: '', dType: '', dYear: '', dCount: '', dIsEmpty: true, dImages: [], dHasImages: false, dTrulyEmpty: true, dWorks: [], dNoWorks: true, dWorksCount: '', dAddWork: () => {}, dOnImages: () => {}, dOnTitle: () => {} };
+    if (!p) return { dTitle: '', dType: '', dYear: '', dCount: '', dIsEmpty: true, dImages: [], dHasImages: false, dTrulyEmpty: true, dWorks: [], dNoWorks: true, dBackLabel: '← Todos los proyectos', dBack: () => this.go('proyectos'), dWorksCount: '', dAddWork: () => {}, dOnImages: () => {}, dOnTitle: () => {} };
     return {
       dTitle: p.title, dType: this.canonType(p.type), dYear: p.year,
+      dBackLabel: this.isConcept(p) ? '← Todos los conceptos' : '← Todos los proyectos',
+      dBack: () => this.go(this.isConcept(p) ? 'conceptos' : 'proyectos'),
       dOnTitle: e => {
         const v = e.target.value;
         this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, { title: v }) : x));
@@ -1535,17 +1580,18 @@ class Component extends DCLogic {
         remove: () => this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, { images: x.images.filter((_, i) => i !== idx) }) : x))
       })),
       dWorksCount: (p.works || []).length > 0
-        ? ((p.works || []).length === 1 ? '1 marca' : (p.works || []).length + ' marcas')
+        ? ((p.works || []).length === 1 ? (this.isConcept(p) ? '1 diseño' : '1 proyecto') : (p.works || []).length + (this.isConcept(p) ? ' diseños' : ' proyectos'))
         : (this.props.editMode === true ? 'Sin marcas' : ''),
       dNoWorks: (p.works || []).length === 0,
       dHasImages: this.props.editMode === true,
-      dTrulyEmpty: p.images.length === 0 && (p.works || []).length === 0,
+      dTrulyEmpty: (p.works || []).length === 0,
       dAddWork: () => this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, { works: (x.works || []).concat([{ id: 'w' + Date.now(), brand: 'Nueva marca', images: [] }]) }) : x)),
       dWorks: (p.works || []).map(w => ({
         brand: w.brand,
+        isConcept: this.isConcept(p),
         coverEl: this.imgEl((w.images || [])[0]),
         open: () => { this.setState({ openWork: w.id, slide: 0 }); this.go('marca'); },
-        count: w.images.length === 1 ? '1 imagen' : w.images.length + ' imágenes',
+        count: w.images.length === 0 ? '' : (w.images.length === 1 ? '1 imagen' : w.images.length + ' imágenes'),
         isEmpty: w.images.length === 0,
         images: w.images.map((url, i) => ({
           url, hasUrl: !!url, el: this.imgEl(url),
@@ -1574,7 +1620,7 @@ class Component extends DCLogic {
     if (!p || !w) {
       return { mBrand: '', mType: '', mCount: '', mText: '', mShowText: false, mTextDisplay: 'none', mCarouselMax: 'none', mProjectTitle: 'Proyectos', mThumbs: [], mSlideEl: null,
         mNoImages: true, mNavDisplay: 'none', mPosition: '', mPrev: () => {}, mNext: () => {},
-        mOnBrand: () => {}, mOnText: () => {}, mOnImages: () => {}, backToProject: () => this.go('proyectos') };
+        mOnBrand: () => {}, mOnText: () => {}, mOnImages: () => {}, mIsConcept: false, mCtaTitle: '¿Quieres algo así para tu marca?', backToProject: () => this.go('proyectos') };
     }
     const imgs = w.images || [];
     const i = Math.min(this.state.slide || 0, Math.max(0, imgs.length - 1));
@@ -1583,9 +1629,11 @@ class Component extends DCLogic {
       : x));
     return {
       mBrand: w.brand,
+      mIsConcept: this.isConcept(p),
+      mCtaTitle: this.isConcept(p) ? '¿Quieres el de tu marca?' : '¿Quieres algo así para tu marca?',
       mType: this.canonType(p.type),
       mProjectTitle: p.title,
-      mCount: imgs.length === 1 ? '1 imagen' : imgs.length + ' imágenes',
+      mCount: imgs.length === 0 ? '' : (imgs.length === 1 ? '1 imagen' : imgs.length + ' imágenes'),
       mText: w.text || '',
       mShowText: this.props.editMode === true || !!(w.text && w.text.trim()),
       mTextDisplay: (w.text && w.text.trim() && this.props.editMode !== true) ? 'block' : 'none',
@@ -1615,8 +1663,10 @@ class Component extends DCLogic {
     const w = this.conf('w', this.bodasSteps(), '#DA4435');
     const u = k => (v === k ? '#DA4435' : 'transparent');
     return {
-      isHome: v === 'home', isB2b: v === 'b2b', isBodas: v === 'bodas', isContacto: v === 'contacto', isProyectos: v === 'proyectos',
+      isHome: v === 'home', isB2b: v === 'b2b', isBodas: v === 'bodas', isContacto: v === 'contacto', isProyectos: v === 'proyectos' || v === 'conceptos',
       ubProyectos: v === 'proyectos' ? '#DA4435' : 'transparent',
+      ubConceptos: v === 'conceptos' ? '#DA4435' : 'transparent',
+      goConceptos: () => this.go('conceptos'),
       ...this.projectsVals(),
       ...this.detailVals(),
       ...this.brandVals(),
@@ -1635,11 +1685,12 @@ class Component extends DCLogic {
       goBodas: () => this.go('bodas'),
       goContacto: () => this.go('contacto'),
       goProyectos: () => { this.setState({ projFilter: 'Todos' }); this.go('proyectos'); },
-      goCatBoda: () => { this.setState({ projFilter: 'Bodas' }); this.go('proyectos'); },
-      goCatClub: () => { this.setState({ projFilter: 'Discotecas / Club' }); this.go('proyectos'); },
-      goCatMarca: () => { this.setState({ projFilter: 'Eventos corporativos' }); this.go('proyectos'); },
-      goCatFestival: () => { this.setState({ projFilter: 'Festivales' }); this.go('proyectos'); },
-      goCatCorp: () => { this.setState({ projFilter: 'Eventos corporativos' }); this.go('proyectos'); },
+      goCatBoda: () => this.openCategory('p1'),
+      goCatClub: () => this.openCategory('p2'),
+      goCatMarca: () => this.openCategory('p3'),
+      goCatFestival: () => this.go('proyectos'),
+      goCatCorp: () => this.openCategory('p3'),
+      goCatBeach: () => this.openCategory('p5'),
       goConf: () => this.go(v === 'bodas' ? 'bodas' : 'b2b'),
       sendContact: () => {
         const g = n => {
