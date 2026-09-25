@@ -1098,7 +1098,7 @@ class Component extends DCLogic {
     return [
       // Proyectos reales
       { id: 'p1', title: 'Bodas', type: 'Bodas', year: '', images: [img('boda.jpg')], works: [w('w-boda-1', 'Boda 1'), w('w-boda-2', 'Boda 2')] },
-      { id: 'p2', title: 'Discotecas / Club', type: 'Discotecas / Club', year: '', images: [img('spook-club.jpg')], works: [w('w1', 'Spook', [img('spook-club.jpg')])] },
+      { id: 'p2', title: 'Discotecas / Club', type: 'Discotecas / Club', year: '', images: [img('spook/01.webp')], works: [w('w1', 'Spook', ['spook/01.webp', 'spook/02.webp', 'spook/03.jpg', 'spook/04.jpg', 'spook/05.webp', 'spook-club.jpg'].map(img))] },
       { id: 'p5', title: 'Beach Club', type: 'Beach Club', year: '', images: [img('cala-duo/01.jpg')], works: [w('w-cala-duo', 'Cala Duo', [img('cala-duo/01.jpg'), img('cala-duo/02.jpg')])] },
       { id: 'p3', title: 'Eventos corporativos', type: 'Eventos corporativos', year: '', images: [img('evento-corporativo.jpg')], works: [w('w-unode50', 'UNOde50')] },
       // Conceptos: diseños de inspiración, no colaboraciones reales
@@ -1641,7 +1641,7 @@ class Component extends DCLogic {
       mNoImages: imgs.length === 0,
       mNavDisplay: imgs.length > 1 ? 'flex' : 'none',
       mPosition: imgs.length ? (i + 1) + ' / ' + imgs.length : '',
-      mSlideEl: this.imgEl(imgs[i]),
+      mSlideEl: this.imgEl(imgs[i], { width: '100%', height: '100%', objectFit: 'contain', display: 'block' }),
       mThumbs: imgs.map((url, k) => ({
         el: this.imgEl(url, { width: '100%', height: '100%', objectFit: 'cover', display: 'block' }),
         ring: k === i ? '#DA4435' : 'transparent',
