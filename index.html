@@ -842,6 +842,7 @@
                 <option>Bodas</option>
                 <option>Discotecas / Club</option>
                 <option>Eventos corporativos</option>
+                <option>Beach Club</option>
                 <option>Festivales</option>
                 <option>Deporte</option>
                 <option>Retail</option>
@@ -1097,7 +1098,8 @@ class Component extends DCLogic {
     return [
       // Proyectos reales
       { id: 'p1', title: 'Bodas', type: 'Bodas', year: '', images: [img('boda.jpg')], works: [w('w-boda-1', 'Boda 1'), w('w-boda-2', 'Boda 2')] },
-      { id: 'p2', title: 'Discotecas / Club', type: 'Discotecas / Club', year: '', images: [img('spook-club.jpg')], works: [w('w1', 'Spook', [img('spook-club.jpg')]), w('w-cala-duo', 'Cala Duo')] },
+      { id: 'p2', title: 'Discotecas / Club', type: 'Discotecas / Club', year: '', images: [img('spook-club.jpg')], works: [w('w1', 'Spook', [img('spook-club.jpg')])] },
+      { id: 'p5', title: 'Beach Club', type: 'Beach Club', year: '', images: [img('beach-club.jpg')], works: [w('w-cala-duo', 'Cala Duo')] },
       { id: 'p3', title: 'Eventos corporativos', type: 'Eventos corporativos', year: '', images: [img('evento-corporativo.jpg')], works: [w('w-unode50', 'UNOde50')] },
       // Conceptos: diseños de inspiración, no colaboraciones reales
       { id: 'c1', section: 'conceptos', title: 'Deporte', type: 'Deporte', year: '', images: [], works: [w('c-villarreal', 'Villarreal CF'), w('c-wimbledon', 'Wimbledon')] },
@@ -1688,7 +1690,7 @@ class Component extends DCLogic {
       goCatMarca: () => this.openCategory('p3'),
       goCatFestival: () => this.go('proyectos'),
       goCatCorp: () => this.openCategory('p3'),
-      goCatBeach: () => this.openCategory('p2'),
+      goCatBeach: () => this.openCategory('p5'),
       goConf: () => this.go(v === 'bodas' ? 'bodas' : 'b2b'),
       sendContact: () => {
         const g = n => {
