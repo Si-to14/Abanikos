@@ -139,9 +139,13 @@
     'Muy pronto verás aquí los proyectos de esta categoría.': 'Projects in this category are coming soon.',
     'Conceptos': 'Concepts', 'Concepto': 'Concept', '← Todos los conceptos': '← All concepts',
     'Boda Vicente & Virginia': 'Vicente & Virginia\u2019s wedding',
+    'Un detalle para los invitados: abanicos con un estampado de naranjas en acuarela para refrescar la celebración y que cada invitado se llevara un recuerdo de la boda.': 'A detail for the guests: hand fans with a watercolour orange print to keep the celebration cool and give every guest a keepsake of the wedding.',
+    'Abanicos con la identidad de Spook para su temporada de verano. El objetivo: que el público se llevara la marca de la pista a la calle y a las redes.': 'Hand fans with Spook\u2019s identity for their summer season. The goal: getting the crowd to carry the brand from the dance floor to the street and social media.',
+    'Abanicos personalizados para Cala Duo: una pieza útil bajo el sol del beach club que, a la vez, pone la marca en cada foto del verano.': 'Custom hand fans for Cala Duo: a useful piece under the beach club sun that also puts the brand in every summer photo.',
+    'Abanicos de madera con el logo de UNOde50 en la varilla, presentados en bandejas y entregados a las invitadas durante su evento como regalo de marca.': 'Wooden hand fans with the UNOde50 logo on the guard, presented on trays and handed to guests at their event as a brand gift.',
     'Deporte': 'Sports', 'Moda': 'Fashion', 'Bebidas': 'Drinks', 'Empresas corporativas': 'Corporate companies', 'Supermercado alemán': 'German supermarket',
     '¿Quieres el de tu marca?': 'Want one for your brand?',
-    'Así imaginamos el abanico de algunas marcas que nos inspiran. Diseños de inspiración creados por Abanikos: no son colaboraciones oficiales ni están respaldados por las marcas.': 'This is how we imagine the hand fan for some brands that inspire us. Inspiration designs created by Abanikos: they are not official collaborations and are not endorsed by the brands.',
+    'Así imaginamos el abanico de algunas marcas que nos inspiran.': 'This is how we imagine the hand fan for some brands that inspire us.',
     'Diseño de inspiración creado por Abanikos. No es una colaboración oficial ni está respaldado por la marca.': 'Inspiration design created by Abanikos. Not an official collaboration and not endorsed by the brand.',
     'Sin imágenes': 'No images', 'Sin imágenes todavía': 'No images yet', 'Sin portada': 'No cover',
     'Pendiente de contenido': 'Content coming soon', 'Sin marcas': 'No brands', 'Nueva marca': 'New brand',
@@ -336,7 +340,12 @@
           <div style="display:flex;align-items:center;gap:72px;padding-right:72px;">
             <sc-for list="{{ logos }}" as="logo" hint-placeholder-count="3">
               <div style="position:relative;flex:none;">
-                <div title="{{ logo.name }}" style="width:150px;height:56px;background:{{ logoColor }};-webkit-mask:{{ logo.mask }};mask:{{ logo.mask }};"></div>
+                <sc-if value="{{ logo.hasFile }}" hint-placeholder-val="{{ true }}">
+                  <div title="{{ logo.name }}" style="width:150px;height:56px;background:{{ logoColor }};-webkit-mask:{{ logo.mask }};mask:{{ logo.mask }};"></div>
+                </sc-if>
+                <sc-if value="{{ logo.noFile }}" hint-placeholder-val="{{ false }}">
+                  <div style="height:56px;display:flex;align-items:center;font-family:'Bagel Fat One',cursive;font-size:1.9rem;letter-spacing:0.02em;white-space:nowrap;color:{{ logoColor }};">{{ logo.name }}</div>
+                </sc-if>
                 <div sc-camel-on-click="{{ logo.remove }}" title="Quitar logo" style="position:absolute;top:-10px;right:-10px;width:22px;height:22px;border-radius:50%;background:#DA4435;color:#FFFBF0;font-size:0.8rem;line-height:22px;text-align:center;cursor:pointer;opacity:{{ editOpacity }};pointer-events:{{ editEvents }};">×</div>
               </div>
             </sc-for>
@@ -351,7 +360,12 @@
           <div aria-hidden="true" style="display:flex;align-items:center;gap:72px;padding-right:72px;">
             <sc-for list="{{ logos }}" as="logo" hint-placeholder-count="3">
               <div style="position:relative;flex:none;">
-                <div title="{{ logo.name }}" style="width:150px;height:56px;background:{{ logoColor }};-webkit-mask:{{ logo.mask }};mask:{{ logo.mask }};"></div>
+                <sc-if value="{{ logo.hasFile }}" hint-placeholder-val="{{ true }}">
+                  <div title="{{ logo.name }}" style="width:150px;height:56px;background:{{ logoColor }};-webkit-mask:{{ logo.mask }};mask:{{ logo.mask }};"></div>
+                </sc-if>
+                <sc-if value="{{ logo.noFile }}" hint-placeholder-val="{{ false }}">
+                  <div style="height:56px;display:flex;align-items:center;font-family:'Bagel Fat One',cursive;font-size:1.9rem;letter-spacing:0.02em;white-space:nowrap;color:{{ logoColor }};">{{ logo.name }}</div>
+                </sc-if>
                 <div sc-camel-on-click="{{ logo.remove }}" title="Quitar logo" style="position:absolute;top:-10px;right:-10px;width:22px;height:22px;border-radius:50%;background:#DA4435;color:#FFFBF0;font-size:0.8rem;line-height:22px;text-align:center;cursor:pointer;opacity:{{ editOpacity }};pointer-events:{{ editEvents }};">×</div>
               </div>
             </sc-for>
@@ -369,7 +383,7 @@
       <div style="max-width:1180px;margin:0 auto;padding:clamp(64px,8vw,100px) 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(40px,6vw,72px);align-items:center;">
         <div>
           
-          <p style="font-size: 1.2rem; line-height: 1.6; margin: 20px 0 0; max-width: 46ch; color: #2d2b2b">El abanico lleva siglos formando parte de nuestra cultura, pero casi siempre se ha asociado a una misma imagen.<br><br>Nuestra misión es modernizar el concepto del abanico a través de nuestros diseños para que cualquier persona pueda llevar un abanico.&nbsp;<br><br></p><div sc-camel-on-click="{{ goConf }}" style="display: inline-block; cursor: pointer; color: #f3f2f2; font-family: 'Fredoka',sans-serif; font-weight: 600; padding: 14px 28px; border-radius: 999px; background-color: #DA4435">Ver Abanikos</div>
+          <p style="font-size: 1.2rem; line-height: 1.6; margin: 20px 0 0; max-width: 46ch; color: #2d2b2b">El abanico lleva siglos formando parte de nuestra cultura, pero casi siempre se ha asociado a una misma imagen.<br><br>Nuestra misión es modernizar el concepto del abanico a través de nuestros diseños para que cualquier persona pueda llevar un abanico.&nbsp;<br><br></p><div sc-camel-on-click="{{ goConceptos }}" style="display: inline-block; cursor: pointer; color: #f3f2f2; font-family: 'Fredoka',sans-serif; font-weight: 600; padding: 14px 28px; border-radius: 999px; background-color: #DA4435">Ver Abanikos</div>
           
           
         </div>
@@ -437,7 +451,7 @@
         <h2 style="font-family: 'Bagel Fat One',cursive; font-weight: 400; font-size: clamp(1.6rem,3.4vw,2rem); margin: 0; text-align: center">Pide tu presupuesto</h2>
         
       </div>
-      <div style="border-radius: 28px; padding: clamp(24px,4vw,40px); background-color: #F6DE8BE8">
+      <div style="border-radius: 28px; padding: clamp(24px,4vw,40px); background-color: #FBF0CE">
         <div style="display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap;">
           <sc-for list="{{ wSteps }}" as="s" hint-placeholder-count="5">
             <div style="flex:1;min-width:96px;font-family:'Fredoka',sans-serif;font-size:0.78rem;color:{{ s.color }};font-weight:{{ s.weight }};">
@@ -819,7 +833,7 @@
     <section style="max-width:1180px;margin:0 auto;padding:44px 32px 22px;">
       <h1 style="font-family: 'Bagel Fat One',cursive; font-weight: 400; font-size: clamp(1.9rem,4vw,2.6rem); line-height: 1.05; margin: 0; color: #DA4435; text-align: center">{{ listTitle }}</h1>
       <sc-if value="{{ isConceptList }}" hint-placeholder-val="{{ false }}">
-        <p style="margin:14px auto 0;max-width:62ch;text-align:center;font-size:1.02rem;line-height:1.6;color:rgba(48,21,9,0.75);">Así imaginamos el abanico de algunas marcas que nos inspiran. Diseños de inspiración creados por Abanikos: no son colaboraciones oficiales ni están respaldados por las marcas.</p>
+        <p style="margin:14px auto 0;max-width:62ch;text-align:center;font-size:1.02rem;line-height:1.6;color:rgba(48,21,9,0.75);">Así imaginamos el abanico de algunas marcas que nos inspiran.</p>
       </sc-if>
 
     </section>
@@ -891,7 +905,6 @@
             </div>
             <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; justify-content: center">
               <h3 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.02rem;margin:0;display:{{ viewDisplay }};">{{ p.title }}</h3>
-              <span style="font-size:0.84rem;color:rgba(48,21,9,0.55);">{{ p.brandCount }}</span>
               <input value="{{ p.title }}" sc-camel-on-change="{{ p.onTitle }}" sc-camel-on-click="{{ stop }}" style="display:{{ editDisplay }};flex:1;min-width:0;font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.02rem;color:#301509;border:2px solid rgba(48,21,9,0.2);border-radius:10px;padding:7px 11px;background:#FFFBF0;outline:none;">
               
               <label title="Añadir una marca con sus fotos" sc-camel-on-click="{{ stop }}" style="display:{{ editDisplay }};cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.84rem;color:#DA4435;">+ Marca
@@ -926,7 +939,6 @@
         
         
         
-        <span style="font-size:0.88rem;color:rgba(48,21,9,0.6);">{{ dWorksCount }}</span>
       </div>
     </section>
 
@@ -950,7 +962,7 @@
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;">
         <sc-for list="{{ dWorks }}" as="w" hint-placeholder-count="0">
           <div sc-camel-on-click="{{ w.open }}" style="cursor:pointer;display:flex;flex-direction:column;gap:12px;">
-            <div style="position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#FBF0CE;">
+            <div style="position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:{{ w.cardBg }};">
               {{ w.coverEl }}
               <sc-if value="{{ w.isEmpty }}" hint-placeholder-val="{{ false }}">
                 <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:18px;text-align:center;font-family:'Bagel Fat One',cursive;font-size:1.6rem;color:rgba(218,68,53,0.55);">{{ w.brand }}</div>
@@ -965,7 +977,6 @@
             <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;">
               <h3 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.02rem;margin:0;display:{{ viewDisplay }};">{{ w.brand }}</h3>
               <input value="{{ w.brand }}" sc-camel-on-change="{{ w.onBrand }}" sc-camel-on-click="{{ stop }}" placeholder="Nombre de la marca" style="display:{{ editDisplay }};flex:1;min-width:0;font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;color:#301509;border:2px solid rgba(48,21,9,0.2);border-radius:10px;padding:7px 11px;background:#FFFBF0;outline:none;">
-              <span style="font-size:0.84rem;color:rgba(48,21,9,0.55);">{{ w.count }}</span>
               <div sc-camel-on-click="{{ w.remove }}" style="margin-left:auto;display:{{ editDisplay }};cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.84rem;color:rgba(48,21,9,0.5);">Eliminar</div>
             </div>
           </div>
@@ -997,7 +1008,6 @@
         <sc-if value="{{ mIsConcept }}" hint-placeholder-val="{{ false }}">
           <span style="font-family:'Fredoka',sans-serif;font-size:0.8rem;color:#FFFBF0;background:#301509;border-radius:999px;padding:4px 14px;">Concepto</span>
         </sc-if>
-        <span style="font-size:0.88rem;color:rgba(48,21,9,0.6);">{{ mCount }}</span>
         <label style="margin-left:auto;display:{{ editDisplay }};cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.85rem;color:#DA4435;">+ Añadir imágenes
           <input type="file" accept="image/*" multiple="{{ true }}" sc-camel-on-change="{{ mOnImages }}" style="display:none;">
         </label>
@@ -1096,34 +1106,39 @@ class Component extends DCLogic {
 
   seedProjects() {
     const img = f => 'assets/img/proyectos/' + f;
-    const w = (id, brand, images, logo, logoBg) => ({ id, brand, text: '', images: images || [], logo: logo || '', logoBg: logoBg || '' });
+    const w = (id, brand, images, logo, logoBg, text) => ({ id, brand, text: text || '', images: images || [], logo: logo || '', logoBg: logoBg || '' });
+    const cover = f => 'assets/img/conceptos/portadas/' + f;
     const concept = (dir, files) => files.map(f => 'assets/img/conceptos/' + dir + '/' + f);
     const logo = (dir, file) => 'assets/img/conceptos/' + dir + '/' + file;
     return [
       // Proyectos reales
-      { id: 'p1', title: 'Bodas', type: 'Bodas', year: '', images: [img('boda.jpg')], works: [w('w-boda-1', 'Boda Vicente & Virginia', ['boda-vicente-virginia/01.jpg', 'boda-vicente-virginia/02.jpg'].map(img))] },
+      { id: 'p1', title: 'Bodas', type: 'Bodas', year: '', images: [img('boda.jpg')], works: [w('w-boda-1', 'Boda Vicente & Virginia', ['boda-vicente-virginia/01.jpg', 'boda-vicente-virginia/02.jpg'].map(img), '', '',
+        'Un detalle para los invitados: abanicos con un estampado de naranjas en acuarela para refrescar la celebración y que cada invitado se llevara un recuerdo de la boda.')] },
       { id: 'p2', title: 'Discotecas y Beach Clubs', type: 'Discotecas y Beach Clubs', year: '', images: [img('spook-club.jpg')], works: [
-        w('w1', 'Spook', ['spook/05.webp', 'spook/01.webp', 'spook/02.webp', 'spook/03.jpg', 'spook/04.jpg'].map(img)),
-        w('w-cala-duo', 'Cala Duo', [img('cala-duo/01.jpg'), img('cala-duo/02.jpg')])
+        w('w1', 'Spook', ['spook/05.webp', 'spook/01.webp', 'spook/02.webp', 'spook/03.jpg', 'spook/04.jpg'].map(img), '', '',
+          'Abanicos con la identidad de Spook para su temporada de verano. El objetivo: que el público se llevara la marca de la pista a la calle y a las redes.'),
+        w('w-cala-duo', 'Cala Duo', [img('cala-duo/01.jpg'), img('cala-duo/02.jpg')], '', '',
+          'Abanicos personalizados para Cala Duo: una pieza útil bajo el sol del beach club que, a la vez, pone la marca en cada foto del verano.')
       ] },
-      { id: 'p3', title: 'Eventos corporativos', type: 'Eventos corporativos', year: '', images: [img('evento-corporativo.jpg')], works: [w('w-unode50', 'UNOde50', ['unode50/01.jpg', 'evento-corporativo.jpg', 'unode50/03.jpg'].map(img), img('unode50/logo.png'))] },
+      { id: 'p3', title: 'Eventos corporativos', type: 'Eventos corporativos', year: '', images: [img('evento-corporativo.jpg')], works: [w('w-unode50', 'UNOde50', ['unode50/01.jpg', 'evento-corporativo.jpg', 'unode50/03.jpg'].map(img), img('unode50/logo.png'), '',
+        'Abanicos de madera con el logo de UNOde50 en la varilla, presentados en bandejas y entregados a las invitadas durante su evento como regalo de marca.')] },
       // Conceptos: diseños de inspiración, no colaboraciones reales
-      { id: 'c1', section: 'conceptos', title: 'Deporte', type: 'Deporte', year: '', images: concept('villarreal', ['01.jpg']), works: [
+      { id: 'c1', section: 'conceptos', title: 'Deporte', type: 'Deporte', year: '', images: [cover('deporte-running.jpg')], works: [
         w('c-villarreal', 'Villarreal CF', concept('villarreal', ['01.jpg', '02.jpg', '03.jpg']), logo('villarreal', 'logo.png')),
         w('c-ud-ibiza', 'UD Ibiza', concept('ud-ibiza', ['01.jpg', '02.jpg', '03.jpg', '04.jpg']), logo('ud-ibiza', 'logo.png')),
         w('c-wimbledon', 'Wimbledon', concept('wimbledon', ['01.jpg', '02.jpg', '03.jpg', '04.jpg']), logo('wimbledon', 'logo.png'))
       ] },
-      { id: 'c3', section: 'conceptos', title: 'Bebidas', type: 'Bebidas', year: '', images: concept('ron-piet', ['02.jpg']), works: [
+      { id: 'c3', section: 'conceptos', title: 'Bebidas', type: 'Bebidas', year: '', images: [cover('bebidas.jpg')], works: [
         w('c-ron-piet', 'Ron Piet', concept('ron-piet', ['01.jpg', '02.jpg', '03.jpg']), logo('ron-piet', 'logo.png')),
         w('c-knut-hansen', 'Knut Hansen Dry Gin', concept('knut-hansen', ['01.jpg', '02.jpg', '03.jpg', '04.jpg']), logo('knut-hansen', 'logo.webp'))
       ] },
-      { id: 'c4', section: 'conceptos', title: 'Moda', type: 'Moda', year: '', images: concept('coolway', ['01.jpg']), works: [
+      { id: 'c4', section: 'conceptos', title: 'Moda', type: 'Moda', year: '', images: [cover('moda.jpg')], works: [
         w('c-coolway', 'Coolway', concept('coolway', ['01.jpg', '02.jpg', '03.jpg']), logo('coolway', 'logo.png'))
       ] },
       { id: 'c2', section: 'conceptos', title: 'Retail', type: 'Retail', year: '', images: concept('rewe', ['01.webp']), works: [
         w('c-rewe', 'REWE', concept('rewe', ['01.webp', '02.webp', '03.webp', '04.webp', '05.webp', '06.webp']), logo('rewe', 'logo.png'))
       ] },
-      { id: 'c5', section: 'conceptos', title: 'Empresas corporativas', type: 'Empresas corporativas', year: '', images: concept('power-electronics', ['04.jpg']), works: [
+      { id: 'c5', section: 'conceptos', title: 'Empresas corporativas', type: 'Empresas corporativas', year: '', images: [cover('empresas-corporativas.jpg')], works: [
         // logo blanco: va sobre el azul de la marca
         w('c-power-electronics', 'Power Electronics', concept('power-electronics', ['01.jpg', '02.jpg', '03.jpg', '04.jpg']), logo('power-electronics', 'logo.png'), '#2A16D7')
       ] }
@@ -1285,16 +1300,22 @@ class Component extends DCLogic {
   }
 
   logoList() {
-    const raw = this.props.logoFiles || 'disen-o-sin-ti-tulo-1--mu6lmaxb-sfsw.png, disen-o-sin-ti-tulo-4--mu6ln364-27ir.png, sofoco_logo-mu6v0sxp-mr0l.png';
+    // Marcas con las que hemos trabajado. Sin archivo, se muestra el nombre hasta tener el logo.
+    const brands = [
+      { name: 'Spook', file: '' },
+      { name: 'Basto', file: '' },
+      { name: 'Cala Duo', file: '' },
+      { name: 'Atenea', file: '' },
+      { name: 'UNOde50', file: 'assets/img/proyectos/unode50/logo.png' }
+    ];
     const removed = this.state.removedLogos || [];
-    return raw.split(',').map(x => x.trim()).filter(Boolean)
-      .filter(f => removed.indexOf(f) === -1)
-      .map(f => ({
-        file: f,
-        name: f.replace(/[-_].*$/, '').replace(/\.(png|jpe?g|svg|webp)$/i, ''),
-        mask: 'url("./' + f + '") center / contain no-repeat',
-        remove: () => this.setState(s => ({ removedLogos: (s.removedLogos || []).concat([f]) }))
-      }));
+    return brands.filter(b => removed.indexOf(b.name) === -1).map(b => ({
+      name: b.name,
+      hasFile: !!b.file,
+      noFile: !b.file,
+      mask: b.file ? 'url("' + b.file + '") center / contain no-repeat' : 'none',
+      remove: () => this.setState(s => ({ removedLogos: (s.removedLogos || []).concat([b.name]) }))
+    }));
   }
 
   b2bSteps() {
@@ -1513,7 +1534,7 @@ class Component extends DCLogic {
         title: p.title, type: this.canonType(p.type), year: p.year,
         basis: (n % 4 === 0 || n % 4 === 3) ? '58%' : '34%',
         cover: p.images[0] || '',
-        coverEl: this.imgEl(p.images[0]),
+        coverEl: this.imgEl(p.images[0], { width: '100%', height: '100%', objectFit: 'cover', objectPosition: p.coverPos || 'center', display: 'block' }),
         hasCover: !!p.images[0],
         noCover: !p.images[0],
         count: p.images.length === 1 ? '1 imagen' : p.images.length + ' imágenes',
@@ -1613,9 +1634,10 @@ class Component extends DCLogic {
       dWorks: (p.works || []).map(w => ({
         brand: w.brand,
         isConcept: this.isConcept(p),
+        cardBg: w.logo ? (w.logoBg || 'transparent') : '#FBF0CE',
         // Si la marca tiene logo/escudo, la portada es el logo; si no, su primera foto
         coverEl: w.logo
-          ? this.imgEl(w.logo, { width: '100%', height: '100%', objectFit: 'contain', display: 'block', background: w.logoBg || '#FFFFFF', padding: '8%', boxSizing: 'border-box' })
+          ? this.imgEl(w.logo, { width: '100%', height: '100%', objectFit: 'contain', display: 'block', background: 'transparent', padding: '10%', boxSizing: 'border-box' })
           : this.imgEl((w.images || [])[0]),
         open: () => { this.setState({ openWork: w.id, slide: 0 }); this.go('marca'); },
         count: w.images.length === 0 ? '' : (w.images.length === 1 ? '1 imagen' : w.images.length + ' imágenes'),
