@@ -138,7 +138,7 @@
     'Todavía no hay marcas en este proyecto.': 'No brands in this project yet.',
     'Muy pronto verás aquí los proyectos de esta categoría.': 'Projects in this category are coming soon.',
     'Conceptos': 'Concepts', 'Concepto': 'Concept', '← Todos los conceptos': '← All concepts',
-    'Deporte': 'Sports', 'Moda': 'Fashion', 'Supermercado alemán': 'German supermarket',
+    'Deporte': 'Sports', 'Moda': 'Fashion', 'Bebidas': 'Drinks', 'Empresas corporativas': 'Corporate companies', 'Supermercado alemán': 'German supermarket',
     '¿Quieres el de tu marca?': 'Want one for your brand?',
     'Así imaginamos el abanico de algunas marcas que nos inspiran. Diseños de inspiración creados por Abanikos: no son colaboraciones oficiales ni están respaldados por las marcas.': 'This is how we imagine the hand fan for some brands that inspire us. Inspiration designs created by Abanikos: they are not official collaborations and are not endorsed by the brands.',
     'Diseño de inspiración creado por Abanikos. No es una colaboración oficial ni está respaldado por la marca.': 'Inspiration design created by Abanikos. Not an official collaboration and not endorsed by the brand.',
@@ -846,6 +846,8 @@
                 <option>Deporte</option>
                 <option>Retail</option>
                 <option>Moda</option>
+                <option>Bebidas</option>
+                <option>Empresas corporativas</option>
               </sc-raw-select>
             </label>
             <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Año
@@ -1093,8 +1095,9 @@ class Component extends DCLogic {
 
   seedProjects() {
     const img = f => 'assets/img/proyectos/' + f;
-    const w = (id, brand, images, logo) => ({ id, brand, text: '', images: images || [], logo: logo || '' });
+    const w = (id, brand, images, logo, logoBg) => ({ id, brand, text: '', images: images || [], logo: logo || '', logoBg: logoBg || '' });
     const concept = (dir, files) => files.map(f => 'assets/img/conceptos/' + dir + '/' + f);
+    const logo = (dir, file) => 'assets/img/conceptos/' + dir + '/' + file;
     return [
       // Proyectos reales
       { id: 'p1', title: 'Bodas', type: 'Bodas', year: '', images: [img('boda.jpg')], works: [w('w-boda-1', 'Boda 1'), w('w-boda-2', 'Boda 2')] },
@@ -1105,11 +1108,24 @@ class Component extends DCLogic {
       { id: 'p3', title: 'Eventos corporativos', type: 'Eventos corporativos', year: '', images: [img('evento-corporativo.jpg')], works: [w('w-unode50', 'UNOde50')] },
       // Conceptos: diseños de inspiración, no colaboraciones reales
       { id: 'c1', section: 'conceptos', title: 'Deporte', type: 'Deporte', year: '', images: concept('villarreal', ['01.jpg']), works: [
-        w('c-villarreal', 'Villarreal CF', concept('villarreal', ['01.jpg', '02.jpg', '03.jpg']), 'assets/img/conceptos/villarreal/logo.png'),
-        w('c-ud-ibiza', 'UD Ibiza', concept('ud-ibiza', ['01.jpg', '02.jpg', '03.jpg', '04.jpg']), 'assets/img/conceptos/ud-ibiza/logo.png'),
-        w('c-wimbledon', 'Wimbledon')
+        w('c-villarreal', 'Villarreal CF', concept('villarreal', ['01.jpg', '02.jpg', '03.jpg']), logo('villarreal', 'logo.png')),
+        w('c-ud-ibiza', 'UD Ibiza', concept('ud-ibiza', ['01.jpg', '02.jpg', '03.jpg', '04.jpg']), logo('ud-ibiza', 'logo.png')),
+        w('c-wimbledon', 'Wimbledon', concept('wimbledon', ['01.jpg', '02.jpg', '03.jpg', '04.jpg']), logo('wimbledon', 'logo.png'))
       ] },
-      { id: 'c2', section: 'conceptos', title: 'Retail', type: 'Retail', year: '', images: [], works: [w('c-supermercado', 'Supermercado alemán')] }
+      { id: 'c3', section: 'conceptos', title: 'Bebidas', type: 'Bebidas', year: '', images: concept('ron-piet', ['02.jpg']), works: [
+        w('c-ron-piet', 'Ron Piet', concept('ron-piet', ['01.jpg', '02.jpg', '03.jpg']), logo('ron-piet', 'logo.png')),
+        w('c-knut-hansen', 'Knut Hansen Dry Gin', concept('knut-hansen', ['01.jpg', '02.jpg', '03.jpg', '04.jpg']), logo('knut-hansen', 'logo.webp'))
+      ] },
+      { id: 'c4', section: 'conceptos', title: 'Moda', type: 'Moda', year: '', images: concept('coolway', ['01.jpg']), works: [
+        w('c-coolway', 'Coolway', concept('coolway', ['01.jpg', '02.jpg', '03.jpg']), logo('coolway', 'logo.png'))
+      ] },
+      { id: 'c2', section: 'conceptos', title: 'Retail', type: 'Retail', year: '', images: concept('rewe', ['01.webp']), works: [
+        w('c-rewe', 'REWE', concept('rewe', ['01.webp', '02.webp', '03.webp', '04.webp', '05.webp', '06.webp']), logo('rewe', 'logo.png'))
+      ] },
+      { id: 'c5', section: 'conceptos', title: 'Empresas corporativas', type: 'Empresas corporativas', year: '', images: concept('power-electronics', ['04.jpg']), works: [
+        // logo blanco: va sobre el azul de la marca
+        w('c-power-electronics', 'Power Electronics', concept('power-electronics', ['01.jpg', '02.jpg', '03.jpg', '04.jpg']), logo('power-electronics', 'logo.png'), '#2A16D7')
+      ] }
     ];
   }
 
@@ -1598,7 +1614,7 @@ class Component extends DCLogic {
         isConcept: this.isConcept(p),
         // Si la marca tiene logo/escudo, la portada es el logo; si no, su primera foto
         coverEl: w.logo
-          ? this.imgEl(w.logo, { width: '100%', height: '100%', objectFit: 'contain', display: 'block', background: '#FFFFFF', padding: '8%', boxSizing: 'border-box' })
+          ? this.imgEl(w.logo, { width: '100%', height: '100%', objectFit: 'contain', display: 'block', background: w.logoBg || '#FFFFFF', padding: '8%', boxSizing: 'border-box' })
           : this.imgEl((w.images || [])[0]),
         open: () => { this.setState({ openWork: w.id, slide: 0 }); this.go('marca'); },
         count: w.images.length === 0 ? '' : (w.images.length === 1 ? '1 imagen' : w.images.length + ' imágenes'),
