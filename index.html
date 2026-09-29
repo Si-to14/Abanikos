@@ -1093,7 +1093,8 @@ class Component extends DCLogic {
 
   seedProjects() {
     const img = f => 'assets/img/proyectos/' + f;
-    const w = (id, brand, images) => ({ id, brand, text: '', images: images || [] });
+    const w = (id, brand, images, logo) => ({ id, brand, text: '', images: images || [], logo: logo || '' });
+    const concept = (dir, files) => files.map(f => 'assets/img/conceptos/' + dir + '/' + f);
     return [
       // Proyectos reales
       { id: 'p1', title: 'Bodas', type: 'Bodas', year: '', images: [img('boda.jpg')], works: [w('w-boda-1', 'Boda 1'), w('w-boda-2', 'Boda 2')] },
@@ -1103,7 +1104,10 @@ class Component extends DCLogic {
       ] },
       { id: 'p3', title: 'Eventos corporativos', type: 'Eventos corporativos', year: '', images: [img('evento-corporativo.jpg')], works: [w('w-unode50', 'UNOde50')] },
       // Conceptos: diseños de inspiración, no colaboraciones reales
-      { id: 'c1', section: 'conceptos', title: 'Deporte', type: 'Deporte', year: '', images: [], works: [w('c-villarreal', 'Villarreal CF'), w('c-wimbledon', 'Wimbledon')] },
+      { id: 'c1', section: 'conceptos', title: 'Deporte', type: 'Deporte', year: '', images: concept('villarreal', ['01.jpg']), works: [
+        w('c-villarreal', 'Villarreal CF', concept('villarreal', ['01.jpg', '02.jpg', '03.jpg']), 'assets/img/conceptos/villarreal/logo.png'),
+        w('c-wimbledon', 'Wimbledon')
+      ] },
       { id: 'c2', section: 'conceptos', title: 'Retail', type: 'Retail', year: '', images: [], works: [w('c-supermercado', 'Supermercado alemán')] }
     ];
   }
@@ -1591,10 +1595,13 @@ class Component extends DCLogic {
       dWorks: (p.works || []).map(w => ({
         brand: w.brand,
         isConcept: this.isConcept(p),
-        coverEl: this.imgEl((w.images || [])[0]),
+        // Si la marca tiene logo/escudo, la portada es el logo; si no, su primera foto
+        coverEl: w.logo
+          ? this.imgEl(w.logo, { width: '100%', height: '100%', objectFit: 'contain', display: 'block', background: '#FFFFFF', padding: '8%', boxSizing: 'border-box' })
+          : this.imgEl((w.images || [])[0]),
         open: () => { this.setState({ openWork: w.id, slide: 0 }); this.go('marca'); },
         count: w.images.length === 0 ? '' : (w.images.length === 1 ? '1 imagen' : w.images.length + ' imágenes'),
-        isEmpty: w.images.length === 0,
+        isEmpty: w.images.length === 0 && !w.logo,
         images: w.images.map((url, i) => ({
           url, hasUrl: !!url, el: this.imgEl(url),
           useAsCover: () => this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, { images: [url].concat(x.images.filter(u => u !== url)) }) : x)),
