@@ -132,7 +132,7 @@
     'El archivo pesa más de 25 MB. Prueba con uno más ligero o mándanoslo por WhatsApp.': 'The file is larger than 25 MB. Try a lighter one or send it to us on WhatsApp.',
 
     // Proyectos
-    'Bodas': 'Weddings', 'Discotecas / Club': 'Nightclubs / Club', 'Eventos corporativos': 'Corporate events',
+    'Bodas': 'Weddings', 'Discotecas / Club': 'Nightclubs / Club', 'Discotecas y Beach Clubs': 'Nightclubs & Beach Clubs', 'Eventos corporativos': 'Corporate events',
     'Evento corporativo': 'Corporate event', 'Festivales': 'Festivals',
     'Todavía no hay proyectos de este tipo.': 'No projects of this type yet.',
     'Todavía no hay marcas en este proyecto.': 'No brands in this project yet.',
@@ -840,9 +840,8 @@
             <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Tipo
               <sc-raw-select value="{{ newType }}" sc-camel-on-change="{{ onNewType }}" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:12px;padding:12px 15px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
                 <option>Bodas</option>
-                <option>Discotecas / Club</option>
+                <option>Discotecas y Beach Clubs</option>
                 <option>Eventos corporativos</option>
-                <option>Beach Club</option>
                 <option>Festivales</option>
                 <option>Deporte</option>
                 <option>Retail</option>
@@ -1098,8 +1097,10 @@ class Component extends DCLogic {
     return [
       // Proyectos reales
       { id: 'p1', title: 'Bodas', type: 'Bodas', year: '', images: [img('boda.jpg')], works: [w('w-boda-1', 'Boda 1'), w('w-boda-2', 'Boda 2')] },
-      { id: 'p2', title: 'Discotecas / Club', type: 'Discotecas / Club', year: '', images: [img('spook/01.webp')], works: [w('w1', 'Spook', ['spook/01.webp', 'spook/02.webp', 'spook/03.jpg', 'spook/04.jpg', 'spook/05.webp', 'spook-club.jpg'].map(img))] },
-      { id: 'p5', title: 'Beach Club', type: 'Beach Club', year: '', images: [img('cala-duo/01.jpg')], works: [w('w-cala-duo', 'Cala Duo', [img('cala-duo/01.jpg'), img('cala-duo/02.jpg')])] },
+      { id: 'p2', title: 'Discotecas y Beach Clubs', type: 'Discotecas y Beach Clubs', year: '', images: [img('spook-club.jpg')], works: [
+        w('w1', 'Spook', ['spook/05.webp', 'spook/01.webp', 'spook/02.webp', 'spook/03.jpg', 'spook/04.jpg'].map(img)),
+        w('w-cala-duo', 'Cala Duo', [img('cala-duo/01.jpg'), img('cala-duo/02.jpg')])
+      ] },
       { id: 'p3', title: 'Eventos corporativos', type: 'Eventos corporativos', year: '', images: [img('evento-corporativo.jpg')], works: [w('w-unode50', 'UNOde50')] },
       // Conceptos: diseños de inspiración, no colaboraciones reales
       { id: 'c1', section: 'conceptos', title: 'Deporte', type: 'Deporte', year: '', images: [], works: [w('c-villarreal', 'Villarreal CF'), w('c-wimbledon', 'Wimbledon')] },
@@ -1127,7 +1128,8 @@ class Component extends DCLogic {
   canonType(t) {
     const map = {
       'Boda': 'Bodas', 'Bodas': 'Bodas',
-      'Club': 'Discotecas / Club', 'Discotecas': 'Discotecas / Club', 'Discotecas / Club': 'Discotecas / Club',
+      'Club': 'Discotecas y Beach Clubs', 'Discotecas': 'Discotecas y Beach Clubs', 'Discotecas / Club': 'Discotecas y Beach Clubs',
+      'Beach Club': 'Discotecas y Beach Clubs', 'Discotecas y Beach Clubs': 'Discotecas y Beach Clubs',
       'Marca': 'Eventos corporativos', 'Evento corporativo': 'Eventos corporativos', 'Eventos corporativos': 'Eventos corporativos',
       'Festival': 'Festivales', 'Festivales': 'Festivales'
     };
@@ -1690,7 +1692,7 @@ class Component extends DCLogic {
       goCatMarca: () => this.openCategory('p3'),
       goCatFestival: () => this.go('proyectos'),
       goCatCorp: () => this.openCategory('p3'),
-      goCatBeach: () => this.openCategory('p5'),
+      goCatBeach: () => this.openCategory('p2'),
       goConf: () => this.go(v === 'bodas' ? 'bodas' : 'b2b'),
       sendContact: () => {
         const g = n => {
