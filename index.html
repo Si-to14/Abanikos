@@ -138,6 +138,7 @@
     'Todavía no hay marcas en este proyecto.': 'No brands in this project yet.',
     'Muy pronto verás aquí los proyectos de esta categoría.': 'Projects in this category are coming soon.',
     'Conceptos': 'Concepts', 'Concepto': 'Concept', '← Todos los conceptos': '← All concepts',
+    'Boda Vicente & Virginia': 'Vicente & Virginia\u2019s wedding',
     'Deporte': 'Sports', 'Moda': 'Fashion', 'Bebidas': 'Drinks', 'Empresas corporativas': 'Corporate companies', 'Supermercado alemán': 'German supermarket',
     '¿Quieres el de tu marca?': 'Want one for your brand?',
     'Así imaginamos el abanico de algunas marcas que nos inspiran. Diseños de inspiración creados por Abanikos: no son colaboraciones oficiales ni están respaldados por las marcas.': 'This is how we imagine the hand fan for some brands that inspire us. Inspiration designs created by Abanikos: they are not official collaborations and are not endorsed by the brands.',
@@ -1100,12 +1101,12 @@ class Component extends DCLogic {
     const logo = (dir, file) => 'assets/img/conceptos/' + dir + '/' + file;
     return [
       // Proyectos reales
-      { id: 'p1', title: 'Bodas', type: 'Bodas', year: '', images: [img('boda.jpg')], works: [w('w-boda-1', 'Boda 1'), w('w-boda-2', 'Boda 2')] },
+      { id: 'p1', title: 'Bodas', type: 'Bodas', year: '', images: [img('boda.jpg')], works: [w('w-boda-1', 'Boda Vicente & Virginia', ['boda-vicente-virginia/01.jpg', 'boda-vicente-virginia/02.jpg'].map(img))] },
       { id: 'p2', title: 'Discotecas y Beach Clubs', type: 'Discotecas y Beach Clubs', year: '', images: [img('spook-club.jpg')], works: [
         w('w1', 'Spook', ['spook/05.webp', 'spook/01.webp', 'spook/02.webp', 'spook/03.jpg', 'spook/04.jpg'].map(img)),
         w('w-cala-duo', 'Cala Duo', [img('cala-duo/01.jpg'), img('cala-duo/02.jpg')])
       ] },
-      { id: 'p3', title: 'Eventos corporativos', type: 'Eventos corporativos', year: '', images: [img('evento-corporativo.jpg')], works: [w('w-unode50', 'UNOde50')] },
+      { id: 'p3', title: 'Eventos corporativos', type: 'Eventos corporativos', year: '', images: [img('evento-corporativo.jpg')], works: [w('w-unode50', 'UNOde50', ['unode50/01.jpg', 'evento-corporativo.jpg', 'unode50/03.jpg'].map(img), img('unode50/logo.png'))] },
       // Conceptos: diseños de inspiración, no colaboraciones reales
       { id: 'c1', section: 'conceptos', title: 'Deporte', type: 'Deporte', year: '', images: concept('villarreal', ['01.jpg']), works: [
         w('c-villarreal', 'Villarreal CF', concept('villarreal', ['01.jpg', '02.jpg', '03.jpg']), logo('villarreal', 'logo.png')),
