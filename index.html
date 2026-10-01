@@ -91,6 +91,10 @@
     'Cantidades': 'Quantities', 'Fecha': 'Date',
     'Así preparamos una propuesta que encaje de verdad.': 'So we can prepare a proposal that really fits.',
     'Club / discoteca': 'Club / nightclub', 'Marca o producto': 'Brand or product', 'Feria o evento': 'Trade fair or event', 'Otro': 'Other', 'Otros': 'Others',
+    '¿Para qué evento lo quieres?': 'What event is it for?', 'Marca': 'Brand',
+    '¿Qué tipo de varillaje quieres, madera o plástico?': 'What kind of ribs do you want, wood or plastic?',
+    '¿Tienes ya una idea?': 'Do you already have an idea?',
+    '¿Dónde te escribimos?': 'Where should we reach you?',
     '¿Madera o plástico?': 'Wood or plastic?', 'Madera': 'Wood', 'Plástico': 'Plastic', 'Que nos recomendéis': 'You recommend',
     'La madera es el acabado bonito; el plástico, el que aguanta cualquier cosa.': 'Wood is the beautiful finish; plastic is the one that survives anything.',
     'La madera queda más elegante en la mano; el plástico aguanta la barra libre.': 'Wood feels more elegant in the hand; plastic survives the open bar.',
@@ -472,8 +476,7 @@
           </sc-for>
         </div>
         <div style="background:#FFFBF0;border-radius:20px;padding:clamp(22px,3vw,32px);">
-          <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;margin:0 0 6px;">{{ wTitle }}</h4>
-          <p style="font-size:0.92rem;line-height:1.55;color:rgba(48,21,9,0.7);margin:0 0 22px;">{{ wSub }}</p>
+          <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;margin:0 0 22px;">{{ wTitle }}</h4>
           <sc-if value="{{ wIsOptions }}" hint-placeholder-val="{{ true }}">
             <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;">
               <sc-for list="{{ wOptions }}" as="o" hint-placeholder-count="4">
@@ -603,8 +606,7 @@
           </sc-for>
         </div>
         <div style="background:#FFFBF0;border-radius:20px;padding:clamp(22px,3vw,32px);">
-          <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;margin:0 0 6px;">{{ bTitle }}</h4>
-          <p style="font-size:0.92rem;line-height:1.55;color:rgba(48,21,9,0.7);margin:0 0 22px;">{{ bSub }}</p>
+          <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;margin:0 0 22px;">{{ bTitle }}</h4>
           <sc-if value="{{ bIsOptions }}" hint-placeholder-val="{{ true }}">
             <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;">
               <sc-for list="{{ bOptions }}" as="o" hint-placeholder-count="4">
@@ -631,6 +633,12 @@
               <sc-if value="{{ bHasFile }}" hint-placeholder-val="{{ false }}">
                 <div style="margin-top:12px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.9rem;color:#301509;">Seleccionado: {{ bFileName }}</div>
               </sc-if>
+            </div>
+          </sc-if>
+          <sc-if value="{{ bIsDate }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:8px;max-width:280px;margin-bottom:24px;">
+              <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Fecha del evento (DD/MM/AAAA)</label>
+              <input type="date" value="{{ bDateValue }}" sc-camel-on-change="{{ bOnDate }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
             </div>
           </sc-if>
           <sc-if value="{{ bIsForm }}" hint-placeholder-val="{{ false }}">
@@ -725,8 +733,7 @@
           </sc-for>
         </div>
         <div style="background:#FFFBF0;border-radius:20px;padding:clamp(22px,3vw,32px);">
-          <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;margin:0 0 6px;">{{ wTitle }}</h4>
-          <p style="font-size:0.92rem;line-height:1.55;color:rgba(48,21,9,0.7);margin:0 0 22px;">{{ wSub }}</p>
+          <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;margin:0 0 22px;">{{ wTitle }}</h4>
           <sc-if value="{{ wIsOptions }}" hint-placeholder-val="{{ true }}">
             <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;">
               <sc-for list="{{ wOptions }}" as="o" hint-placeholder-count="4">
@@ -1377,24 +1384,15 @@ class Component extends DCLogic {
     }));
   }
 
-  b2bSteps() {
+  // Mismos pasos para todos los formularios de presupuesto
+  quoteSteps() {
     return [
-      { label: 'Tipo de evento', title: 'Pide tu presupuesto', sub: 'Así preparamos una propuesta que encaje de verdad.', options: ['Club / discoteca', 'Marca o producto', 'Feria o evento', 'Otro'] },
-      { label: 'Material', title: '¿Madera o plástico?', sub: 'La madera es el acabado bonito; el plástico, el que aguanta cualquier cosa.', options: ['Madera', 'Plástico', 'Que nos recomendéis'] },
-      { label: 'Diseño', title: '¿Cómo vais de diseño?', sub: 'Si no tenéis nada, lo hacemos nosotros.', upload: true, options: ['Subir tu diseño', 'Tengo logo y una idea', 'Empezamos de cero'] },
-      { label: 'Cantidad', title: '¿Cuántos abanikos?', sub: 'A partir de 150 unidades. Cuantos más, mejor precio por unidad.', options: ['150–300', '300–1.000', '1.000–5.000', 'Más de 5.000'] },
-      { label: 'Contacto', title: 'Y por último, ¿dónde te escribimos?', sub: 'Te mandamos la propuesta en 24–48 h.', form: true }
-    ];
-  }
-
-  bodasSteps() {
-    return [
-      { label: 'Estilo', title: '¿Para qué evento lo quieres ?', sub: 'Solo para orientarnos.', options: ['Discoteca/Club', 'Evento Corporativo', 'Festival', 'Otros'] },
-      { label: 'Material', title: '¿Madera o plástico?', sub: 'La madera queda más elegante en la mano; el plástico aguanta la barra libre.', options: ['Madera', 'Plástico', 'Que nos recomendéis'] },
-      { label: 'Diseño', title: '¿Cómo vais de diseño?', sub: 'Si aún no tenéis nada, lo hacemos nosotros.', upload: true, options: ['Subir tu diseño', 'Tengo logo y una idea', 'Empezamos de cero'] },
-      { label: 'Cantidades', title: '¿Cantidades aproximadas?', sub: 'Mínimo 150 unidades. El plazo de entrega puede variar entre 2 semanas y 3 meses en función de la cantidad.', options: ['150–300', '300–500', '500–1.000', '1.000–2.500', '2.500–5.000', '5.000–10.000', 'Más de 10.000'] },
-      { label: 'Fecha', title: '¿Cuándo es el evento?', sub: 'Elige la fecha en formato DD/MM/AAAA. ', date: true },
-      { label: 'Contacto', title: '¿Dónde os escribimos?', sub: 'Os mandamos la propuesta en 24–48 h.', form: true }
+      { label: 'Tipo de evento', title: '¿Para qué evento lo quieres?', options: ['Discoteca/Club', 'Evento Corporativo', 'Festival', 'Marca', 'Boda'] },
+      { label: 'Material', title: '¿Qué tipo de varillaje quieres, madera o plástico?', options: ['Madera', 'Plástico', 'Que nos recomendéis'] },
+      { label: 'Diseño', title: '¿Tienes ya una idea?', upload: true, options: ['Subir tu diseño', 'Tengo logo y una idea', 'Empezamos de cero'] },
+      { label: 'Cantidad', title: '¿Cuántos abanikos?', options: ['150–300', '300–500', '500–1.000', '1.000–2.500', '2.500–5.000', '5.000–10.000', 'Más de 10.000'] },
+      { label: 'Fecha', title: '¿Cuándo es el evento?', date: true },
+      { label: 'Contacto', title: '¿Dónde te escribimos?', form: true }
     ];
   }
 
@@ -1767,8 +1765,8 @@ class Component extends DCLogic {
 
   renderVals() {
     const v = this.state.view;
-    const b = this.conf('b', this.b2bSteps(), '#DA4435');
-    const w = this.conf('w', this.bodasSteps(), '#DA4435');
+    const b = this.conf('b', this.quoteSteps(), '#DA4435');
+    const w = this.conf('w', this.quoteSteps(), '#DA4435');
     const u = k => (v === k ? '#DA4435' : 'transparent');
     return {
       isHome: v === 'home', isB2b: v === 'b2b', isBodas: v === 'bodas', isContacto: v === 'contacto', isProyectos: v === 'proyectos' || v === 'conceptos',
@@ -1849,6 +1847,7 @@ class Component extends DCLogic {
       bNext: b.next, bBack: b.back, bNextLabel: b.nextLabel, bBackColor: b.backColor, bProgress: b.progress,
       wSteps: w.steps, wTitle: w.title, wSub: w.sub, wIsOptions: w.isOptions, wIsForm: w.isForm,
       wIsDate: w.isDate, wDateValue: w.dateValue, wOnDate: w.onDate,
+      bIsDate: b.isDate, bDateValue: b.dateValue, bOnDate: b.onDate,
       wIsUpload: w.isUpload, wFileName: w.fileName, wHasFile: w.hasFile, wOnFile: w.onFile, wUploadLabel: w.uploadLabel,
       wNextOpacity: w.nextOpacity, wNextCursor: w.nextCursor, wRequiredHint: w.requiredHint,
       wName: w.name, wEmail: w.email, wPhone: w.phone, wOnName: w.onName, wOnEmail: w.onEmail, wOnPhone: w.onPhone,
