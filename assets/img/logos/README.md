@@ -1,7 +1,7 @@
 Logos PNG (fondo transparente) de las marcas del carrusel "Proyectos" de la home:
 
 - spook.png
-- basto.png
+- wimbledon.png
 - cala-duo.png
 - atenea.png
 
