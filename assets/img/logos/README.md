@@ -1,4 +1,4 @@
-Logos PNG (fondo transparente) de las marcas del carrusel "Proyectos" de la home:
+Logos PNG (fondo transparente) de las marcas del carrusel "Historias" de la home:
 
 - spook.png
 - wimbledon.png

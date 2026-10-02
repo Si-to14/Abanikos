@@ -12,13 +12,13 @@
 (function () {
   var DICT = {
     // Navegación y comunes
-    'Proyectos': 'Projects', 'PROYECTOS': 'PROJECTS', 'Contacto': 'Contact', 'Pedir presupuesto': 'Get a quote',
+    'Historias': 'Stories', 'HISTORIAS': 'STORIES', 'Contacto': 'Contact', 'Pedir presupuesto': 'Get a quote',
     'Empresas': 'Businesses', 'Inicio': 'Home', 'Navegación': 'Navigation', 'También aquí': 'Also here',
     'Atrás': 'Back', 'Siguiente': 'Next', 'Enviar': 'Send', 'Enviado': 'Sent', 'Enviando…': 'Sending…',
     'Empezar otra': 'Start another', 'Nombre': 'Name', 'Tu nombre': 'Your name', 'Email': 'Email',
     'Teléfono': 'Phone', 'Nombre y empresa': 'Name and company', 'hola@tuemail.com': 'hello@youremail.com',
     'Abrir WhatsApp': 'Open WhatsApp', 'Hablar por WhatsApp': 'Chat on WhatsApp', 'Escríbenos por Whatsapp': 'Message us on WhatsApp',
-    'Ver Abanikos': 'See Abanikos', 'Ver proyectos B2B': 'See B2B projects', '← Todos los proyectos': '← All projects',
+    'Ver Abanikos': 'See Abanikos', 'Ver historias B2B': 'See B2B stories', '← Todas las historias': '← All stories',
     'Todos': 'All', 'Seleccionado:': 'Selected:',
 
     // Home
@@ -47,7 +47,7 @@
     'NUESTRA MISIÓN': 'OUR MISSION',
     'Queremos darle una nueva vida al abanico.': 'We want to give the hand fan a new life.',
     'El abanico lleva siglos formando parte de nuestra cultura, pero casi siempre se ha asociado a una misma imagen. Nosotros lo convertimos en un complemento actual, versátil y pensado para todo el mundo.': 'The hand fan has been part of our culture for centuries, but it has almost always been tied to the same image. We turn it into a modern, versatile accessory made for everyone.',
-    'Ver Conceptos': 'See Concepts',
+    'Ver Inspiración': 'See Inspiration',
     'EL ABANICO DE SIEMPRE': 'THE FAN AS YOU KNEW IT',
     'Un objeto clásico, de temporada, asociado casi siempre a una misma imagen.': 'A classic, seasonal object, almost always tied to the same image.',
     'EL ABANIKO DE AHORA': 'THE ABANIKO TODAY',
@@ -153,10 +153,10 @@
     // Proyectos
     'Bodas': 'Weddings', 'Discotecas / Club': 'Nightclubs / Club', 'Discotecas y Beach Clubs': 'Nightclubs & Beach Clubs', 'Eventos corporativos': 'Corporate events',
     'Evento corporativo': 'Corporate event', 'Festivales': 'Festivals',
-    'Todavía no hay proyectos de este tipo.': 'No projects of this type yet.',
+    'Todavía no hay historias de este tipo.': 'No stories of this type yet.',
     'Todavía no hay marcas en este proyecto.': 'No brands in this project yet.',
-    'Muy pronto verás aquí los proyectos de esta categoría.': 'Projects in this category are coming soon.',
-    'Conceptos': 'Concepts', 'Concepto': 'Concept', '← Todos los conceptos': '← All concepts',
+    'Muy pronto verás aquí las historias de esta categoría.': 'Stories in this category are coming soon.',
+    '← Toda la inspiración': '← All inspiration',
     'Boda Vicente & Virginia': 'Vicente & Virginia\u2019s wedding',
     'Vicente y Virginia querían un abanico con un detalle del lugar donde se casaban: Valencia. Diseñamos un estampado de naranjas en acuarela, un guiño a su tierra que convirtió el abanico en algo más que un alivio para el calor: un recuerdo de su boda que cada invitado se llevó a casa.': 'Vicente and Virginia wanted a fan with a nod to the place where they were getting married: Valencia. We designed a watercolour orange print, a tribute to their home region that made the fan more than a relief from the heat: a keepsake of their wedding that every guest took home.',
     'Diseñamos los abanicos de Spook a partir de la identidad de la discoteca: sus colores, su logo y su estética. Así, cada abanico que se abre en la pista es una extensión de la marca, y cuando el público se lo lleva a casa, Spook se va con él.': 'We designed Spook\u2019s fans around the club\u2019s identity: its colours, its logo and its look. That way, every fan that opens on the dance floor is an extension of the brand, and when the crowd takes it home, Spook goes with them.',
@@ -180,13 +180,13 @@
     'Marca — abanikos con logo': 'Brand — abanikos with logo', 'Boda — abanikos para invitados': 'Wedding — abanikos for guests',
 
     // Modo edición (solo lo ves tú)
-    'Nuevo proyecto': 'New project', 'Guardar': 'Save', 'Guardar proyecto': 'Save project', 'Cancelar': 'Cancel',
+    'Nueva historia': 'New story', 'Guardar': 'Save', 'Guardar historia': 'Save story', 'Cancelar': 'Cancel',
     'Descartar': 'Discard', 'Eliminar': 'Delete', 'Cerrar': 'Close', 'Tipo': 'Type', 'Año': 'Year',
-    '+ Añadir proyecto': '+ Add project', '+ Añadir imágenes': '+ Add images', '+ Añadir marca': '+ Add brand',
+    '+ Añadir historia': '+ Add story', '+ Añadir imágenes': '+ Add images', '+ Añadir marca': '+ Add brand',
     '+ Imágenes': '+ Images', '+ Marca': '+ Brand', 'Añadir imágenes': 'Add images', 'Añadir una marca con sus fotos': 'Add a brand with its photos',
     'Puedes seleccionar varias a la vez': 'You can select several at once', 'Quitar imagen': 'Remove image', 'Quitar logo': 'Remove logo',
     'Nombre de la marca': 'Brand name', 'p. ej. Boda Marta & Iván': 'e.g. Marta & Iván\u2019s wedding',
-    'Cambios sin guardar': 'Unsaved changes', 'Ponle un nombre al proyecto.': 'Give the project a name.'
+    'Cambios sin guardar': 'Unsaved changes', 'Ponle un nombre a la historia.': 'Give the story a name.'
   };
 
   var RULES = [
@@ -194,7 +194,7 @@
     [/^1 imagen$/, '1 image'], [/^(\d+) imágenes$/, '$1 images'],
     [/^1 diseño$/, '1 design'], [/^(\d+) diseños$/, '$1 designs'],
     [/^1 marca$/, '1 brand'], [/^(\d+) marcas$/, '$1 brands'],
-    [/^1 proyecto$/, '1 project'], [/^(\d+) proyectos$/, '$1 projects'],
+    [/^1 historia$/, '1 story'], [/^(\d+) historias$/, '$1 stories'],
     [/^Boda (\d+)$/, 'Wedding $1'],
     [/^Seleccionado: (.+)$/, 'Selected: $1']
   ];
@@ -328,8 +328,8 @@
     <div style="max-width:1180px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
       <div sc-camel-on-click="{{ goHome }}" style="font-family:'Bagel Fat One',cursive;font-size:1.55rem;color:#DA4435;cursor:pointer;line-height:1;">abanikos</div>
       <nav style="display:flex;flex-wrap:wrap;justify-content:flex-end;gap:16px 26px;align-items:center;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.95rem;">
-        <div sc-camel-on-click="{{ goProyectos }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubProyectos }};color:#301509;">Proyectos</div>
-        <div sc-camel-on-click="{{ goConceptos }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubConceptos }};color:#301509;">Conceptos</div>
+        <div sc-camel-on-click="{{ goProyectos }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubProyectos }};color:#301509;">Historias</div>
+        <div sc-camel-on-click="{{ goConceptos }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubConceptos }};color:#301509;">Inspiración</div>
         <div sc-camel-on-click="{{ goB2b }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubB2b }};color:#ec3013;"><b>Abanikos</b></div>
         
         <div sc-camel-on-click="{{ goContacto }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubContacto }};color:#301509;">Contacto</div>
@@ -354,7 +354,7 @@
         <h1 style="font-family: 'Bagel Fat One',cursive; font-weight: 400; font-size: clamp(2.2rem,5vw,3.3rem); line-height: 1.05; letter-spacing: 0.4px; margin: 0; color: #DA4435">Abanikos Personalizados</h1>
         <div style="font-size:1.12rem;line-height:1.6;margin:22px 0 34px;max-width:46ch;color:rgba(48,21,9,0.82);"><div><span style="font-size: 17.92px;">Diseñamos y producimos abanicos a medida de madera o plástico, con&nbsp;</span>impresión digital a todo color. Trabajamos con marcas, bodas y eventos.</div></div>
         <div style="display:flex;gap:16px;flex-wrap:wrap;">
-          <div sc-camel-on-click="{{ goProyectos }}" style="cursor: pointer; background: #DA4435; color: #FFFBF0; font-family: 'Fredoka',sans-serif; font-weight: 600; padding: 14px 28px; border-radius: 999px; font-size: 0.95rem; white-space: nowrap; overflow: visible; box-shadow: 0px 4px 12px 0px #000000C1">Ver proyectos B2B</div>
+          <div sc-camel-on-click="{{ goProyectos }}" style="cursor: pointer; background: #DA4435; color: #FFFBF0; font-family: 'Fredoka',sans-serif; font-weight: 600; padding: 14px 28px; border-radius: 999px; font-size: 0.95rem; white-space: nowrap; overflow: visible; box-shadow: 0px 4px 12px 0px #000000C1">Ver historias B2B</div>
         </div>
       </div>
       <div style="position: relative; aspect-ratio: 1/1; border-radius: 10%; background: url(&quot;assets/img/hero.webp&quot;) center / cover no-repeat; display: flex; align-items: center; justify-content: center; overflow: visible; width: 100%; max-width: 477px; min-width: 0">
@@ -362,7 +362,7 @@
       </div>
     </section><section style="color: #FBF0CE; padding: 40px 0; overflow: hidden; background-color: #301509">
       
-      <div style="max-width: 1180px; margin: 0 auto 26px; padding: 0 32px; font-family: Bagel Fat One; font-weight: 500; font-size: 1.5rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.6; text-align: center; color: #F6DE8B; overflow: visible; padding-left: 0px; padding-right: 0px; margin-bottom: 30px; display: block">PROYECTOS</div><div style="width:100%;overflow:hidden;mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);">
+      <div style="max-width: 1180px; margin: 0 auto 26px; padding: 0 32px; font-family: Bagel Fat One; font-weight: 500; font-size: 1.5rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.6; text-align: center; color: #F6DE8B; overflow: visible; padding-left: 0px; padding-right: 0px; margin-bottom: 30px; display: block">HISTORIAS</div><div style="width:100%;overflow:hidden;mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);">
         <div style="display:flex;width:max-content;animation:abk-marquee 34s linear infinite;">
           <div style="display:flex;align-items:center;gap:72px;padding-right:72px;">
             <sc-for list="{{ logos }}" as="logo" hint-placeholder-count="3">
@@ -433,7 +433,7 @@
       </div>
     </section><section style="max-width: 1180px; margin: 0 auto; padding: 88px 32px; padding-top: 48px; padding-bottom: 48px; background-color: #301509; border-radius: 10px">
       <div style="max-width:100%;margin-bottom:40px;text-align:center;">
-        <h2 style="font-family: 'Bagel Fat One',cursive; font-weight: 400; font-size: clamp(1.7rem,3.6vw,2.1rem); margin: 0; padding-top: 0px; padding-bottom: 0px; color: #F6DE8B">Proyectos</h2>
+        <h2 style="font-family: 'Bagel Fat One',cursive; font-weight: 400; font-size: clamp(1.7rem,3.6vw,2.1rem); margin: 0; padding-top: 0px; padding-bottom: 0px; color: #F6DE8B">Historias</h2>
         <p style="margin: 10px auto 0; font-size: 1.02rem; line-height: 1.6; color: #F6DE8BB8; max-width: 70ch">Cada abanico se ha creado a partir de la identidad de marca o del concepto del evento.</p>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;">
@@ -569,7 +569,7 @@
         <p style="font-size:1.15rem;line-height:1.6;margin:20px 0 28px;max-width:46ch;color:rgba(48,21,9,0.82);">El abanico lleva siglos formando parte de nuestra cultura, pero casi siempre se ha asociado a una misma imagen. Nosotros lo convertimos en un complemento actual, versátil y pensado para todo el mundo.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
           <a href="#presupuesto" style="display:inline-block;background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:13px 26px;border-radius:999px;">Pide tu presupuesto</a>
-          <div sc-camel-on-click="{{ goConceptos }}" style="cursor:pointer;border:2px solid #301509;color:#301509;font-family:'Fredoka',sans-serif;font-weight:600;padding:11px 24px;border-radius:999px;">Ver Conceptos</div>
+          <div sc-camel-on-click="{{ goConceptos }}" style="cursor:pointer;border:2px solid #301509;color:#301509;font-family:'Fredoka',sans-serif;font-weight:600;padding:11px 24px;border-radius:999px;">Ver Inspiración</div>
         </div>
       </div>
       <div style="aspect-ratio:4/3;"><image-slot id="b2b-mision" shape="rounded" radius="24" placeholder="Abaniko abierto en detalle" src="assets/img/split-abanikos.webp"></image-slot></div>
@@ -932,7 +932,7 @@
     <sc-if value="{{ addingProjectOpen }}" hint-placeholder-val="{{ false }}">
       <section style="max-width:1180px;margin:0 auto;padding:0 32px 32px;">
         <div style="border:2.5px solid #301509;border-radius:20px;padding:clamp(22px,3vw,30px);">
-          <h3 style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.1rem;margin:0 0 16px;">Nuevo proyecto</h3>
+          <h3 style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.1rem;margin:0 0 16px;">Nueva historia</h3>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
             <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Nombre
               <input value="{{ newTitle }}" sc-camel-on-change="{{ onNewTitle }}" placeholder="p. ej. Boda Marta &amp; Iván" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:12px;padding:12px 15px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
@@ -967,7 +967,7 @@
             </div>
           </sc-if>
           <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:18px;">
-            <div sc-camel-on-click="{{ saveProject }}" style="cursor:{{ saveCursor }};opacity:{{ saveOpacity }};background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:12px 24px;border-radius:999px;">Guardar proyecto</div>
+            <div sc-camel-on-click="{{ saveProject }}" style="cursor:{{ saveCursor }};opacity:{{ saveOpacity }};background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:12px 24px;border-radius:999px;">Guardar historia</div>
             <div sc-camel-on-click="{{ toggleAddProject }}" style="cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.9rem;color:rgba(48,21,9,0.65);">Cancelar</div>
             <div style="font-size:0.82rem;color:#DA4435;">{{ saveHint }}</div>
           </div>
@@ -1053,7 +1053,7 @@
                 <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:18px;text-align:center;font-family:'Bagel Fat One',cursive;font-size:1.6rem;color:rgba(218,68,53,0.55);">{{ w.brand }}</div>
               </sc-if>
               <sc-if value="{{ w.isConcept }}" hint-placeholder-val="{{ false }}">
-                <span style="position:absolute;top:10px;left:10px;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.74rem;letter-spacing:0.04em;color:#FFFBF0;background:rgba(48,21,9,0.78);border-radius:999px;padding:5px 12px;">Concepto</span>
+                <span style="position:absolute;top:10px;left:10px;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.74rem;letter-spacing:0.04em;color:#FFFBF0;background:rgba(48,21,9,0.78);border-radius:999px;padding:5px 12px;">Inspiración</span>
               </sc-if>
               <label title="Añadir imágenes" sc-camel-on-click="{{ stop }}" style="position:absolute;top:10px;right:10px;display:{{ editDisplay }};cursor:pointer;background:rgba(48,21,9,0.78);color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.78rem;padding:6px 13px;border-radius:999px;">+ Imágenes
                 <input type="file" accept="image/*" multiple="{{ true }}" sc-camel-on-change="{{ w.onImages }}" style="display:none;">
@@ -1067,7 +1067,7 @@
           </div>
         </sc-for>
         <sc-if value="{{ dTrulyEmpty }}" hint-placeholder-val="{{ false }}">
-          <div style="grid-column:1/-1;border:2px dashed rgba(48,21,9,0.25);border-radius:12px;padding:44px 24px;text-align:center;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.95rem;color:rgba(48,21,9,0.6);">Muy pronto verás aquí los proyectos de esta categoría.</div>
+          <div style="grid-column:1/-1;border:2px dashed rgba(48,21,9,0.25);border-radius:12px;padding:44px 24px;text-align:center;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.95rem;color:rgba(48,21,9,0.6);">Muy pronto verás aquí las historias de esta categoría.</div>
         </sc-if>
       </div>
       <div sc-camel-on-click="{{ dAddWork }}" style="display:{{ editDisplay }};margin-top:28px;cursor:pointer;background:#301509;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:12px 24px;border-radius:999px;font-size:0.9rem;width:max-content;">+ Añadir marca</div>
@@ -1091,7 +1091,7 @@
       <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:14px;border-bottom:2px solid rgba(48,21,9,0.15);padding-bottom:16px;">
         <span style="font-family:'Fredoka',sans-serif;font-size:0.8rem;color:#FFFBF0;background:#DA4435;border-radius:999px;padding:4px 14px;">{{ mType }}</span>
         <sc-if value="{{ mIsConcept }}" hint-placeholder-val="{{ false }}">
-          <span style="font-family:'Fredoka',sans-serif;font-size:0.8rem;color:#FFFBF0;background:#301509;border-radius:999px;padding:4px 14px;">Concepto</span>
+          <span style="font-family:'Fredoka',sans-serif;font-size:0.8rem;color:#FFFBF0;background:#301509;border-radius:999px;padding:4px 14px;">Inspiración</span>
         </sc-if>
         <label style="margin-left:auto;display:{{ editDisplay }};cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.85rem;color:#DA4435;">+ Añadir imágenes
           <input type="file" accept="image/*" multiple="{{ true }}" sc-camel-on-change="{{ mOnImages }}" style="display:none;">
@@ -1159,8 +1159,8 @@
             <div sc-camel-on-click="{{ goHome }}" style="cursor:pointer;">Inicio</div>
             <div sc-camel-on-click="{{ goB2b }}" style="cursor:pointer;">Empresas</div>
             <div sc-camel-on-click="{{ goBodas }}" style="cursor:pointer;">Bodas</div>
-            <div sc-camel-on-click="{{ goProyectos }}" style="cursor:pointer;">Proyectos</div>
-            <div sc-camel-on-click="{{ goConceptos }}" style="cursor:pointer;">Conceptos</div>
+            <div sc-camel-on-click="{{ goProyectos }}" style="cursor:pointer;">Historias</div>
+            <div sc-camel-on-click="{{ goConceptos }}" style="cursor:pointer;">Inspiración</div>
             <div sc-camel-on-click="{{ goContacto }}" style="cursor:pointer;">Contacto</div>
           </div>
         </div>
@@ -1202,7 +1202,7 @@ class Component extends DCLogic {
       { id: 'p2', title: 'Discotecas y Beach Clubs', type: 'Discotecas y Beach Clubs', year: '', images: [img('spook-club.jpg')], works: [
         w('w1', 'Spook', ['spook/05.webp', 'spook/01.webp', 'spook/02.webp', 'spook/03.jpg', 'spook/04.jpg'].map(img), '', '',
           'Diseñamos los abanicos de Spook a partir de la identidad de la discoteca: sus colores, su logo y su estética. Así, cada abanico que se abre en la pista es una extensión de la marca, y cuando el público se lo lleva a casa, Spook se va con él.'),
-        w('w-cala-duo', 'Cala Duo', [img('cala-duo/portada.webp'), img('cala-duo/01.jpg'), img('cala-duo/02.jpg')], '', '',
+        w('w-cala-duo', 'Cala Duo', [img('cala-duo/naranja.jpg'), img('cala-duo/blanco.jpg'), img('cala-duo/finding-my-lagarta.jpg'), img('cala-duo/portada.webp'), img('cala-duo/01.jpg'), img('cala-duo/02.jpg')], '', '',
           'En un beach club el sol aprieta desde mediodía hasta el atardecer. El abanico de Cala Duo da un respiro en la hamaca y en la barra, y como aparece en cada foto y en cada story, la marca viaja con el cliente mucho después de irse de la playa.')
       ] },
       { id: 'p3', title: 'Eventos corporativos', type: 'Eventos corporativos', year: '', images: [img('evento-corporativo.jpg')], works: [w('w-unode50', 'UNOde50', ['unode50/01.jpg', 'evento-corporativo.jpg', 'unode50/03.jpg'].map(img), img('unode50/logo.png'), '',
@@ -1621,9 +1621,9 @@ class Component extends DCLogic {
     const shown = all.filter(p => (p.section || 'proyectos') === section);
     return {
       noProjects: shown.length === 0,
-      listTitle: section === 'conceptos' ? 'Conceptos' : 'Historias con Abanikos',
+      listTitle: section === 'conceptos' ? 'Inspiración' : 'Historias con Abanikos',
       isConceptList: section === 'conceptos',
-      emptyText: 'Todavía no hay proyectos de este tipo.',
+      emptyText: 'Todavía no hay historias de este tipo.',
       projFilters: types.map(t => ({
         label: t,
         pick: () => this.setState({ projFilter: t }),
@@ -1647,7 +1647,7 @@ class Component extends DCLogic {
         })),
         open: () => { this.setState({ openProject: p.id }); this.go('proyecto'); },
         brandCount: (p.works || []).length > 0
-          ? ((p.works || []).length === 1 ? (this.isConcept(p) ? '1 diseño' : '1 proyecto') : (p.works || []).length + (this.isConcept(p) ? ' diseños' : ' proyectos'))
+          ? ((p.works || []).length === 1 ? (this.isConcept(p) ? '1 diseño' : '1 historia') : (p.works || []).length + (this.isConcept(p) ? ' diseños' : ' historias'))
           : (this.props.editMode === true ? 'Sin marcas' : ''),
         onBrandImages: e => {
           this.readFiles(e, urls => {
@@ -1685,7 +1685,7 @@ class Component extends DCLogic {
       stop: e => e.stopPropagation(),
       addingProjectOpen: this.props.editMode === true && !!this.state.addingProject,
       addingProject: !!this.state.addingProject,
-      addProjectLabel: this.state.addingProject ? 'Cerrar' : '+ Añadir proyecto',
+      addProjectLabel: this.state.addingProject ? 'Cerrar' : '+ Añadir historia',
       toggleAddProject: () => this.setState(s => ({ addingProject: !s.addingProject })),
       newTitle: draft.title, newType: draft.type, newYear: draft.year,
       newImages: draft.images.map(url => ({ url, hasUrl: !!url, el: this.imgEl(url, { width: '72px', height: '72px', borderRadius: '10px', objectFit: 'cover', display: 'block' }) })),
@@ -1698,7 +1698,7 @@ class Component extends DCLogic {
       },
       saveCursor: canSave ? 'pointer' : 'not-allowed',
       saveOpacity: canSave ? 1 : 0.4,
-      saveHint: canSave ? '' : 'Ponle un nombre al proyecto.',
+      saveHint: canSave ? '' : 'Ponle un nombre a la historia.',
       saveProject: () => {
         if (!canSave) return;
         this.updateProjects(list => list.concat([{ id: 'p' + Date.now(), section, title: draft.title.trim(), type: draft.type, year: draft.year || '', images: draft.images, works: [] }]));
@@ -1710,10 +1710,10 @@ class Component extends DCLogic {
   detailVals() {
     const all = this.state.projects || this.seedProjects();
     const p = all.filter(x => x.id === this.state.openProject)[0];
-    if (!p) return { dTitle: '', dType: '', dYear: '', dCount: '', dIsEmpty: true, dImages: [], dHasImages: false, dTrulyEmpty: true, dWorks: [], dNoWorks: true, dBackLabel: '← Todos los proyectos', dBack: () => this.go('proyectos'), dWorksCount: '', dAddWork: () => {}, dOnImages: () => {}, dOnTitle: () => {} };
+    if (!p) return { dTitle: '', dType: '', dYear: '', dCount: '', dIsEmpty: true, dImages: [], dHasImages: false, dTrulyEmpty: true, dWorks: [], dNoWorks: true, dBackLabel: '← Todas las historias', dBack: () => this.go('proyectos'), dWorksCount: '', dAddWork: () => {}, dOnImages: () => {}, dOnTitle: () => {} };
     return {
       dTitle: p.title, dType: this.canonType(p.type), dYear: p.year,
-      dBackLabel: this.isConcept(p) ? '← Todos los conceptos' : '← Todos los proyectos',
+      dBackLabel: this.isConcept(p) ? '← Toda la inspiración' : '← Todas las historias',
       dBack: () => this.go(this.isConcept(p) ? 'conceptos' : 'proyectos'),
       dOnTitle: e => {
         const v = e.target.value;
@@ -1726,7 +1726,7 @@ class Component extends DCLogic {
         remove: () => this.updateProjects(list => list.map(x => x.id === p.id ? Object.assign({}, x, { images: x.images.filter((_, i) => i !== idx) }) : x))
       })),
       dWorksCount: (p.works || []).length > 0
-        ? ((p.works || []).length === 1 ? (this.isConcept(p) ? '1 diseño' : '1 proyecto') : (p.works || []).length + (this.isConcept(p) ? ' diseños' : ' proyectos'))
+        ? ((p.works || []).length === 1 ? (this.isConcept(p) ? '1 diseño' : '1 historia') : (p.works || []).length + (this.isConcept(p) ? ' diseños' : ' historias'))
         : (this.props.editMode === true ? 'Sin marcas' : ''),
       dNoWorks: (p.works || []).length === 0,
       dHasImages: this.props.editMode === true,
@@ -1768,7 +1768,7 @@ class Component extends DCLogic {
     const p = all.filter(x => x.id === this.state.openProject)[0];
     const w = p ? (p.works || []).filter(y => y.id === this.state.openWork)[0] : null;
     if (!p || !w) {
-      return { mBrand: '', mType: '', mCount: '', mText: '', mShowText: false, mTextDisplay: 'none', mCarouselMax: 'none', mProjectTitle: 'Proyectos', mThumbs: [], mSlideEl: null,
+      return { mBrand: '', mType: '', mCount: '', mText: '', mShowText: false, mTextDisplay: 'none', mCarouselMax: 'none', mProjectTitle: 'Historias', mThumbs: [], mSlideEl: null,
         mNoImages: true, mNavDisplay: 'none', mPosition: '', mPrev: () => {}, mNext: () => {},
         mOnBrand: () => {}, mOnText: () => {}, mOnImages: () => {}, mIsConcept: false, mCtaTitle: '¿Quieres algo así para tu marca?', backToProject: () => this.go('proyectos') };
     }
