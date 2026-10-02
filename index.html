@@ -1191,7 +1191,7 @@ class Component extends DCLogic {
 
   seedProjects() {
     const img = f => 'assets/img/proyectos/' + f;
-    const w = (id, brand, images, logo, logoBg, text) => ({ id, brand, text: text || '', images: images || [], logo: logo || '', logoBg: logoBg || '' });
+    const w = (id, brand, images, logo, logoBg, text, cover) => ({ id, brand, text: text || '', images: images || [], logo: logo || '', logoBg: logoBg || '', cover: cover || '' });
     const cover = f => 'assets/img/conceptos/portadas/' + f;
     const concept = (dir, files) => files.map(f => 'assets/img/conceptos/' + dir + '/' + f);
     const logo = (dir, file) => 'assets/img/conceptos/' + dir + '/' + file;
@@ -1202,8 +1202,9 @@ class Component extends DCLogic {
       { id: 'p2', title: 'Discotecas y Beach Clubs', type: 'Discotecas y Beach Clubs', year: '', images: [img('spook-club.jpg')], works: [
         w('w1', 'Spook', ['spook/05.webp', 'spook/01.webp', 'spook/02.webp', 'spook/03.jpg', 'spook/04.jpg'].map(img), '', '',
           'Diseñamos los abanicos de Spook a partir de la identidad de la discoteca: sus colores, su logo y su estética. Así, cada abanico que se abre en la pista es una extensión de la marca, y cuando el público se lo lleva a casa, Spook se va con él.'),
-        w('w-cala-duo', 'Cala Duo', [img('cala-duo/naranja.jpg'), img('cala-duo/blanco.jpg'), img('cala-duo/finding-my-lagarta.jpg'), img('cala-duo/portada.webp'), img('cala-duo/01.jpg'), img('cala-duo/02.jpg')], '', '',
-          'En un beach club el sol aprieta desde mediodía hasta el atardecer. El abanico de Cala Duo da un respiro en la hamaca y en la barra, y como aparece en cada foto y en cada story, la marca viaja con el cliente mucho después de irse de la playa.')
+        w('w-cala-duo', 'Cala Duo', [img('cala-duo/finding-my-lagarta.jpg'), img('cala-duo/naranja.jpg'), img('cala-duo/blanco.jpg'), img('cala-duo/portada.webp'), img('cala-duo/01.jpg'), img('cala-duo/02.jpg')], '', '',
+          'En un beach club el sol aprieta desde mediodía hasta el atardecer. El abanico de Cala Duo da un respiro en la hamaca y en la barra, y como aparece en cada foto y en cada story, la marca viaja con el cliente mucho después de irse de la playa.',
+          img('cala-duo/portada.webp'))
       ] },
       { id: 'p3', title: 'Eventos corporativos', type: 'Eventos corporativos', year: '', images: [img('evento-corporativo.jpg')], works: [w('w-unode50', 'UNOde50', ['unode50/01.jpg', 'evento-corporativo.jpg', 'unode50/03.jpg'].map(img), img('unode50/logo.png'), '',
         'Abanicos de madera con el logo de UNOde50 en la varilla, presentados en bandejas y entregados a los asistentes durante la apertura de una de sus tiendas en Puerto Rico. Un regalo útil para el calor del evento que, además, se lleva la marca a casa de cada asistente.')] },
@@ -1279,7 +1280,8 @@ class Component extends DCLogic {
           const fix = arr => (arr || []).map(u => (u in legacy) ? legacy[u] : u).filter(Boolean);
           const stored = fix(p.images);
           const images = stored.length ? stored : (seed ? seed.images : []);
-          const works = p.works ? p.works.map(w => Object.assign({}, w, { images: fix(w.images) })) : p.works;
+          const seedWork = id => ((seed && seed.works) || []).filter(y => y.id === id)[0];
+          const works = p.works ? p.works.map(w => Object.assign({}, w, { images: fix(w.images), cover: w.cover || (seedWork(w.id) || {}).cover || '' })) : p.works;
           return Object.assign({}, p, { type: this.canonType(p.type), images, works });
         });
         this.setState({ projects: list, dirty: false });
@@ -1736,10 +1738,10 @@ class Component extends DCLogic {
         brand: w.brand,
         isConcept: this.isConcept(p),
         cardBg: w.logo ? (w.logoBg || 'transparent') : '#FBF0CE',
-        // Si la marca tiene logo/escudo, la portada es el logo; si no, su primera foto
+        // Si la marca tiene logo/escudo, la portada es el logo; si no, su portada fija o su primera foto
         coverEl: w.logo
           ? this.imgEl(w.logo, { width: '100%', height: '100%', objectFit: 'contain', display: 'block', background: 'transparent', padding: '10%', boxSizing: 'border-box' })
-          : this.imgEl((w.images || [])[0]),
+          : this.imgEl(w.cover || (w.images || [])[0]),
         open: () => { this.setState({ openWork: w.id, slide: 0 }); this.go('marca'); },
         count: w.images.length === 0 ? '' : (w.images.length === 1 ? '1 imagen' : w.images.length + ' imágenes'),
         isEmpty: w.images.length === 0 && !w.logo,
