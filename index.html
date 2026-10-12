@@ -976,7 +976,7 @@
     </sc-if>
 
     <section style="max-width:1180px;margin:0 auto;padding:12px 32px 72px;">
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),340px));justify-content:center;gap:24px;">
         <sc-for list="{{ projects }}" as="p" hint-placeholder-count="0">
           <div sc-camel-on-click="{{ p.open }}" style="cursor:pointer;display:flex;flex-direction:column;gap:12px;">
             <div style="position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#FBF0CE;">
