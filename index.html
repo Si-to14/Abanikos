@@ -43,6 +43,12 @@
     '¿Quieres algo así para tu marca?': 'Want something like this for your brand?',
     'Arrastra un logo': 'Drop a logo',
 
+    // Hero
+    'ABANICOS PERSONALIZADOS · DESDE 150 UDS': 'CUSTOM HAND FANS · FROM 150 UNITS',
+    'Tu marca, abierta en cada fiesta.': 'Your brand, open at every party.',
+    'Diseñamos y fabricamos abanicos con tu logo o tu diseño, a todo color y en madera o plástico. Para marcas, discotecas, beach clubs, eventos corporativos y bodas.': 'We design and make hand fans with your logo or artwork, in full colour, in wood or plastic. For brands, nightclubs, beach clubs, corporate events and weddings.',
+    'Ver proyectos': 'See projects', 'Diseño gratis · Te respondemos en 24–48 h': 'Free design · We reply within 24–48 h',
+
     // Aviso de cookies
     'Usamos almacenamiento técnico para que la web funcione (por ejemplo, recordar tu idioma). Si nos das permiso, también podremos usar cookies de analítica y de marketing para mejorar la web. Puedes aceptarlas, rechazarlas o elegir cuáles.': 'We use technical storage to make the site work (for example, to remember your language). With your permission, we may also use analytics and marketing cookies to improve the site. You can accept them, reject them or choose which ones.',
     'Rechazar': 'Reject', 'Configurar': 'Settings', 'Aceptar': 'Accept', 'Guardar selección': 'Save selection',
@@ -389,12 +395,14 @@
 
     <section style="max-width: 1180px; margin: 0 auto; padding: 56px 32px 72px; display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 56px; align-items: center; position: relative">
       <div>
-        <div style="font-family: 'Fredoka',sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; color: #2d2b2b; margin-bottom: 18px; position: relative">CADA ABANICO GUARDA UN RECUERDO</div>
-        <h1 style="font-family: 'Bagel Fat One',cursive; font-weight: 400; font-size: clamp(2.2rem,5vw,3.3rem); line-height: 1.05; letter-spacing: 0.4px; margin: 0; color: #DA4435">Abanikos Personalizados</h1>
-        <div style="font-size:1.12rem;line-height:1.6;margin:22px 0 34px;max-width:46ch;color:rgba(48,21,9,0.82);"><div><span style="font-size: 17.92px;">Diseñamos y producimos abanicos a medida de madera o plástico, con&nbsp;</span>impresión digital a todo color. Trabajamos con marcas, bodas y eventos.</div></div>
+        <div style="font-family: 'Fredoka',sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; color: #2d2b2b; margin-bottom: 18px; position: relative">ABANICOS PERSONALIZADOS · DESDE&nbsp;150&nbsp;UDS</div>
+        <h1 style="font-family: 'Bagel Fat One',cursive; font-weight: 400; font-size: clamp(2.2rem,5vw,3.3rem); line-height: 1.05; letter-spacing: 0.4px; margin: 0; color: #DA4435">Tu marca, abierta en cada fiesta.</h1>
+        <div style="font-size:1.12rem;line-height:1.6;margin:22px 0 34px;max-width:46ch;color:rgba(48,21,9,0.82);"><div>Diseñamos y fabricamos abanicos con tu logo o tu diseño, a todo color y en madera o plástico. Para marcas, discotecas, beach clubs, eventos corporativos y bodas.</div></div>
         <div style="display:flex;gap:16px;flex-wrap:wrap;">
-          <div sc-camel-on-click="{{ goProyectos }}" style="cursor: pointer; background: #DA4435; color: #FFFBF0; font-family: 'Fredoka',sans-serif; font-weight: 600; padding: 14px 28px; border-radius: 999px; font-size: 0.95rem; white-space: nowrap; overflow: visible; box-shadow: 0px 4px 12px 0px #000000C1">Ver historias B2B</div>
+          <div sc-camel-on-click="{{ goQuote }}" style="cursor: pointer; background: #DA4435; color: #FFFBF0; font-family: 'Fredoka',sans-serif; font-weight: 600; padding: 14px 28px; border-radius: 999px; font-size: 0.95rem; white-space: nowrap; box-shadow: 0 6px 16px rgba(218,68,53,0.35)">Pide tu presupuesto</div>
+          <div sc-camel-on-click="{{ goProyectos }}" style="cursor: pointer; border: 2px solid #301509; color: #301509; font-family: 'Fredoka',sans-serif; font-weight: 600; padding: 12px 26px; border-radius: 999px; font-size: 0.95rem; white-space: nowrap;">Ver proyectos</div>
         </div>
+        <div style="margin-top:18px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.88rem;color:rgba(48,21,9,0.6);">Diseño gratis · Te respondemos en 24–48 h</div>
       </div>
       <div style="position: relative; aspect-ratio: 1/1; border-radius: 10%; background: url(&quot;assets/img/hero.webp&quot;) center / cover no-repeat; display: flex; align-items: center; justify-content: center; overflow: visible; width: 100%; max-width: 477px; min-width: 0">
         
@@ -2050,6 +2058,7 @@ class Component extends DCLogic {
       goCatCorp: () => this.openCategory('p3'),
       goCatBeach: () => this.openCategory('p2'),
       goConf: () => this.go(v === 'bodas' ? 'bodas' : 'b2b'),
+      goQuote: () => { this.go('b2b'); setTimeout(() => { const f = document.getElementById('presupuesto'); if (f) f.scrollIntoView({ behavior: 'smooth' }); }, 80); },
       sendContact: () => {
         const g = n => {
           const el = document.querySelector('[data-f="' + n + '"]');
