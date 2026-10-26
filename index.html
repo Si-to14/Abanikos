@@ -343,6 +343,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Fredoka:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap">
 <script src="assets/js/image-slot.js"></script>
 <script src="assets/js/cookies.js"></script>
+<script src="assets/js/analytics.js"></script>
 <script src="assets/js/abanico-3d.js"></script>
 <style>
   *{box-sizing:border-box;}
@@ -1276,6 +1277,7 @@ class Component extends DCLogic {
   }
 
   componentDidMount() {
+    this.trackView();
     this.preloadLogos();
     try {
       const raw = window.localStorage.getItem('abanikos.projects.v2');
@@ -1450,14 +1452,26 @@ class Component extends DCLogic {
 
   // Lleva al formulario de presupuesto: el de esta página si lo tiene (portada, Abanikos, Bodas) o el de la portada
   goQuote() {
+    if (window.abkTrack) window.abkTrack('quote_click', { seccion: this.state.view });
     const here = ['home', 'b2b', 'bodas'].indexOf(this.state.view) >= 0;
     if (!here) this.go('home');
     setTimeout(() => { const f = document.getElementById('presupuesto'); if (f) f.scrollIntoView({ behavior: 'smooth' }); }, here ? 0 : 80);
   }
 
   go(view) {
-    this.setState({ view });
+    this.setState({ view }, () => this.trackView());
     if (typeof window !== 'undefined') window.scrollTo({ top: 0 });
+  }
+
+  // Analítica (assets/js/analytics.js): página vista de la sección actual
+  trackView() {
+    if (typeof window === 'undefined' || !window.abkPage) return;
+    const v = this.state.view;
+    const all = this.projectState();
+    let detail = '';
+    if (v === 'proyecto') detail = (all.filter(x => x.id === this.state.openProject)[0] || {}).title || '';
+    if (v === 'marca') detail = ([].concat(...all.map(x => x.works || [])).filter(w => w.id === this.state.openWork)[0] || {}).brand || '';
+    window.abkPage(v, detail);
   }
 
   // ====== Prefijos telefónicos (el primero es el que sale por defecto) ======
@@ -1492,7 +1506,10 @@ class Component extends DCLogic {
     const body = new URLSearchParams();
     data = Object.assign({ idioma: this.state.lang === 'en' ? 'Inglés' : 'Español' }, data);
     Object.keys(data).forEach(k => body.append(k, data[k] == null ? '' : String(data[k])));
-    return fetch(LEAD_URL, { method: 'POST', mode: 'no-cors', body: body });
+    return fetch(LEAD_URL, { method: 'POST', mode: 'no-cors', body: body }).then(r => {
+      if (window.abkTrack) window.abkTrack('generate_lead', { origen: data.origen || '' });
+      return r;
+    });
   }
 
   // Envía la solicitud de un configurador, con el archivo de diseño si lo han subido
