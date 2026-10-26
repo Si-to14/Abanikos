@@ -6,7 +6,7 @@
    Para activarlo, pon el ID de medición de GA4 (empieza por "G-") en GA_ID. */
 (function () {
   if (window.abkPage) return;
-  var GA_ID = '';
+  var GA_ID = 'G-RYRP3ETGK1';
 
   var NAMES = {
     home: 'Inicio', b2b: 'Abanikos', bodas: 'Bodas', proyectos: 'Historias', conceptos: 'Inspiración',
