@@ -31,7 +31,8 @@
   }
 
   function send(p) {
-    gtag('event', 'page_view', { page_title: p.title, page_location: location.origin + p.path });
+    // location.search conserva los ?utm_... para que GA sepa de qué campaña viene la visita
+    gtag('event', 'page_view', { page_title: p.title, page_location: location.origin + p.path + location.search });
   }
 
   window.abkPage = function (view, detail) {
