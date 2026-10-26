@@ -73,7 +73,7 @@
         var st = document.createElement('style'); st.id = 'a3-css'; st.textContent = CSS; document.head.appendChild(st);
       }
       this.innerHTML =
-        '<div class="a3-head"><h2 class="a3-title">Las partes del abanico</h2>' +
+        '<div class="a3-head"><h2 class="a3-title">Partes del abanico</h2>' +
         '<p class="a3-hint">Arrastra para girarlo y toca cada pieza para descubrir su nombre.</p></div>' +
         '<div class="a3-wrap"><div class="a3-stage"><canvas aria-label="Abanico 3D interactivo"></canvas>' +
         '<div class="a3-tag" hidden></div><div class="a3-fallback" hidden></div>' +
