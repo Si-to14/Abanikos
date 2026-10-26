@@ -12,7 +12,7 @@
 (function () {
   var DICT = {
     // Navegación y comunes
-    'Historias': 'Stories', 'HISTORIAS': 'STORIES', 'Contacto': 'Contact', 'Pedir presupuesto': 'Get a quote',
+    'Historias': 'Stories', 'HISTORIAS': 'STORIES', 'Presupuesto': 'Quote', 'Menú': 'Menu', 'Cerrar menú': 'Close menu', 'Contacto': 'Contact', 'Pedir presupuesto': 'Get a quote',
     'Empresas': 'Businesses', 'Inicio': 'Home', 'Navegación': 'Navigation', 'También aquí': 'Also here',
     'Atrás': 'Back', 'Siguiente': 'Next', 'Enviar': 'Send', 'Enviado': 'Sent', 'Enviando…': 'Sending…',
     'Empezar otra': 'Start another', 'Nombre': 'Name', 'Tu nombre': 'Your name', 'Email': 'Email',
@@ -345,6 +345,8 @@
 <script src="assets/js/cookies.js"></script>
 <script src="assets/js/analytics.js"></script>
 <script src="assets/js/abanico-3d.js"></script>
+<script src="assets/js/mobile.js"></script>
+<link rel="stylesheet" href="assets/css/mobile.css">
 <style>
   *{box-sizing:border-box;}
   body{margin:0;background:#FFFBF0;color:#301509;font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;}
@@ -357,18 +359,21 @@
 </helmet>
 
 
-<header style="position:sticky;top:0;z-index:50;background:rgba(255,251,240,0.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(48,21,9,0.12);">
-    <div style="max-width:1180px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
-      <div sc-camel-on-click="{{ goHome }}" style="font-family:'Bagel Fat One',cursive;font-size:1.55rem;color:#DA4435;cursor:pointer;line-height:1;">abanikos</div>
-      <nav style="display:flex;flex-wrap:wrap;justify-content:flex-end;gap:16px 26px;align-items:center;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.95rem;">
-        <div sc-camel-on-click="{{ goProyectos }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubProyectos }};color:#301509;">Historias</div>
-        <div sc-camel-on-click="{{ goConceptos }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubConceptos }};color:#301509;">Inspiración</div>
-        <div sc-camel-on-click="{{ goB2b }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubB2b }};color:#ec3013;"><b>Abanikos</b></div>
-        
-        <div sc-camel-on-click="{{ goContacto }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubContacto }};color:#301509;">Contacto</div>
-        <div sc-camel-on-click="{{ toggleLang }}" title="Español / English" style="cursor:pointer;border:2px solid #301509;border-radius:999px;padding:6px 12px;font-size:0.85rem;font-weight:600;color:#301509;line-height:1;">{{ langLabel }}</div>
-        <div sc-camel-on-click="{{ goConf }}" style="cursor:pointer;background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:11px 22px;border-radius:999px;">Pedir presupuesto</div>
+<header class="abk-header" style="position:sticky;top:0;z-index:50;background:rgba(255,251,240,0.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(48,21,9,0.12);">
+    <div class="abk-head-in" style="max-width:1180px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
+      <div class="abk-logo" sc-camel-on-click="{{ goHome }}" style="font-family:'Bagel Fat One',cursive;font-size:1.55rem;color:#DA4435;cursor:pointer;line-height:1;">abanikos</div>
+      <nav id="abk-nav" class="abk-nav" style="display:flex;flex-wrap:wrap;justify-content:flex-end;gap:16px 26px;align-items:center;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.95rem;">
+        <div class="abk-nav-link" sc-camel-on-click="{{ goProyectos }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubProyectos }};color:#301509;">Historias</div>
+        <div class="abk-nav-link" sc-camel-on-click="{{ goConceptos }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubConceptos }};color:#301509;">Inspiración</div>
+        <div class="abk-nav-link" sc-camel-on-click="{{ goB2b }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubB2b }};color:#ec3013;"><b>Abanikos</b></div>
+        <div class="abk-nav-link" sc-camel-on-click="{{ goContacto }}" style="cursor:pointer;padding-bottom:3px;border-bottom:2px solid {{ ubContacto }};color:#301509;">Contacto</div>
+        <div class="abk-nav-lang" sc-camel-on-click="{{ toggleLang }}" title="Español / English" style="cursor:pointer;border:2px solid #301509;border-radius:999px;padding:6px 12px;font-size:0.85rem;font-weight:600;color:#301509;line-height:1;">{{ langLabel }}</div>
+        <div class="abk-nav-cta" sc-camel-on-click="{{ goConf }}" style="cursor:pointer;background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:11px 22px;border-radius:999px;">Pedir presupuesto</div>
       </nav>
+      <div class="abk-head-m">
+        <div class="abk-head-cta" sc-camel-on-click="{{ goConf }}">Presupuesto</div>
+        <button type="button" class="abk-burger" aria-label="Menú" aria-controls="abk-nav" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
     </div>
   </header><div style="min-height: 100vh; background: #FFFBF0; position: relative">
 
@@ -381,12 +386,12 @@
 
     
 
-    <section style="max-width: 1180px; margin: 0 auto; padding: 56px 32px 72px; display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 56px; align-items: center; position: relative">
+    <section class="abk-hero" style="max-width: 1180px; margin: 0 auto; padding: 56px 32px 72px; display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 56px; align-items: center; position: relative">
       <div>
         <div style="font-family: 'Fredoka',sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; color: #2d2b2b; margin-bottom: 18px; position: relative">CADA ABANICO GUARDA UN RECUERDO</div>
         <h1 style="font-family: 'Bagel Fat One',cursive; font-weight: 400; font-size: clamp(2.2rem,5vw,3.3rem); line-height: 1.05; letter-spacing: 0.4px; margin: 0; color: #DA4435">Abanicos personalizados</h1>
         <h2 style="font-family:'Outfit',sans-serif;font-weight:400;font-size:1.12rem;line-height:1.6;margin:22px 0 34px;max-width:46ch;color:rgba(48,21,9,0.82);">Diseñamos abanicos personalizados para tu evento.</h2>
-        <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <div class="abk-ctas" style="display:flex;gap:16px;flex-wrap:wrap;">
           <div sc-camel-on-click="{{ goQuote }}" style="cursor: pointer; background: #DA4435; color: #FFFBF0; font-family: 'Fredoka',sans-serif; font-weight: 600; padding: 14px 28px; border-radius: 999px; font-size: 0.95rem; white-space: nowrap; box-shadow: 0 6px 16px rgba(218,68,53,0.35)">Pide tu presupuesto</div>
           <div sc-camel-on-click="{{ goProyectos }}" style="cursor: pointer; border: 2px solid #301509; color: #301509; font-family: 'Fredoka',sans-serif; font-weight: 600; padding: 12px 26px; border-radius: 999px; font-size: 0.95rem; white-space: nowrap;">Ver proyectos</div>
         </div>
@@ -513,7 +518,7 @@
         
       </div>
       <div style="border-radius: 28px; padding: clamp(24px,4vw,40px); background-color: #FBF0CE">
-        <div style="display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap;">
+        <div class="abk-steps" style="display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap;">
           <sc-for list="{{ wSteps }}" as="s" hint-placeholder-count="5">
             <div style="flex:1;min-width:96px;font-family:'Fredoka',sans-serif;font-size:0.78rem;color:{{ s.color }};font-weight:{{ s.weight }};">
               <div style="height:6px;border-radius:999px;background:{{ s.bar }};margin-bottom:8px;"></div>
@@ -525,7 +530,7 @@
           <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;margin:0 0 {{ wTitleGap }};">{{ wTitle }}</h4>
           <sc-if value="{{ wHasSub }}" hint-placeholder-val="{{ false }}"><p style="font-size:0.92rem;line-height:1.55;color:rgba(48,21,9,0.7);margin:0 0 22px;">{{ wSub }}</p></sc-if>
           <sc-if value="{{ wIsOptions }}" hint-placeholder-val="{{ true }}">
-            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;">
+            <div class="abk-opts" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;">
               <sc-for list="{{ wOptions }}" as="o" hint-placeholder-count="4">
                 <div sc-camel-on-click="{{ o.pick }}" style="cursor:pointer;border:2px solid {{ o.border }};background:{{ o.bg }};color:{{ o.fg }};border-radius:16px;padding:14px 20px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.92rem;">{{ o.label }}</div>
               </sc-for>
@@ -553,7 +558,7 @@
             </div>
           </sc-if>
           <sc-if value="{{ wIsDate }}" hint-placeholder-val="{{ false }}">
-            <div style="display:flex;flex-direction:column;gap:8px;max-width:280px;margin-bottom:24px;">
+            <div class="abk-date" style="display:flex;flex-direction:column;gap:8px;max-width:280px;margin-bottom:24px;">
               <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Fecha del evento (DD/MM/AAAA)</label>
               <input type="date" value="{{ wDateValue }}" sc-camel-on-change="{{ wOnDate }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
             </div>
@@ -567,7 +572,7 @@
               <textarea placeholder="Cuéntanos el evento, la fecha y la idea" rows="3" value="{{ wMsg }}" sc-camel-on-change="{{ wOnMsg }}" style="grid-column:1/-1;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;resize:vertical;"></textarea>
             </div>
           </sc-if>
-          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+          <div class="abk-wiz-nav" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
             <div sc-camel-on-click="{{ wNext }}" style="cursor:{{ wNextCursor }};opacity:{{ wNextOpacity }};background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:13px 26px;border-radius:999px;">{{ wNextLabel }}</div>
             <div sc-camel-on-click="{{ wBack }}" style="cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.9rem;color:{{ wBackColor }};">Atrás</div>
             <div style="margin-left:auto;font-size:0.82rem;color:rgba(48,21,9,0.55);">{{ wProgress }}</div>
@@ -629,7 +634,7 @@
         <h2 style="font-family:'Bagel Fat One',cursive;font-weight:400;font-size:clamp(1.6rem,3.4vw,2rem);margin:0;">Pide tu presupuesto</h2>
       </div>
       <div style="background:#FBF0CE;border-radius:28px;padding:clamp(24px,4vw,40px);">
-        <div style="display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap;">
+        <div class="abk-steps" style="display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap;">
           <sc-for list="{{ bSteps }}" as="s" hint-placeholder-count="5">
             <div style="flex:1;min-width:96px;font-family:'Fredoka',sans-serif;font-size:0.78rem;color:{{ s.color }};font-weight:{{ s.weight }};">
               <div style="height:6px;border-radius:999px;background:{{ s.bar }};margin-bottom:8px;"></div>
@@ -641,7 +646,7 @@
           <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;margin:0 0 {{ bTitleGap }};">{{ bTitle }}</h4>
           <sc-if value="{{ bHasSub }}" hint-placeholder-val="{{ false }}"><p style="font-size:0.92rem;line-height:1.55;color:rgba(48,21,9,0.7);margin:0 0 22px;">{{ bSub }}</p></sc-if>
           <sc-if value="{{ bIsOptions }}" hint-placeholder-val="{{ true }}">
-            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;">
+            <div class="abk-opts" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;">
               <sc-for list="{{ bOptions }}" as="o" hint-placeholder-count="4">
                 <div sc-camel-on-click="{{ o.pick }}" style="cursor:pointer;border:2px solid {{ o.border }};background:{{ o.bg }};color:{{ o.fg }};border-radius:16px;padding:14px 20px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.92rem;">{{ o.label }}</div>
               </sc-for>
@@ -669,7 +674,7 @@
             </div>
           </sc-if>
           <sc-if value="{{ bIsDate }}" hint-placeholder-val="{{ false }}">
-            <div style="display:flex;flex-direction:column;gap:8px;max-width:280px;margin-bottom:24px;">
+            <div class="abk-date" style="display:flex;flex-direction:column;gap:8px;max-width:280px;margin-bottom:24px;">
               <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Fecha del evento (DD/MM/AAAA)</label>
               <input type="date" value="{{ bDateValue }}" sc-camel-on-change="{{ bOnDate }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
             </div>
@@ -683,7 +688,7 @@
               <textarea placeholder="Cuéntanos el evento, la fecha y la idea" rows="3" value="{{ bMsg }}" sc-camel-on-change="{{ bOnMsg }}" style="grid-column:1/-1;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;resize:vertical;"></textarea>
             </div>
           </sc-if>
-          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+          <div class="abk-wiz-nav" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
             <div sc-camel-on-click="{{ bNext }}" style="cursor:{{ bNextCursor }};opacity:{{ bNextOpacity }};background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:13px 26px;border-radius:999px;">{{ bNextLabel }}</div>
             <div sc-camel-on-click="{{ bBack }}" style="cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.9rem;color:{{ bBackColor }};">Atrás</div>
             <div style="margin-left:auto;font-size:0.82rem;color:rgba(48,21,9,0.55);">{{ bProgress }}</div>
@@ -758,7 +763,7 @@
         <p style="margin:10px 0 0;font-size:1.02rem;line-height:1.6;color:rgba(48,21,9,0.72);">Contadnos la fecha y lo demás lo vemos juntos.</p>
       </div>
       <div style="background:#FBF0CE;border-radius:28px;padding:clamp(24px,4vw,40px);">
-        <div style="display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap;">
+        <div class="abk-steps" style="display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap;">
           <sc-for list="{{ wSteps }}" as="s" hint-placeholder-count="5">
             <div style="flex:1;min-width:96px;font-family:'Fredoka',sans-serif;font-size:0.78rem;color:{{ s.color }};font-weight:{{ s.weight }};">
               <div style="height:6px;border-radius:999px;background:{{ s.bar }};margin-bottom:8px;"></div>
@@ -770,7 +775,7 @@
           <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;margin:0 0 {{ wTitleGap }};">{{ wTitle }}</h4>
           <sc-if value="{{ wHasSub }}" hint-placeholder-val="{{ false }}"><p style="font-size:0.92rem;line-height:1.55;color:rgba(48,21,9,0.7);margin:0 0 22px;">{{ wSub }}</p></sc-if>
           <sc-if value="{{ wIsOptions }}" hint-placeholder-val="{{ true }}">
-            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;">
+            <div class="abk-opts" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;">
               <sc-for list="{{ wOptions }}" as="o" hint-placeholder-count="4">
                 <div sc-camel-on-click="{{ o.pick }}" style="cursor:pointer;border:2px solid {{ o.border }};background:{{ o.bg }};color:{{ o.fg }};border-radius:16px;padding:14px 20px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.92rem;">{{ o.label }}</div>
               </sc-for>
@@ -798,7 +803,7 @@
             </div>
           </sc-if>
           <sc-if value="{{ wIsDate }}" hint-placeholder-val="{{ false }}">
-            <div style="display:flex;flex-direction:column;gap:8px;max-width:280px;margin-bottom:24px;">
+            <div class="abk-date" style="display:flex;flex-direction:column;gap:8px;max-width:280px;margin-bottom:24px;">
               <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Fecha del evento (DD/MM/AAAA)</label>
               <input type="date" value="{{ wDateValue }}" sc-camel-on-change="{{ wOnDate }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
             </div>
@@ -812,7 +817,7 @@
               <textarea placeholder="Cuéntanos el evento, la fecha y la idea" rows="3" value="{{ wMsg }}" sc-camel-on-change="{{ wOnMsg }}" style="grid-column:1/-1;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;resize:vertical;"></textarea>
             </div>
           </sc-if>
-          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+          <div class="abk-wiz-nav" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
             <div sc-camel-on-click="{{ wNext }}" style="cursor:{{ wNextCursor }};opacity:{{ wNextOpacity }};background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:13px 26px;border-radius:999px;">{{ wNextLabel }}</div>
             <div sc-camel-on-click="{{ wBack }}" style="cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.9rem;color:{{ wBackColor }};">Atrás</div>
             <div style="margin-left:auto;font-size:0.82rem;color:rgba(48,21,9,0.55);">{{ wProgress }}</div>
@@ -1157,7 +1162,7 @@
     <div sc-camel-on-click="{{ saveChanges }}" style="cursor:pointer;background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.88rem;padding:10px 22px;border-radius:999px;">Guardar</div>
   </div>
 
-  <footer style="background:#301509;color:#FBF0CE;">
+  <footer class="abk-footer" style="background:#301509;color:#FBF0CE;">
     <div style="max-width:1180px;margin:0 auto;padding:48px 32px 28px;">
       <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:28px;">
         <div style="font-family:'Bagel Fat One',cursive;font-size:1.6rem;color:#F6DE8B;">abanikos</div>
@@ -1187,7 +1192,7 @@
   </footer>
 </div>
 
-<a href="{{ waUrl }}" target="_blank" rel="noopener noreferrer" title="WhatsApp" style="position:fixed;bottom:24px;right:24px;z-index:60;background:#3FA746;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,0.25);">
+<a class="abk-wa" href="{{ waUrl }}" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp" style="position:fixed;bottom:24px;right:24px;z-index:60;background:#3FA746;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,0.25);">
   <svg sc-camel-view-box="0 0 24 24" style="width:28px;height:28px;fill:#FFFFFF;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.25.7-1.24 1.28-2.03 1.45-.54.11-1.24.2-3.6-.77-3.02-1.25-4.96-4.31-5.11-4.51-.15-.2-1.22-1.62-1.22-3.09 0-1.47.77-2.19 1.04-2.49.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.08.92 2.23.07.15.12.33.02.53-.1.2-.15.33-.3.5-.15.18-.31.4-.45.54-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.27.1 1.75.83 2.05.98.3.15.5.23.57.35.08.13.08.72-.17 1.42z"></path></svg>
 </a>
 </x-dc>

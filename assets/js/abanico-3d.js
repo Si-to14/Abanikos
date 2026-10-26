@@ -35,7 +35,7 @@
   '.a3-hint{font-size:1.05rem;line-height:1.6;margin:14px 0 0;color:rgba(48,21,9,.72);}' +
   '.a3-wrap{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:stretch;}' +
   '.a3-stage{position:relative;aspect-ratio:4/3;border-radius:24px;overflow:hidden;background:radial-gradient(ellipse at 50% 40%,#FFF8E6 0%,#FBF0CE 55%,#F1DFAE 100%);}' +
-  '.a3-stage canvas{width:100%;height:100%;display:block;touch-action:none;cursor:grab;}' +
+  '.a3-stage canvas{width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab;}' +
   '.a3-stage canvas.is-drag{cursor:grabbing;}' +
   '.a3-tag{position:absolute;pointer-events:none;transform:translate(-50%,-140%);background:#301509;color:#FBF0CE;font:600 .85rem "Fredoka",sans-serif;padding:5px 12px;border-radius:999px;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.25);}' +
   '.a3-fallback{position:absolute;inset:0;display:grid;place-items:center;padding:24px;text-align:center;}' +
