@@ -97,6 +97,24 @@
     'Abanicarse despacio': 'Fanning slowly',
     '«Me eres indiferente.»': '“I don’t care about you.”',
     'Hoy el mensaje lo pones tú: tu marca, tu fecha, tu frase.': 'Today, you write the message: your brand, your date, your words.',
+
+    // Las partes del abanico (modelo 3D · assets/js/abanico-3d.js)
+    'Las partes del abanico': 'Anatomy of a fan',
+    'Arrastra para girarlo y toca cada pieza para descubrir su nombre.': 'Drag to rotate it and tap each part to discover its name.',
+    'Abrir / cerrar': 'Open / close', 'Abanico 3D interactivo': 'Interactive 3D fan',
+    'Toca una pieza': 'Tap a part',
+    'Elige una parte del abanico, en el modelo o en la lista, para ver cómo se llama y para qué sirve.': 'Pick a part of the fan, on the model or in the list, to see what it’s called and what it does.',
+    'Tu navegador no puede mostrar el modelo 3D, pero puedes consultar las partes en la lista.': 'Your browser can’t display the 3D model, but you can explore the parts in the list.',
+    'País': 'Leaf', 'Rivete': 'Edging', 'Fuente': 'Sticks', 'Varilla': 'Blade', 'Guía': 'Rib',
+    'Guarda': 'Guard', 'Guardapulgar': 'Thumb guard', 'Ojo': 'Pivot hole',
+    'La tela del abanico. Se corta y se plisa a mano, y es donde va el diseño: tu marca, tu fecha, tu frase.': 'The fabric of the fan. It’s cut and pleated by hand, and it’s where the design goes: your brand, your date, your words.',
+    'El borde superior del país. Remata la tela y le da un acabado limpio.': 'The top border of the leaf. It finishes the fabric with a clean edge.',
+    'La parte del varillaje que queda a la vista, entre el ojo y el país.': 'The part of the frame left visible, between the pivot and the leaf.',
+    'Cada una de las piezas de madera del abanico. El conjunto de todas las varillas forma el varillaje.': 'Each of the wooden pieces of the fan. All the blades together form the frame.',
+    'El segundo tramo de la varilla, más fino, sobre el que va pegado el país.': 'The second, thinner section of each blade, onto which the leaf is glued.',
+    'La primera y la última varilla del varillaje. Son más gruesas y protegen el abanico cuando está cerrado.': 'The first and last blades of the frame. They’re thicker and protect the fan when it’s closed.',
+    'La zona ensanchada de la guarda, junto al ojo, donde se apoya el pulgar para abrir y cerrar el abanico.': 'The wider part of the guard, next to the pivot, where your thumb rests to open and close the fan.',
+    'El orificio por el que pasa el clavillo que une todas las varillas. Es el eje sobre el que gira el abanico.': 'The hole for the pin that joins all the blades. It’s the axis the fan turns on.',
     'En qué creemos': 'What we believe',
     'Práctico': 'Practical',
     'El abanico aporta un valor añadido al cliente mejorando su experiencia.': 'A hand fan adds value for the customer by improving their experience.',
@@ -358,6 +376,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Fredoka:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap">
 <script src="assets/js/image-slot.js"></script>
 <script src="assets/js/cookies.js"></script>
+<script src="assets/js/abanico-3d.js"></script>
 <style>
   *{box-sizing:border-box;}
   body{margin:0;background:#FFFBF0;color:#301509;font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;}
@@ -682,6 +701,11 @@
         </div>
         <p style="margin:52px auto 0;max-width:30ch;text-align:center;font-family:'Bagel Fat One',cursive;font-size:clamp(1.3rem,3vw,1.75rem);line-height:1.2;color:#FFFBF0;">Hoy el mensaje lo pones tú: tu marca, tu fecha, tu frase.</p>
       </div>
+    </section>
+
+    <!-- 2b · Las partes del abanico (modelo 3D interactivo · assets/js/abanico-3d.js) -->
+    <section style="max-width:1180px;margin:0 auto;padding:72px 32px 24px;">
+      <abanico-3d></abanico-3d>
     </section>
 
     <!-- 3 · En qué creemos -->
