@@ -520,7 +520,7 @@
         </div>
         
       </div>
-    </section><section style="max-width: 1180px; margin: 0 auto; padding: 0 32px 72px; padding-top: 50px">
+    </section><section id="presupuesto" style="max-width: 1180px; margin: 0 auto; padding: 0 32px 72px; padding-top: 50px; scroll-margin-top: 72px">
       <div style="max-width:100%;margin-bottom:32px;text-align:center;">
         <h2 style="font-family: 'Bagel Fat One',cursive; font-weight: 400; font-size: clamp(1.6rem,3.4vw,2rem); margin: 0; text-align: center">Pide tu presupuesto</h2>
         
@@ -577,6 +577,7 @@
               <input placeholder="Marca, local o evento" required="{{ true }}" value="{{ wBrand }}" sc-camel-on-change="{{ wOnBrand }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
               <input type="email" placeholder="Email" required="{{ true }}" value="{{ wEmail }}" sc-camel-on-change="{{ wOnEmail }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
               <div style="display:flex;gap:8px;min-width:0;"><sc-raw-select value="{{ wCc }}" sc-camel-on-change="{{ wOnCc }}" aria-label="Prefijo" style="flex:0 0 auto;width:auto;max-width:120px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 10px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;cursor:pointer;"><sc-for list="{{ countryCodes }}" as="c" hint-placeholder-count="3"><option value="{{ c.iso }}">{{ c.label }}</option></sc-for></sc-raw-select><input type="tel" placeholder="Teléfono" required="{{ true }}" value="{{ wPhone }}" sc-camel-on-change="{{ wOnPhone }}" style="flex:1;min-width:0;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;"></div>
+              <textarea placeholder="Cuéntanos el evento, la fecha y la idea" rows="3" value="{{ wMsg }}" sc-camel-on-change="{{ wOnMsg }}" style="grid-column:1/-1;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;resize:vertical;"></textarea>
             </div>
           </sc-if>
           <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
@@ -947,7 +948,7 @@
       </div>
     </section>
 
-    <section style="max-width:1180px;margin:0 auto;padding:0 32px 72px;">
+    <section id="presupuesto" style="max-width:1180px;margin:0 auto;padding:0 32px 72px;scroll-margin-top:72px;">
       <div style="max-width:580px;margin-bottom:32px;">
         <h2 style="font-family:'Bagel Fat One',cursive;font-weight:400;font-size:clamp(1.6rem,3.4vw,2rem);margin:0;">Diseña el de vuestra boda</h2>
         <p style="margin:10px 0 0;font-size:1.02rem;line-height:1.6;color:rgba(48,21,9,0.72);">Contadnos la fecha y lo demás lo vemos juntos.</p>
@@ -1004,6 +1005,7 @@
               <input placeholder="Marca, local o evento" required="{{ true }}" value="{{ wBrand }}" sc-camel-on-change="{{ wOnBrand }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
               <input type="email" placeholder="Email" required="{{ true }}" value="{{ wEmail }}" sc-camel-on-change="{{ wOnEmail }}" style="border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
               <div style="display:flex;gap:8px;min-width:0;"><sc-raw-select value="{{ wCc }}" sc-camel-on-change="{{ wOnCc }}" aria-label="Prefijo" style="flex:0 0 auto;width:auto;max-width:120px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 10px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;cursor:pointer;"><sc-for list="{{ countryCodes }}" as="c" hint-placeholder-count="3"><option value="{{ c.iso }}">{{ c.label }}</option></sc-for></sc-raw-select><input type="tel" placeholder="Teléfono" required="{{ true }}" value="{{ wPhone }}" sc-camel-on-change="{{ wOnPhone }}" style="flex:1;min-width:0;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;"></div>
+              <textarea placeholder="Cuéntanos el evento, la fecha y la idea" rows="3" value="{{ wMsg }}" sc-camel-on-change="{{ wOnMsg }}" style="grid-column:1/-1;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;resize:vertical;"></textarea>
             </div>
           </sc-if>
           <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
@@ -1654,6 +1656,13 @@ class Component extends DCLogic {
     ];
   }
 
+  // Lleva al formulario de presupuesto: el de esta página si lo tiene (portada, Abanikos, Bodas) o el de la portada
+  goQuote() {
+    const here = ['home', 'b2b', 'bodas'].indexOf(this.state.view) >= 0;
+    if (!here) this.go('home');
+    setTimeout(() => { const f = document.getElementById('presupuesto'); if (f) f.scrollIntoView({ behavior: 'smooth' }); }, here ? 0 : 80);
+  }
+
   go(view) {
     this.setState({ view });
     if (typeof window !== 'undefined') window.scrollTo({ top: 0 });
@@ -1809,7 +1818,7 @@ class Component extends DCLogic {
       progress: st.done ? 'Enviado' : 'Paso ' + (st.i + 1) + ' de ' + steps.length,
       next: () => {
         if (!st.done && answered && last) {
-          this.submitConf(key, key === 'w' ? 'Configurador Bodas/Eventos' : 'Configurador Empresas', steps, st);
+          this.submitConf(key, key === 'b' ? 'Configurador Empresas' : (this.state.view === 'bodas' ? 'Configurador Bodas' : 'Configurador Home'), steps, st);
         }
         this.setState(s => {
         const c = s[key];
@@ -2057,8 +2066,8 @@ class Component extends DCLogic {
       goCatFestival: () => this.go('proyectos'),
       goCatCorp: () => this.openCategory('p3'),
       goCatBeach: () => this.openCategory('p2'),
-      goConf: () => this.go(v === 'bodas' ? 'bodas' : 'b2b'),
-      goQuote: () => { this.go('b2b'); setTimeout(() => { const f = document.getElementById('presupuesto'); if (f) f.scrollIntoView({ behavior: 'smooth' }); }, 80); },
+      goConf: () => this.goQuote(),
+      goQuote: () => this.goQuote(),
       sendContact: () => {
         const g = n => {
           const el = document.querySelector('[data-f="' + n + '"]');
@@ -2127,6 +2136,7 @@ class Component extends DCLogic {
         if (window.abkI18n) window.abkI18n.set(l);
         this.setState({ lang: l });
       },
+      wMsg: w.msg, wOnMsg: w.onMsg,
       wNext: w.next, wBack: w.back, wNextLabel: w.nextLabel, wBackColor: w.backColor, wProgress: w.progress
     };
   }
