@@ -1,0 +1,93 @@
+/* ===== abanikos · ajustes para móvil =====
+   La plantilla usa estilos en línea; aquí se adaptan a pantallas pequeñas
+   (por eso se usa !important). El menú lo abre/cierra assets/js/mobile.js. */
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { overflow-x: hidden; }
+[sc-camel-on-click], .abk-burger { -webkit-tap-highlight-color: rgba(218, 68, 53, 0.15); }
+
+/* Cabecera móvil: oculta en escritorio */
+.abk-head-m { display: none; }
+
+/* ---------- Tablet y móvil: menú hamburguesa ---------- */
+@media (max-width: 860px) {
+  .abk-head-in { padding-top: 10px !important; padding-bottom: 10px !important; gap: 12px !important; min-height: 60px; }
+  .abk-logo { font-size: 1.45rem !important; }
+
+  .abk-head-m { display: flex; align-items: center; gap: 10px; }
+  .abk-head-cta {
+    cursor: pointer; background: #DA4435; color: #FFFBF0; font-family: 'Fredoka', sans-serif; font-weight: 600;
+    font-size: 0.92rem; line-height: 1; padding: 12px 16px; border-radius: 999px; white-space: nowrap;
+  }
+  .abk-burger {
+    width: 44px; height: 44px; padding: 0; border: 2px solid #301509; border-radius: 50%; background: transparent;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; cursor: pointer; color: #301509;
+  }
+  .abk-burger span { display: block; width: 18px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .2s ease, opacity .2s ease; }
+  .abk-menu-open .abk-burger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .abk-menu-open .abk-burger span:nth-child(2) { opacity: 0; }
+  .abk-menu-open .abk-burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  /* Panel desplegable con los enlaces */
+  .abk-nav {
+    display: none !important;
+    position: absolute; left: 0; right: 0; top: 100%;
+    flex-direction: column !important; flex-wrap: nowrap !important; align-items: stretch !important; gap: 0 !important;
+    background: #FFFBF0; border-bottom: 1px solid rgba(48, 21, 9, 0.12); box-shadow: 0 18px 30px rgba(48, 21, 9, 0.12);
+    padding: 6px 20px 20px; max-height: calc(100vh - 64px); max-height: calc(100dvh - 64px); overflow-y: auto;
+    font-size: 1.15rem !important;
+  }
+  .abk-menu-open .abk-nav { display: flex !important; }
+  .abk-nav-link {
+    padding: 15px 4px !important; border-bottom: 1px solid rgba(48, 21, 9, 0.1) !important;
+  }
+  .abk-nav-lang { align-self: flex-start; margin-top: 16px; padding: 10px 18px !important; font-size: 0.95rem !important; }
+  .abk-nav-cta { margin-top: 14px; text-align: center; padding: 15px 22px !important; font-size: 1.05rem; }
+  .abk-menu-open body::after {
+    content: ""; position: fixed; inset: 0; z-index: 40; background: rgba(48, 21, 9, 0.25);
+  }
+}
+
+/* ---------- Móvil ---------- */
+@media (max-width: 600px) {
+  /* Márgenes laterales más ajustados (antes 32px) */
+  [style*=" 32px"] { padding-left: 20px !important; padding-right: 20px !important; }
+
+  /* Portada: menos aire arriba y botones a todo el ancho */
+  .abk-hero { padding-top: 32px !important; padding-bottom: 48px !important; gap: 36px !important; }
+  .abk-hero h2 { margin: 16px 0 26px !important; font-size: 1.06rem !important; }
+  .abk-ctas { flex-direction: column; gap: 12px !important; }
+  .abk-ctas > div { text-align: center; padding-top: 15px !important; padding-bottom: 15px !important; }
+
+  /* Formularios: 16px evita que iOS haga zoom al escribir */
+  input, select, textarea { font-size: 16px !important; }
+  input[type="date"] { width: 100% !important; max-width: none !important; min-height: 48px; -webkit-appearance: none; appearance: none; text-align: left; }
+  .abk-date { max-width: none !important; }
+
+  /* Presupuesto paso a paso: barra de progreso en una línea */
+  .abk-steps { flex-wrap: nowrap !important; gap: 6px !important; margin-bottom: 22px !important; }
+  .abk-steps > div { min-width: 0 !important; font-size: 0 !important; }
+  .abk-steps > div > div { margin-bottom: 0 !important; }
+  .abk-opts { display: grid !important; grid-template-columns: 1fr 1fr; gap: 10px !important; }
+  .abk-opts > div { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 52px; padding: 12px 10px !important; }
+  .abk-wiz-nav > div:first-child { flex: 1 1 auto; text-align: center; padding-top: 15px !important; padding-bottom: 15px !important; }
+  .abk-wiz-nav > div:nth-child(2) { padding: 12px 6px; }
+
+  /* Pie: enlaces con zona táctil cómoda y hueco para el botón de WhatsApp */
+  .abk-footer [style*="flex-direction:column;gap:6px"] { gap: 2px !important; }
+  .abk-footer [style*="flex-direction:column;gap:6px"] > * { padding: 7px 0; }
+  .abk-footer > div { padding-bottom: 96px !important; }
+
+  /* Botón flotante de WhatsApp más discreto */
+  .abk-wa { width: 52px !important; height: 52px !important; right: 16px !important; bottom: calc(16px + env(safe-area-inset-bottom)) !important; }
+  .abk-wa svg { width: 26px !important; height: 26px !important; }
+  .abk-menu-open .abk-wa { display: none !important; }
+
+  /* Aviso de cookies compacto */
+  #abk-cookies { left: 10px !important; right: 10px !important; bottom: calc(10px + env(safe-area-inset-bottom)) !important; }
+  #abk-cookies > div { padding: 18px 18px 16px !important; border-radius: 20px !important; max-height: calc(100vh - 20px) !important; }
+  #abk-cookies > div > div:first-child { font-size: 1.15rem !important; margin-bottom: 4px !important; }
+  #abk-cookies > div > p { font-size: 0.84rem !important; line-height: 1.45 !important; margin-bottom: 12px !important; }
+  #abk-cookies > div > div:last-child { flex-wrap: nowrap !important; gap: 8px !important; }
+  #abk-cookies > div > div:last-child > * { padding: 11px 8px !important; font-size: 0.86rem !important; min-width: 0; }
+}
