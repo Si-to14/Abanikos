@@ -1,18 +1,20 @@
-/* ===== abanikos · Google Analytics 4 =====
-   Solo se carga si el visitante acepta las cookies de "Analítica" (ver cookies.js).
+/* ===== abanikos · Google Analytics 4 + Microsoft Clarity =====
+   Solo se cargan si el visitante acepta las cookies de "Analítica" (ver cookies.js).
    La web es una sola página: cada cambio de sección se envía como una página vista.
      abkPage('b2b')                           → página vista de la sección
      abkTrack('generate_lead', { origen: … }) → evento
-   Para activarlo, pon el ID de medición de GA4 (empieza por "G-") en GA_ID. */
+   GA_ID: ID de medición de GA4 (empieza por "G-").
+   CLARITY_ID: ID del proyecto de Clarity (clarity.microsoft.com → Settings → Overview). Vacío = desactivado. */
 (function () {
   if (window.abkPage) return;
   var GA_ID = 'G-RYRP3ETGK1';
+  var CLARITY_ID = '';
 
   var NAMES = {
     home: 'Inicio', b2b: 'Abanikos', bodas: 'Bodas', proyectos: 'Historias', conceptos: 'Inspiración',
     proyecto: 'Historia', contacto: 'Contacto', marca: 'Marca'
   };
-  var loaded = false, current = null;
+  var loaded = false, clarityLoaded = false, current = null;
 
   function gtag() { window.dataLayer.push(arguments); }
 
@@ -28,6 +30,18 @@
     s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
     document.head.appendChild(s);
     if (current) send(current);
+  }
+
+  // Mapas de calor y grabaciones anónimas de cómo se navega la web
+  function loadClarity() {
+    if (!CLARITY_ID) return;
+    if (clarityLoaded) { window.clarity('start'); return; }
+    clarityLoaded = true;
+    window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.clarity.ms/tag/' + CLARITY_ID;
+    document.head.appendChild(s);
   }
 
   function send(p) {
@@ -56,7 +70,8 @@
     window.abkConsent.onChange(function (c) {
       // Si retira el permiso, GA deja de enviar datos hasta que lo vuelva a dar
       if (GA_ID) window['ga-disable-' + GA_ID] = !c.analytics;
-      if (c.analytics) load();
+      if (c.analytics) { load(); loadClarity(); }
+      else if (clarityLoaded) window.clarity('stop');
     });
   }
   start();

@@ -1469,9 +1469,17 @@ class Component extends DCLogic {
     const v = this.state.view;
     const all = this.projectState();
     let detail = '';
-    if (v === 'proyecto') detail = (all.filter(x => x.id === this.state.openProject)[0] || {}).title || '';
-    if (v === 'marca') detail = ([].concat(...all.map(x => x.works || [])).filter(w => w.id === this.state.openWork)[0] || {}).brand || '';
+    const proj = v === 'proyecto' ? all.filter(x => x.id === this.state.openProject)[0] : null;
+    if (proj) detail = proj.title || '';
+    const owner = v === 'marca' ? all.filter(x => (x.works || []).some(w => w.id === this.state.openWork))[0] : null;
+    const work = owner ? owner.works.filter(w => w.id === this.state.openWork)[0] : null;
+    if (work) detail = work.brand || '';
     window.abkPage(v, detail);
+    // Qué historias y marcas interesan más (Informes → Eventos → ver_categoria / ver_marca)
+    if (proj) window.abkTrack('ver_categoria', { categoria: detail, seccion: this.isConcept(proj) ? 'Inspiración' : 'Historias' });
+    if (work) {
+      window.abkTrack('ver_marca', { marca: work.brand, categoria: owner.title, seccion: this.isConcept(owner) ? 'Inspiración' : 'Historias' });
+    }
   }
 
   // ====== Prefijos telefónicos (el primero es el que sale por defecto) ======
@@ -1626,6 +1634,14 @@ class Component extends DCLogic {
       backColor: st.i === 0 || st.done ? 'rgba(48,21,9,0.25)' : 'rgba(48,21,9,0.65)',
       progress: st.done ? 'Enviado' : 'Paso ' + (st.i + 1) + ' de ' + steps.length,
       next: () => {
+        // Embudo del configurador: un evento por paso completado (sin datos personales)
+        if (!st.done && answered && window.abkTrack) {
+          window.abkTrack('configurador_paso', {
+            configurador: key === 'b' ? 'Empresas' : (this.state.view === 'bodas' ? 'Bodas' : 'Home'),
+            paso: st.i + 1, paso_nombre: step.label || '',
+            respuesta: step.form || step.date ? '' : String(st.picks[st.i] || '')
+          });
+        }
         if (!st.done && answered && last) {
           this.submitConf(key, key === 'b' ? 'Configurador Empresas' : (this.state.view === 'bodas' ? 'Configurador Bodas' : 'Configurador Home'), steps, st);
         }
