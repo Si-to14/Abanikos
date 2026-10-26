@@ -1038,29 +1038,56 @@
   <!-- ============ CONTACTO ============ -->
   <sc-if value="{{ isContacto }}" hint-placeholder-val="{{ false }}">
   <div>
-    <section style="max-width:1180px;margin:0 auto;padding:64px 32px 40px;">
-      <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;color:#DA4435;margin-bottom:18px;">Contacto</div>
-      <h1 style="font-family:'Bagel Fat One',cursive;font-weight:400;font-size:clamp(2rem,4.6vw,2.9rem);line-height:1.05;margin:0;max-width:16ch;">Escríbenos y lo vemos.</h1>
-      <p style="font-size:1.1rem;line-height:1.6;margin:18px 0 0;max-width:50ch;color:rgba(48,21,9,0.82);">Cuéntanos qué evento es, para cuándo y cuántos abanikos necesitas. Contestamos en 24–48 h con una propuesta concreta, no con un catálogo.</p>
-    </section>
+    <section style="max-width:1180px;margin:0 auto;padding:clamp(28px,4vh,48px) 32px clamp(32px,5vh,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(28px,4vw,56px);align-items:start;">
+      <div style="display:flex;flex-direction:column;gap:18px;">
+        <div>
+          <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;color:#DA4435;margin-bottom:12px;">Contacto</div>
+          <h1 style="font-family:'Bagel Fat One',cursive;font-weight:400;font-size:clamp(1.9rem,3.6vw,2.6rem);line-height:1.05;margin:0;">Escríbenos y lo vemos.</h1>
+          <p style="font-size:1rem;line-height:1.55;margin:12px 0 0;max-width:46ch;color:rgba(48,21,9,0.82);">Cuéntanos qué evento es, para cuándo y cuántos abanikos necesitas. Contestamos en 24–48 h con una propuesta concreta, no con un catálogo.</p>
+        </div>
+        <div style="background:#FBF0CE;border-radius:20px;padding:20px 22px;">
+          <h4 style="font-family:'Fredoka',sans-serif;font-weight:600;margin:0 0 6px;font-size:1rem;">Por WhatsApp es más rápido</h4>
+          <p style="font-size:0.88rem;line-height:1.5;color:rgba(48,21,9,0.72);margin:0 0 12px;">Mándanos una foto, una referencia o un audio de dos minutos. Nos vale.</p>
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+            <a href="{{ waUrl }}" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#3FA746;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:10px 20px;border-radius:999px;font-size:0.9rem;">{{ whatsapp }}</a>
+            <div style="display:flex;flex-direction:column;gap:2px;font-size:0.85rem;">
+              <a href="mailto:abanikos.corporate@gmail.com">abanikos.corporate@gmail.com</a>
+              <a href="{{ igUrl }}" target="_blank" rel="noopener noreferrer">{{ igLabel }}</a>
+            </div>
+          </div>
+        </div>
+        <div style="background:#301509;color:#FBF0CE;border-radius:20px;padding:20px 22px;">
+          <h4 style="font-family:'Fredoka',sans-serif;font-weight:600;margin:0 0 10px;font-size:1rem;">Lo esencial</h4>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:6px 18px;font-size:0.85rem;opacity:0.85;">
+            <div>Pedido mínimo: 150 unidades</div>
+            <div>Materiales: madera o plástico</div>
+            <div>Plazo: de 2 semanas a 2 meses según cantidad</div>
+            <div>Envíos a toda España</div>
+          </div>
+          <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:baseline;margin-top:12px;padding-top:10px;border-top:1px solid rgba(251,240,206,0.2);font-size:0.85rem;">
+            <span style="opacity:0.85;">¿Quieres diseñarlo tú?</span>
+            <a href="plantilla-abanico-abanikos-psd.zip" download="plantilla-abanico-abanikos-psd.zip" style="color:#F6DE8B;font-family:'Fredoka',sans-serif;font-weight:600;">↓ Plantilla PSD</a>
+            <a href="plantilla-abanico-abanikos.png" download="plantilla-abanico-abanikos.png" style="color:#F6DE8B;font-family:'Fredoka',sans-serif;font-weight:600;">↓ Plantilla PNG</a>
+          </div>
+        </div>
+      </div>
 
-    <section style="max-width:1180px;margin:0 auto;padding:0 32px 88px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:start;">
-      <div style="border:2.5px solid #301509;border-radius:28px 28px 28px 6px;padding:clamp(24px,3.5vw,34px);">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;">
-          <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Nombre
-            <input data-f="nombre" placeholder="Tu nombre" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+      <div style="border:2.5px solid #301509;border-radius:28px 28px 28px 6px;padding:clamp(20px,2.6vw,28px);">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:12px 14px;">
+          <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.8rem;min-width:0;">Nombre
+            <input data-f="nombre" placeholder="Tu nombre" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;border:2px solid rgba(48,21,9,0.2);border-radius:12px;padding:10px 14px;font-size:0.93rem;background:#FFFBF0;color:#301509;outline:none;">
           </label>
-          <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Marca, local o evento
-            <input data-f="marca" placeholder="p. ej. Cala Duo" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+          <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.8rem;min-width:0;">Marca, local o evento
+            <input data-f="marca" placeholder="p. ej. Cala Duo" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;border:2px solid rgba(48,21,9,0.2);border-radius:12px;padding:10px 14px;font-size:0.93rem;background:#FFFBF0;color:#301509;outline:none;">
           </label>
-          <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Email
-            <input data-f="email" type="email" placeholder="hola@tuemail.com" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+          <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.8rem;min-width:0;">Email
+            <input data-f="email" type="email" placeholder="hola@tuemail.com" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;border:2px solid rgba(48,21,9,0.2);border-radius:12px;padding:10px 14px;font-size:0.93rem;background:#FFFBF0;color:#301509;outline:none;">
           </label>
-          <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Teléfono
-            <div style="display:flex;gap:8px;margin-top:6px;"><sc-raw-select data-f="prefijo" aria-label="Prefijo" style="flex:0 0 auto;width:auto;max-width:120px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 10px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;cursor:pointer;"><sc-for list="{{ countryCodes }}" as="c" hint-placeholder-count="3"><option value="{{ c.iso }}">{{ c.label }}</option></sc-for></sc-raw-select><input data-f="telefono" type="tel" placeholder="600 000 000" style="flex:1;min-width:0;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;"></div>
+          <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.8rem;min-width:0;">Teléfono
+            <div style="display:flex;gap:8px;margin-top:4px;"><sc-raw-select data-f="prefijo" aria-label="Prefijo" style="flex:0 0 auto;width:auto;max-width:96px;border:2px solid rgba(48,21,9,0.2);border-radius:12px;padding:10px 8px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;cursor:pointer;"><sc-for list="{{ countryCodes }}" as="c" hint-placeholder-count="3"><option value="{{ c.iso }}">{{ c.label }}</option></sc-for></sc-raw-select><input data-f="telefono" type="tel" placeholder="600 000 000" style="flex:1;min-width:0;border:2px solid rgba(48,21,9,0.2);border-radius:12px;padding:10px 10px;font-size:0.93rem;background:#FFFBF0;color:#301509;outline:none;"></div>
           </label>
-          <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Tipo de evento
-            <sc-raw-select data-f="tipo" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+          <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.8rem;min-width:0;">Tipo de evento
+            <sc-raw-select data-f="tipo" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;border:2px solid rgba(48,21,9,0.2);border-radius:12px;padding:10px 14px;font-size:0.93rem;background:#FFFBF0;color:#301509;outline:none;">
               <option value="">Elige una opción</option>
               <option value="Discoteca/Club">Discoteca/Club</option>
               <option value="Evento Corporativo">Evento Corporativo</option>
@@ -1069,8 +1096,8 @@
               <option value="Boda">Boda</option>
             </sc-raw-select>
           </label>
-          <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Cantidad
-            <sc-raw-select data-f="cantidad" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+          <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.8rem;min-width:0;">Cantidad
+            <sc-raw-select data-f="cantidad" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;border:2px solid rgba(48,21,9,0.2);border-radius:12px;padding:10px 14px;font-size:0.93rem;background:#FFFBF0;color:#301509;outline:none;">
               <option value="">Mínimo 150 uds</option>
               <option value="150–300">150–300</option>
               <option value="300–500">300–500</option>
@@ -1081,47 +1108,16 @@
               <option value="Más de 10.000">Más de 10.000</option>
             </sc-raw-select>
           </label>
-          <label style="font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Fecha del evento
-            <input data-f="fecha" type="date" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;">
+          <label style="grid-column:1/-1;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.8rem;min-width:0;">Fecha del evento
+            <input data-f="fecha" type="date" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;border:2px solid rgba(48,21,9,0.2);border-radius:12px;padding:10px 14px;font-size:0.93rem;background:#FFFBF0;color:#301509;outline:none;max-width:260px;">
           </label>
-          <label style="grid-column:1/-1;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.85rem;">Cuéntanos
-            <textarea data-f="mensaje" rows="4" placeholder="Idea de diseño, dudas…" style="display:block;width:100%;margin-top:6px;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:13px 16px;font-size:0.95rem;background:#FFFBF0;color:#301509;outline:none;resize:vertical;"></textarea>
+          <label style="grid-column:1/-1;font-family:'Fredoka',sans-serif;font-weight:500;font-size:0.8rem;min-width:0;">Cuéntanos
+            <textarea data-f="mensaje" rows="3" placeholder="Idea de diseño, dudas…" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;border:2px solid rgba(48,21,9,0.2);border-radius:12px;padding:10px 14px;font-size:0.93rem;background:#FFFBF0;color:#301509;outline:none;resize:vertical;"></textarea>
           </label>
         </div>
-        <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:22px;">
-          <div sc-camel-on-click="{{ sendContact }}" style="cursor:pointer;background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:14px 28px;border-radius:999px;">{{ contactBtn }}</div>
+        <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:18px;">
+          <div sc-camel-on-click="{{ sendContact }}" style="cursor:pointer;background:#DA4435;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:12px 26px;border-radius:999px;">{{ contactBtn }}</div>
           <div style="font-size:0.82rem;color:rgba(48,21,9,0.55);">Respuesta en 24–48 h laborables.</div>
-        </div>
-      </div>
-
-      <div style="display:flex;flex-direction:column;gap:16px;">
-        <div style="background:#FBF0CE;border-radius:20px;padding:24px;">
-          <h4 style="font-family:'Fredoka',sans-serif;font-weight:600;margin:0 0 10px;font-size:1.05rem;">Por WhatsApp es más rápido</h4>
-          <p style="font-size:0.92rem;line-height:1.55;color:rgba(48,21,9,0.72);margin:0 0 16px;">Mándanos una foto, una referencia o un audio de dos minutos. Nos vale.</p>
-          <a href="{{ waUrl }}" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#3FA746;color:#FFFBF0;font-family:'Fredoka',sans-serif;font-weight:600;padding:12px 24px;border-radius:999px;font-size:0.92rem;">{{ whatsapp }}</a>
-        </div>
-        <div style="background:#301509;color:#FBF0CE;border-radius:20px;padding:24px;">
-          <h4 style="font-family:'Fredoka',sans-serif;font-weight:600;margin:0 0 12px;font-size:1.05rem;">Lo esencial</h4>
-          <div style="display:flex;flex-direction:column;gap:10px;font-size:0.9rem;opacity:0.85;">
-            <div>Pedido mínimo: 150 unidades</div>
-            <div>Plazo: de 2 semanas a 2 meses según cantidad</div>
-            <div>Materiales: madera o plástico</div>
-            <div>Envíos a toda España</div>
-          </div>
-          <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(251,240,206,0.2);font-size:0.9rem;">
-            <div style="opacity:0.85;margin-bottom:8px;">¿Quieres diseñarlo tú?</div>
-            <div style="display:flex;gap:14px;flex-wrap:wrap;">
-              <a href="plantilla-abanico-abanikos-psd.zip" download="plantilla-abanico-abanikos-psd.zip" style="color:#F6DE8B;font-family:'Fredoka',sans-serif;font-weight:600;">↓ Plantilla PSD</a>
-              <a href="plantilla-abanico-abanikos.png" download="plantilla-abanico-abanikos.png" style="color:#F6DE8B;font-family:'Fredoka',sans-serif;font-weight:600;">↓ Plantilla PNG</a>
-            </div>
-          </div>
-        </div>
-        <div style="border:2px solid rgba(48,21,9,0.15);border-radius:20px;padding:24px;">
-          <h4 style="font-family:'Fredoka',sans-serif;font-weight:600;margin:0 0 12px;font-size:1.05rem;">También aquí</h4>
-          <div style="display:flex;flex-direction:column;gap:8px;font-size:0.92rem;">
-            <a href="mailto:abanikos.corporate@gmail.com">abanikos.corporate@gmail.com</a>
-            <a href="{{ igUrl }}" target="_blank" rel="noopener noreferrer">{{ igLabel }}</a>
-          </div>
         </div>
       </div>
     </section>
