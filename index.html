@@ -49,6 +49,7 @@
     'Diseñamos y fabricamos abanicos personalizados para marcas, eventos y bodas. Nos cuentas tu idea y nos encargamos del resto.': 'We design and make custom hand fans for brands, events and weddings. Tell us your idea and we\u2019ll take care of the rest.',
     'Ver proyectos': 'See projects', 'Diseño gratis · Te respondemos en 24–48 h': 'Free design · We reply within 24–48 h',
 
+    'PROPUESTA': 'PROPOSAL',
     // Aviso de cookies
     'Usamos almacenamiento técnico para que la web funcione (por ejemplo, recordar tu idioma). Si nos das permiso, también podremos usar cookies de analítica y de marketing para mejorar la web. Puedes aceptarlas, rechazarlas o elegir cuáles.': 'We use technical storage to make the site work (for example, to remember your language). With your permission, we may also use analytics and marketing cookies to improve the site. You can accept them, reject them or choose which ones.',
     'Rechazar': 'Reject', 'Configurar': 'Settings', 'Aceptar': 'Accept', 'Guardar selección': 'Save selection',
@@ -209,7 +210,7 @@
     'Deporte': 'Sports', 'Moda': 'Fashion', 'Bebidas': 'Drinks', 'Empresas corporativas': 'Corporate companies', 'Supermercado alemán': 'German supermarket',
     '¿Quieres el de tu marca?': 'Want one for your brand?',
     'Así imaginamos el abanico de algunas marcas que nos inspiran.': 'This is how we imagine the hand fan for some brands that inspire us.',
-    'En la grada, a pleno sol en los partidos de principio y final de temporada, un abanico con los colores del club es un alivio para el aficionado. Repartido en el estadio o vendido en la tienda oficial, tiñe la grada de amarillo y lleva la identidad del Submarino más allá del campo.': 'In the stands, under the full sun of early- and late-season matches, a fan in the club\u2019s colours is a relief for supporters. Handed out at the stadium or sold in the official store, it turns the stands yellow and takes the Yellow Submarine\u2019s identity beyond the pitch.',
+    'Regalar un abanico con los colores del club es un alivio para el aficionado en los partidos de principio y final de temporada, cuando el calor aprieta en el estadio. El aficionado vive el partido más cómodo y, al mismo tiempo, cada abanico tiñe la grada con los colores del club. Además, se lleva un buen recuerdo a casa y, con él, la marca.': 'Giving away a fan in the club\u2019s colours is a relief for supporters at the start and end of the season, when the heat really hits the stadium. Fans enjoy the match in more comfort and, at the same time, every fan paints the stands in the club\u2019s colours. They also take a great memory home and, with it, the brand.',
     'Con el calor de Ibiza, un abanico es casi parte del equipamiento del aficionado. Como merchandising o regalo para abonados, refresca durante el partido y hace que el escudo del club se vea en la grada, en la calle y en las fotos del verano.': 'With the Ibiza heat, a fan is practically part of a supporter\u2019s kit. As merchandise or a gift for season-ticket holders, it keeps fans cool during the match and puts the club crest in the stands, on the street and in summer photos.',
     'Horas de partido al sol en las gradas y en las colas: el abanico es tan útil como una gorra. Con la estética del torneo se convierte en un souvenir elegante que el público usa durante el partido y guarda como recuerdo de su visita.': 'Hours of tennis in the sun, in the stands and in the queues: a fan is as useful as a cap. With the tournament\u2019s look, it becomes an elegant souvenir that spectators use during the match and keep as a memento of their visit.',
     'En terrazas, bares y eventos de verano, un abanico con la imagen de Ron Piet acompaña al cliente mientras disfruta de su copa. Repartido en activaciones o como regalo con la compra, pone la marca en la mano del consumidor justo en el momento de consumo.': 'On terraces, in bars and at summer events, a fan with Ron Piet\u2019s look keeps customers company while they enjoy their drink. Handed out at activations or as a gift with purchase, it puts the brand in the consumer\u2019s hand right at the moment of consumption.',
@@ -1315,7 +1316,7 @@
     <section style="max-width:1180px;margin:0 auto;padding:0 32px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:start;">
       <sc-if value="{{ mShowText }}" hint-placeholder-val="{{ false }}">
         <div>
-          
+          <sc-if value="{{ mIsConcept }}" hint-placeholder-val="{{ false }}"><div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.82rem;letter-spacing:1.6px;color:#DA4435;margin-bottom:10px;">PROPUESTA</div></sc-if>
           <p style="font-size:1.02rem;line-height:1.65;color:rgba(48,21,9,0.82);margin:0;white-space:pre-wrap;display:{{ mTextDisplay }};">{{ mText }}</p>
           <textarea value="{{ mText }}" sc-camel-on-change="{{ mOnText }}" rows="9" style="display:{{ editDisplay }};width:100%;font-family:'Outfit',sans-serif;font-size:1rem;line-height:1.6;color:#301509;border:2px solid rgba(48,21,9,0.2);border-radius:14px;padding:14px 16px;background:#FFFBF0;outline:none;resize:vertical;"></textarea>
         </div>
@@ -1425,7 +1426,7 @@ class Component extends DCLogic {
       // Conceptos: diseños de inspiración, no colaboraciones reales
       { id: 'c1', section: 'conceptos', title: 'Deporte', type: 'Deporte', year: '', images: [cover('deporte-running.jpg')], works: [
         w('c-villarreal', 'Villarreal CF', concept('villarreal', ['01.jpg', '02.jpg', '03.jpg']), logo('villarreal', 'logo.png'), '',
-          'En la grada, a pleno sol en los partidos de principio y final de temporada, un abanico con los colores del club es un alivio para el aficionado. Repartido en el estadio o vendido en la tienda oficial, tiñe la grada de amarillo y lleva la identidad del Submarino más allá del campo.'),
+          'Regalar un abanico con los colores del club es un alivio para el aficionado en los partidos de principio y final de temporada, cuando el calor aprieta en el estadio. El aficionado vive el partido más cómodo y, al mismo tiempo, cada abanico tiñe la grada con los colores del club. Además, se lleva un buen recuerdo a casa y, con él, la marca.'),
         w('c-ud-ibiza', 'UD Ibiza', concept('ud-ibiza', ['01.jpg', '02.jpg', '03.jpg', '04.jpg']), logo('ud-ibiza', 'logo.png'), '',
           'Con el calor de Ibiza, un abanico es casi parte del equipamiento del aficionado. Como merchandising o regalo para abonados, refresca durante el partido y hace que el escudo del club se vea en la grada, en la calle y en las fotos del verano.'),
         w('c-wimbledon', 'Wimbledon', concept('wimbledon', ['01.jpg', '02.jpg', '03.jpg', '04.jpg']), logo('wimbledon', 'logo.png'), '',
