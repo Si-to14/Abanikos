@@ -1283,8 +1283,8 @@ class Component extends DCLogic {
   }
 
   componentDidMount() {
-    this.trackView();
     this.preloadLogos();
+    let stored = null;
     try {
       const raw = window.localStorage.getItem('abanikos.projects.v2');
       if (raw) {
@@ -1300,13 +1300,21 @@ class Component extends DCLogic {
           const works = p.works ? p.works.map(w => Object.assign({}, w, { images: fix(w.images), cover: w.cover || (seedWork(w.id) || {}).cover || '' })) : p.works;
           return Object.assign({}, p, { type: this.canonType(p.type), images, works });
         });
+        stored = list;
         this.setState({ projects: list, dirty: false });
       }
     } catch (e) {}
     this.setupLightbox();
+    // Si se entra con un enlace a una sección, se abre esa sección
+    const route = location.hash && location.hash !== '#cookies' ? this.parseRoute(location.hash, stored || this.projectState()) : null;
+    if (route) this.setState(route, () => { history.replaceState(null, '', this.routeFor(this.state) || location.pathname + location.search); this.trackView(); });
+    else this.trackView();
+    this._onPop = () => this.onPopState();
+    window.addEventListener('popstate', this._onPop);
   }
 
   componentWillUnmount() {
+    if (this._onPop) window.removeEventListener('popstate', this._onPop);
     if (this._lbClick) document.removeEventListener('click', this._lbClick, true);
     if (this._lbKey) document.removeEventListener('keydown', this._lbKey);
     if (this._lbEl && this._lbEl.parentNode) this._lbEl.parentNode.removeChild(this._lbEl);
@@ -1465,8 +1473,56 @@ class Component extends DCLogic {
   }
 
   go(view) {
-    this.setState({ view }, () => this.trackView());
+    this.setState({ view }, () => { this.syncUrl(); this.trackView(); });
     if (typeof window !== 'undefined') window.scrollTo({ top: 0 });
+  }
+
+  // ====== Direcciones por sección (abanikos.com/#/historias/bodas/…) ======
+  // Cada sección tiene su enlace: se puede compartir, guardar y usar el botón Atrás del navegador.
+  slug(t) {
+    return String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+
+  routeFor(st) {
+    const base = { b2b: 'abanikos', bodas: 'bodas', proyectos: 'historias', conceptos: 'inspiracion', contacto: 'contacto' };
+    if (base[st.view]) return '#/' + base[st.view];
+    const all = this.projectState();
+    if (st.view === 'proyecto' || st.view === 'marca') {
+      const p = st.view === 'proyecto'
+        ? all.filter(x => x.id === st.openProject)[0]
+        : all.filter(x => (x.works || []).some(w => w.id === st.openWork))[0];
+      if (!p) return '';
+      const sec = '#/' + (this.isConcept(p) ? 'inspiracion' : 'historias') + '/' + this.slug(p.title);
+      const w = st.view === 'marca' ? p.works.filter(x => x.id === st.openWork)[0] : null;
+      return w ? sec + '/' + this.slug(w.brand) : sec;
+    }
+    return '';
+  }
+
+  parseRoute(hash, all) {
+    const parts = String(hash || '').replace(/^#\/?/, '').split('/').filter(Boolean);
+    const top = { abanikos: 'b2b', bodas: 'bodas', historias: 'proyectos', inspiracion: 'conceptos', contacto: 'contacto' }[parts[0]];
+    if (!top) return { view: 'home' };
+    if ((top === 'proyectos' || top === 'conceptos') && parts[1]) {
+      const p = all.filter(x => (top === 'conceptos') === this.isConcept(x) && this.slug(x.title) === parts[1])[0];
+      if (!p) return { view: top };
+      const w = parts[2] ? (p.works || []).filter(x => this.slug(x.brand) === parts[2])[0] : null;
+      return w ? { view: 'marca', openProject: p.id, openWork: w.id, slide: 0 } : { view: 'proyecto', openProject: p.id };
+    }
+    return { view: top };
+  }
+
+  syncUrl() {
+    if (typeof window === 'undefined' || !window.history) return;
+    const target = this.routeFor(this.state);
+    if ((location.hash || '') === target) return;
+    history.pushState(null, '', target || location.pathname + location.search);
+  }
+
+  // Botones Atrás / Adelante del navegador
+  onPopState() {
+    this.setState(this.parseRoute(location.hash, this.projectState()), () => this.trackView());
+    window.scrollTo({ top: 0 });
   }
 
   // Analítica (assets/js/analytics.js): página vista de la sección actual
