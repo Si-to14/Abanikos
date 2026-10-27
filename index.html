@@ -167,15 +167,15 @@
     '¡Enviado! Te escribimos pronto': 'Sent! We\u2019ll be in touch soon', 'Abriendo tu correo…': 'Opening your email…',
     'Por WhatsApp es más rápido': 'WhatsApp is faster',
     'Mándanos una foto, una referencia o un audio de dos minutos. Nos vale.': 'Send us a photo, a reference or a two-minute voice note. That works for us.',
-    'Lo esencial': 'The essentials', 'Pedido mínimo: 150 unidades': 'Minimum order: 150 units',
+    'Ten en cuenta': 'Good to know', 'Pedido mínimo: 150 unidades': 'Minimum order: 150 units',
     'Plazo: de 2 semanas a 2 meses según cantidad': 'Lead time: 2 weeks to 2 months depending on quantity',
-    'Materiales: madera o plástico': 'Materials: wood or plastic', 'Envíos a toda España': 'Shipping across Spain',
+    'Varillaje de plástico o de madera': 'Plastic or wooden sticks', 'Impresión digital': 'Digital printing', 'Envíos a todo el mundo': 'Worldwide shipping',
     '📐 ¿Aún no tienes el diseño?': '📐 Don\u2019t have a design yet?',
     'Descarga nuestra plantilla, diseña encima y súbela aquí.': 'Download our template, design on top of it and upload it here.',
     'Plantilla Photoshop (PSD)': 'Photoshop template (PSD)', 'Plantilla PNG (Canva)': 'PNG template (Canva)',
     '46 × 24,5 cm · 300 ppp · textos y logos dentro de la línea roja. Cuando termines, expórtalo en PNG, JPG o PDF y súbelo aquí.': '46 × 24.5 cm · 300 dpi · keep text and logos inside the red line. When you\u2019re done, export it as PNG, JPG or PDF and upload it here.',
     'PNG, JPG, PDF, SVG o PSD · hasta 25 MB': 'PNG, JPG, PDF, SVG or PSD · up to 25 MB',
-    '↓ Descargar plantilla': '↓ Download template', '¿Quieres diseñarlo tú?': 'Want to design it yourself?',
+    '↓ Descargar plantilla': '↓ Download template', 'Descarga las plantillas': 'Download the templates',
     '↓ Plantilla PSD': '↓ PSD template', '↓ Plantilla PNG': '↓ PNG template',
     'Déjanos tu nombre y un email o teléfono para poder contestarte.': 'Please leave your name and an email or phone so we can reply.',
     'El archivo pesa más de 25 MB. Prueba con uno más ligero o mándanoslo por WhatsApp.': 'The file is larger than 25 MB. Try a lighter one or send it to us on WhatsApp.',
@@ -854,23 +854,24 @@
           <h1 style="font-family:'Bagel Fat One',cursive;font-weight:400;font-size:clamp(1.9rem,3.6vw,2.6rem);line-height:1.05;margin:0;">Cuéntanos tu idea.</h1>
           <p style="font-size:1rem;line-height:1.55;margin:12px 0 0;max-width:46ch;color:rgba(48,21,9,0.82);">Cuéntanos qué tipo de evento es, para cuántos y para cuándo necesitas los abanicos. Te responderemos en menos de 24 horas.</p>
         </div>
-        <div style="display:flex;gap:8px 20px;flex-wrap:wrap;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.95rem;">
-          <a href="mailto:abanikos.corporate@gmail.com" style="color:#DA4435;">abanikos.corporate@gmail.com</a>
-          <a href="{{ igUrl }}" target="_blank" rel="noopener noreferrer" style="color:#DA4435;">{{ igLabel }}</a>
-        </div>
         <div style="background:#301509;color:#FBF0CE;border-radius:20px;padding:20px 22px;">
-          <h4 style="font-family:'Fredoka',sans-serif;font-weight:600;margin:0 0 10px;font-size:1rem;">Lo esencial</h4>
+          <h4 style="font-family:'Fredoka',sans-serif;font-weight:600;margin:0 0 10px;font-size:1rem;">Ten en cuenta</h4>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:6px 18px;font-size:0.85rem;opacity:0.85;">
             <div>Pedido mínimo: 150 unidades</div>
-            <div>Materiales: madera o plástico</div>
+            <div>Varillaje de plástico o de madera</div>
             <div>Plazo: de 2 semanas a 2 meses según cantidad</div>
-            <div>Envíos a toda España</div>
+            <div>Impresión digital</div>
+            <div>Envíos a todo el mundo</div>
           </div>
           <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:baseline;margin-top:12px;padding-top:10px;border-top:1px solid rgba(251,240,206,0.2);font-size:0.85rem;">
-            <span style="opacity:0.85;">¿Quieres diseñarlo tú?</span>
+            <span style="opacity:0.85;">Descarga las plantillas</span>
             <a href="plantilla-abanico-abanikos-psd.zip" download="plantilla-abanico-abanikos-psd.zip" style="color:#F6DE8B;font-family:'Fredoka',sans-serif;font-weight:600;">↓ Plantilla PSD</a>
             <a href="plantilla-abanico-abanikos.png" download="plantilla-abanico-abanikos.png" style="color:#F6DE8B;font-family:'Fredoka',sans-serif;font-weight:600;">↓ Plantilla PNG</a>
           </div>
+        </div>
+        <div style="display:flex;gap:10px 24px;flex-wrap:wrap;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.95rem;">
+          <a href="{{ igUrl }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="color:#DA4435;display:inline-flex;align-items:center;gap:8px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex:0 0 auto;"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>{{ igLabel }}</a>
+          <a href="mailto:abanikos.corporate@gmail.com" aria-label="Email" style="color:#DA4435;display:inline-flex;align-items:center;gap:8px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:0 0 auto;"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>abanikos.corporate@gmail.com</a>
         </div>
       </div>
 
