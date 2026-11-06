@@ -355,7 +355,55 @@
   input,textarea,select,button{font-family:'Outfit',sans-serif;}
   ::selection{background:#F6DE8B;color:#301509;}
   @keyframes abk-marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  /* De la idea al Abaniko: tarjetas apiladas al hacer scroll */
+  .abk-flow-stack{--top:96px;--step:96px;display:flex;flex-direction:column;gap:clamp(48px,8vh,96px);padding-bottom:24px;}
+  .abk-flow-card{position:sticky;top:calc(var(--top) + var(--i) * var(--step));display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);align-items:center;gap:clamp(24px,4vw,56px);min-height:clamp(320px,46vh,420px);padding:28px clamp(24px,5vw,64px) clamp(28px,4vw,48px);border-radius:24px;background:var(--bg);color:var(--fg);box-shadow:0 -10px 30px rgba(48,21,9,0.10);transform-origin:50% 0;will-change:transform;}
+  .abk-flow-card:nth-child(4){box-shadow:0 -10px 30px rgba(48,21,9,0.10),inset 0 0 0 1.5px rgba(48,21,9,0.10);}
+  .abk-flow-shade{position:absolute;inset:0;border-radius:inherit;background:#301509;opacity:0;pointer-events:none;}
+  .abk-flow-body{align-self:start;}
+  .abk-flow-ill{color:var(--ac);display:flex;justify-content:center;align-self:center;}
+  .abk-flow-ill svg{width:100%;max-width:340px;height:auto;}
+  .abk-flow-num{font-family:'Bagel Fat One',cursive;font-size:1rem;letter-spacing:0.08em;color:var(--ac);opacity:0.85;margin-bottom:4px;}
+  .abk-flow-title{font-family:'Fredoka',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:0.01em;font-size:clamp(1.7rem,3.6vw,2.6rem);line-height:1.05;color:var(--ac);margin:0 0 18px;}
+  .abk-flow-text{font-size:clamp(1rem,1.5vw,1.2rem);line-height:1.55;margin:0 0 26px;max-width:42ch;color:var(--fg);}
+  .abk-flow-link{display:inline-flex;gap:8px;align-items:center;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.85rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg) !important;border-bottom:2px solid currentColor;padding-bottom:3px;transition:gap .2s ease,opacity .2s ease;}
+  .abk-flow-link:hover{gap:14px;opacity:0.8;}
+  @media (max-width:760px){
+    .abk-flow{padding-left:16px !important;padding-right:16px !important;}
+    .abk-flow-stack{--top:72px;--step:64px;gap:40px;}
+    .abk-flow-card{grid-template-columns:1fr;gap:14px;min-height:0;padding:18px 22px 26px;border-radius:20px;}
+    .abk-flow-ill{order:2;}
+    .abk-flow-ill svg{max-width:150px;}
+    .abk-flow-title{margin-bottom:12px;}
+    .abk-flow-text{margin-bottom:20px;}
+  }
+  @media (prefers-reduced-motion:reduce){.abk-flow-card{transform:none !important;}}
 </style>
+<script>
+/* De la idea al Abaniko: la tarjeta que queda debajo se encoge y oscurece al taparse */
+(function(){
+  var ticking=false;
+  function update(){
+    ticking=false;
+    var cards=document.querySelectorAll('.abk-flow-card');
+    for(var i=0;i<cards.length;i++){
+      var c=cards[i],n=cards[i+1],p=0;
+      if(n){
+        var a=c.getBoundingClientRect(),b=n.getBoundingClientRect();
+        p=Math.max(0,Math.min(1,(a.bottom-b.top)/a.height));
+      }
+      c.style.transform=p?'scale('+(1-0.05*p).toFixed(4)+')':'';
+      var sh=c.querySelector('.abk-flow-shade');
+      if(!sh){sh=document.createElement('div');sh.className='abk-flow-shade';c.appendChild(sh);}
+      sh.style.opacity=(0.35*p).toFixed(3);
+    }
+  }
+  function req(){if(!ticking){ticking=true;requestAnimationFrame(update);}}
+  window.addEventListener('scroll',req,{passive:true});
+  window.addEventListener('resize',req);
+  new MutationObserver(req).observe(document.documentElement,{childList:true,subtree:true});
+})();
+</script>
 </helmet>
 
 
@@ -459,16 +507,47 @@
       </div>
     </section>
 
-    <section style="max-width:1180px;margin:0 auto;padding:0 32px 88px;">
-      <div style="max-width:100%;margin-bottom:40px;text-align:center;">
-        <h2 style="font-family: 'Bagel Fat One',cursive; font-weight: 400; font-size: clamp(1.7rem,3.6vw,2.1rem); margin: 0; position: static; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px">De la idea al Abaniko</h2>
-        
+    <section class="abk-flow" style="max-width:1180px;margin:0 auto;padding:24px 32px 88px;">
+      <div style="max-width:100%;margin-bottom:clamp(36px,5vw,64px);text-align:center;">
+        <h2 style="font-family:'Bagel Fat One',cursive;font-weight:400;font-size:clamp(2rem,5.2vw,3.4rem);line-height:1.05;margin:0;padding:10px;">De la idea al Abaniko</h2>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px;">
-        <div style="background:#FBF0CE;border-radius:20px;padding:26px 22px;"><div style="font-family: 'Bagel Fat One',cursive; font-size: 1.6rem; color: #DA4435; margin-bottom: 10px; text-align: left">1</div><h4 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;margin:0 0 8px;">Nos cuentas tu historia</h4><p style="font-size:0.88rem;line-height:1.5;color:rgba(48,21,9,0.72);margin:0;">Cuéntanos tu idea: Evento, Marca, fechas.<br></p></div>
-        <div style="background:#FBF0CE;border-radius:20px;padding:26px 22px;"><div style="font-family:'Bagel Fat One',cursive;font-size:1.6rem;color:#DA4435;margin-bottom:10px;">2</div><h4 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;margin:0 0 8px;">Diseño</h4><p style="font-size:0.88rem;line-height:1.5;color:rgba(48,21,9,0.72);margin:0;">Nos pasáis el diseño o si no tenéis diseño, lo creamos nosotros (sin coste adicional)</p><a href="plantilla-abanico-abanikos-psd.zip" download="plantilla-abanico-abanikos-psd.zip" style="display:inline-block;margin-top:10px;font-family:'Fredoka',sans-serif;font-weight:600;font-size:0.85rem;color:#DA4435;">↓ Descargar plantilla</a></div>
-        <div style="background:#FBF0CE;border-radius:20px;padding:26px 22px;"><div style="font-family:'Bagel Fat One',cursive;font-size:1.6rem;color:#DA4435;margin-bottom:10px;">3</div><h4 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;margin:0 0 8px;">Producción</h4><p style="font-size:0.88rem;line-height:1.5;color:rgba(48,21,9,0.72);margin:0;">Una vez se apruebe el diseño y presupuesto se manda a producción.</p></div>
-        <div style="background:#FBF0CE;border-radius:20px;padding:26px 22px;"><div style="font-family:'Bagel Fat One',cursive;font-size:1.6rem;color:#DA4435;margin-bottom:10px;">4</div><h4 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;margin:0 0 8px;">Entrega</h4><p style="font-size:0.88rem;line-height:1.5;color:rgba(48,21,9,0.72);margin:0;">Entregamos tu pedido a plazo.</p></div>
+      <div class="abk-flow-stack">
+        <div class="abk-flow-card" style="--i:0;--bg:#301509;--fg:#FBF0CE;--ac:#F6DE8B;">
+          <div class="abk-flow-ill"><svg viewBox="0 0 240 180" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M30 34h112a14 14 0 0 1 14 14v46a14 14 0 0 1-14 14H82l-26 22v-22H30a14 14 0 0 1-14-14V48a14 14 0 0 1 14-14z"/><circle cx="56" cy="72" r="4"/><circle cx="86" cy="72" r="4"/><circle cx="116" cy="72" r="4"/><path d="M168 78h42a12 12 0 0 1 12 12v34a12 12 0 0 1-12 12h-8v18l-20-18h-14a12 12 0 0 1-12-12"/><g transform="translate(189 128)"><path d="M-22 -13A26 26 0 0 1 22 -13"/><path d="M0 0L-22 -13M0 0L-11 -23M0 0L0 -26M0 0L11 -23M0 0L22 -13"/></g></svg></div>
+          <div class="abk-flow-body">
+            <div class="abk-flow-num">01</div>
+            <h3 class="abk-flow-title">Nos cuentas tu historia</h3>
+            <p class="abk-flow-text">Cuéntanos tu idea: Evento, Marca, fechas.</p>
+            <a class="abk-flow-link" href="{{ waUrl }}" target="_blank" rel="noopener noreferrer"><span>Escríbenos por Whatsapp</span><span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <div class="abk-flow-card" style="--i:1;--bg:#DA4435;--fg:#FFFBF0;--ac:#F6DE8B;">
+          <div class="abk-flow-ill"><svg viewBox="0 0 240 180" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g transform="translate(104 150)"><path d="M-78 -45A90 90 0 0 1 78 -45"/><path d="M-30 -17A35 35 0 0 1 30 -17" stroke-dasharray="4 6"/><path d="M0 0L-78 -45M0 0L-58 -69M0 0L-31 -85M0 0L0 -90M0 0L31 -85M0 0L58 -69M0 0L78 -45"/><circle cx="0" cy="0" r="5"/></g><path d="M196 30l18 18-62 62-24 6 6-24z"/><path d="M186 40l18 18"/><path d="M134 120c10 10 26 14 44 6"/></svg></div>
+          <div class="abk-flow-body">
+            <div class="abk-flow-num">02</div>
+            <h3 class="abk-flow-title">Diseño</h3>
+            <p class="abk-flow-text">Nos pasáis el diseño o si no tenéis diseño, lo creamos nosotros (sin coste adicional)</p>
+            <a class="abk-flow-link" href="plantilla-abanico-abanikos-psd.zip" download="plantilla-abanico-abanikos-psd.zip">↓ Descargar plantilla</a>
+          </div>
+        </div>
+        <div class="abk-flow-card" style="--i:2;--bg:#F6DE8B;--fg:#301509;--ac:#DA4435;">
+          <div class="abk-flow-ill"><svg viewBox="0 0 240 180" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 150h192"/><path d="M40 150V96h70v54"/><path d="M130 150V96h70v54"/><path d="M48 104l54 38M58 98l50 36M48 116l46 32M70 98l40 28M130 104l54 38M140 98l50 36M130 116l46 32M152 98l40 28"/><path d="M60 60h120v24H60z"/><path d="M78 60V40h84v20"/><path d="M96 72h48"/><path d="M120 22v10M104 26l4 8M136 26l-4 8"/></svg></div>
+          <div class="abk-flow-body">
+            <div class="abk-flow-num">03</div>
+            <h3 class="abk-flow-title">Producción</h3>
+            <p class="abk-flow-text">Una vez se apruebe el diseño y presupuesto se manda a producción.</p>
+            <a class="abk-flow-link" sc-camel-on-click="{{ goConceptos }}" style="cursor:pointer;"><span>Ver Abanikos</span><span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <div class="abk-flow-card" style="--i:3;--bg:#FBF0CE;--fg:#301509;--ac:#DA4435;">
+          <div class="abk-flow-ill"><svg viewBox="0 0 240 180" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M70 74l60-24 60 24v66l-60 24-60-24z"/><path d="M70 74l60 24 60-24M130 98v66"/><path d="M100 62l60 24v22"/><g transform="translate(130 46)"><path d="M-26 -15A30 30 0 0 1 26 -15"/><path d="M0 0L-26 -15M0 0L-13 -26M0 0L0 -30M0 0L13 -26M0 0L26 -15"/></g><path d="M20 96h30M30 114h28M14 132h36"/><path d="M200 46l6 6 12-14"/></svg></div>
+          <div class="abk-flow-body">
+            <div class="abk-flow-num">04</div>
+            <h3 class="abk-flow-title">Entrega</h3>
+            <p class="abk-flow-text">Entregamos tu pedido a plazo.</p>
+            <a class="abk-flow-link" sc-camel-on-click="{{ goQuote }}" style="cursor:pointer;"><span>Pide tu presupuesto</span><span aria-hidden="true">→</span></a>
+          </div>
+        </div>
       </div>
     </section><section style="max-width: 1180px; margin: 0 auto; padding: 88px 32px; padding-top: 48px; padding-bottom: 48px; background-color: #301509; border-radius: 10px">
       <div style="max-width:100%;margin-bottom:40px;text-align:center;">
